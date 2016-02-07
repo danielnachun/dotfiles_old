@@ -1,0 +1,5 @@
+"xbacklight -dec 10"
+    m:0x10 + c:232
+
+"xbacklight -inc 10"
+    m:0x10 + c:233

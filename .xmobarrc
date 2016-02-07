@@ -1,0 +1,90 @@
+Config { font = "xft:Oxygen Mono:size=10:style=Book:antialias=true,Icons:size=10:antialias=true"
+       , bgColor = "#2b2b2c"
+       , fgColor = "#B3B3BB"
+       , position = TopSize L 100 26
+       , lowerOnStart = True
+       , border = FullB
+       , borderColor = "#B3B3BB"
+       , borderWidth = 2
+       , overrideRedirect = False
+       , iconRoot = "/home/daniel/.xmonad"
+       , iconOffset = 12
+       , commands = [ Run Weather "KLAX" 
+                                 ["-t","<tempF>F",
+                                  "-L","60",
+                                  "-H","80",
+                                  "--normal","#66AA11",
+                                  "--high","#DC322F",
+                                  "--low","lightblue"]
+                                  18000
+                    , Run Cpu ["-p", "3", 
+                               "-t", "<total>% <icon=arrow2.xpm/>", 
+                               "-L","20",
+                               "-H","50",
+                               "--normal","#66AA11",
+                               "--high","#DC322F"]
+                               10
+                    , Run DynNetwork ["-m", "6",
+                                      "-L","0",
+                                      "-H","32",
+                                      "--normal","#66AA11",
+                                      "--high","#DC322F", 
+                                      "-t", "<icon=down.xpm/> <rx> KB <icon=arrow2.xpm/> <icon=up.xpm/> <tx> KB "]
+                                      10
+                    , Run Memory ["-p", "3", 
+                                  "-t","<usedratio>% <icon=arrow2.xpm/>"] 
+                                  10
+                    , Run Date "<icon=calendar.xpm/> %a %_d %b %Y <icon=arrow2.xpm/> <icon=clock.xpm/> <fc=#369be2>%H:%M</fc>" 
+                                   "latime" 
+                                   10
+                    , Run UnsafeStdinReader 
+                    , Run Brightness ["-p", "3",
+                                      "-t", "<percent>% <icon=arrow2.xpm/>", 
+                                      "--", 
+                                      "-D", "intel_backlight"] 
+                                      10
+                    , Run CoreTemp ["-t", "<core0> <core1> <core2> <core3> <icon=arrow2.xpm/>", 
+                                    "-L", "20", 
+                                    "-H", "60", 
+                                    "-l", "lightblue", 
+                                    "-n", "#A3A3AB", 
+                                    "-h", "#DC322F"] 
+                                    10
+                    , Run Locks
+                    , Run DiskIO [("sdb1", 
+                                  "<read> <write>")] 
+                                 ["-m", "4"] 
+                                 10
+                    , Run BatteryP ["BAT0"]
+                                   ["-t", "<acstatus> <left>% <icon=arrow2.xpm/>",
+                                    "-L", "15", "-H", "80", "-p", "3",
+                                    "--", "-O", "<icon=acon.xpm/>", "-i", "<icon=acon.xpm/>", "-o", "<icon=acoff.xpm/>",
+                                    "-L", "-15", "-H", "-5",
+                                    "-l", "#DC322F", "-m", "blue", "-h", "#66AA11"]
+                                    10
+                    , Run Volume "default" 
+                                 "Master" 
+                                ["-p", "3",
+                                 "-t", "<status> <volume>% <icon=arrow2.xpm/>", 
+                                 "--", 
+                                 "-o", "<icon=voloff.xpm/>",
+                                 "-O", "<icon=vol3.xpm/>"] 
+                                 1 
+                    , Run Com "printf" ["\\ue0b2"] "lefttriangle" 0
+                    , Run Com "printf" ["\\uf224"] "leftopentriangle" 0
+                    , Run Com "printf" ["\\ue0b0"] "righttriangle" 0
+                    , Run Com "printf" ["\\ue0b1"] "rightopentriangle" 0
+                    , Run Com "printf" ["\\uf404"] "volicon" 0
+                    , Run Com "printf" ["\\uf39B"] "brighticon" 0
+                    , Run Com "printf" ["\\uf3b5"] "memicon" 0
+                    , Run Com "printf" ["\\uf3b6"] "tempicon" 0
+                    , Run Com "printf" ["\\uf3b3"] "cpuicon" 0
+                    , Run Com "printf" ["\\uf063"] "downicon" 0
+                    , Run PipeReader "/tmp/wifistatus" "wifistatus" 
+                    , Run PipeReader "/tmp/musicstatus" "musicstatus" 
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "<icon=arrow4.xpm/> %UnsafeStdinReader% }{<icon=arrow2.xpm/> %locks% <icon=arrow2.xpm/> <action=`sh ~/.xmonad/startksysguard.sh`><icon=cpu.xpm/> %cpu% %tempicon% %coretemp% <icon=memory.xpm/> %memory%</action> %brighticon% %bright% %battery% <action=~/.xmonad/startpavucontrol.sh>%default:Master%</action> <action=`~/.xmonad/startnm.sh`>%wifistatus% <icon=arrow2.xpm/> %dynnetwork%<icon=arrow2.xpm/></action> <action=`~/.xmonad/startweather.sh`>%KLAX%</action> <icon=arrow2.xpm/> <action=`xdotool key alt+KP_Home`>%latime%</action> <icon=arrow2.xpm/> <action=`oblogout`><icon=shutdown.xpm/></action> <icon=arrow3.xpm/>"
+    }
+
