@@ -1,0 +1,11 @@
+[Unit]
+Description=Autolock with i3lock-wrapper
+Documentation=
+After=display-manager.service
+
+[Service]
+ExecStart=/usr/bin/xautolock -time 5 -locker /usr/bin/i3lock-wrapper
+Restart=always
+
+[Install]
+WantedBy=default.target
