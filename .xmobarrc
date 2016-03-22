@@ -34,7 +34,7 @@ Config { font = "xft:Oxygen Mono:size=10:style=Book:antialias=true,Icons:size=10
                     , Run Memory ["-p", "3", 
                                   "-t","<usedratio>% <icon=arrow2.xpm/>"] 
                                   10
-                    , Run Date "<icon=calendar.xpm/> %a %_d %b %Y <icon=arrow2.xpm/> <icon=clock.xpm/> <fc=#369be2>%H:%M</fc>" 
+                    , Run Date "<icon=calendar.xpm/> %a %_d %b %Y <icon=arrow2.xpm/> <icon=clock.xpm/> <fc=#06989A>%H:%M</fc>" 
                                    "latime" 
                                    10
                     , Run UnsafeStdinReader 

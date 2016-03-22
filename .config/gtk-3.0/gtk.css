@@ -9,10 +9,4 @@
  border-radius: 0;
 }
 
-.scrollbar {
-    -GtkScrollbar-has-backward-stepper: true;
-    -GtkScrollbar-has-forward-stepper: true;
-    -GtkRange-stepper-spacing: 20;
-    -GtkRange-stepper-size: 10;
-}
 

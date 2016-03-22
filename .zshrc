@@ -403,7 +403,23 @@ alias sv='sudo -E v'
 alias ..='cd ..'
 alias getsum='awk -F ' ' '{print $1}' | pbc'
 alias ipython='PYTHONPATH=/home/daniel/.virtualenvs/venv/lib/python3.5/site-packages/ ipython'
-alias vim="vim --servername VIM"
+alias jupyter='PYTHONPATH=/home/daniel/.virtualenvs/venv/lib/python3.5/site-packages/ jupyter'
+#alias vim="vim --servername VIM"
+
+alias prconf='pacaur -C'        # Fix all configuration files with vimdiff
+# Pacman - https://wiki.archlinux.org/index.php/Pacman_Tips
+alias prupg='pacaur -Syu'        # Synchronize with repositories before upgrading packages (AUR packages too) that are out of date on the local system.
+#alias prsu='pacaur --sucre'      # Same as prupg, but without confirmation
+alias prin='pacaur -S'           # Install specific package(s) from the repositories
+alias prins='pacaur -U'          # Install specific package not from the repositories but from a file
+alias prre='pacaur -R'           # Remove the specified package(s), retaining its configuration(s) and required dependencies
+alias prrem='pacaur -Rns'        # Remove the specified package(s), its configuration(s) and unneeded dependencies
+alias prrep='pacaur -Si'         # Display information about a given package in the repositories
+alias prreps='pacaur -Ss'        # Search for package(s) in the repositories
+alias prloc='pacaur -Qi'         # Display information about a given package in the local database
+alias prlocs='pacaur -Qs'        # Search for package(s) in the local database
+alias prlst='pacaur -Qe'         # List installed packages, even those installed from AUR (they're tagged as "local")
+alias prorph='pacaur -Qtd'       # Remove orphans using yaourt
 
 export SSH_ASKPASS=""
 export EDITOR="vim"
@@ -411,6 +427,7 @@ export PATH="$(cope_path):$PATH"
 export PATH="/home/daniel/.cabal/bin:$PATH"
 export PATH="/usr/lib/jvm/java-7-openjdk/bin:$PATH"
 export PATH="/home/daniel/abs/v-master/:$PATH"
+export PATH="/home/daniel/R/x86_64-pc-linux-gnu-library/3.2/nvimcom/bin/:$PATH"
 export CCACHE_PATH="/usr/bin"
 export GTK_DISABLE_CSD=1
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.gtkthemefile=/home/daniel/.gtkrc-2.0"
@@ -504,7 +521,7 @@ fi
 
 export DISABLE_AUTO_UPDATE="true"
 
-source "/usr/share/zsh/scripts/zgen/zgen.zsh"
+source "$HOME/.zgen/zgen/zgen.zsh"
 if ! zgen saved; then
     #zgen prezto * color 'yes'
     #zgen prezto prompt theme 'sorin'
@@ -535,7 +552,7 @@ if ! zgen saved; then
  #   zgen oh-my-zsh plugins/pylinst
     zgen oh-my-zsh plugins/pyenv
     zgen oh-my-zsh plugins/rsync
-    zgen oh-my-zsh plugins/safe-paste
+    #zgen oh-my-zsh plugins/safe-paste
     zgen oh-my-zsh plugins/systemadmin
     zgen oh-my-zsh plugins/systemd
     zgen oh-my-zsh plugins/taskwarrior
@@ -555,10 +572,10 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/git
     zgen oh-my-zsh plugins/sudo
     zgen oh-my-zsh plugins/z
+    #zgen oh-my-zsh plugins/zsh-autosuggestions
     
-
-    zgen load jimmijj/zsh-syntax-highlighting
     zgen load tarruda/zsh-autosuggestions
+    zgen load jimmijj/zsh-syntax-highlighting
     zgen load vifon/deer
     zgen load Tarrasch/zsh-bd
     zgen load Tarrasch/zsh-functional
@@ -567,10 +584,10 @@ if ! zgen saved; then
     zgen save
 fi
 
-export AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=6'
-zle-line-init() {
-    zle autosuggest-start
-}
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
+#zle-line-init() {
+    #zle autosuggest-start
+#}
 zle -N zle-line-init
 
 bindkey '^f' vi-forward-word
@@ -582,6 +599,9 @@ bindkey '^R' history-incremental-search-backward
 #bindkey "${terminfo[kend]}" end-of-line
 #bindkey "${terminfo[home]}" beginning-of-line
 #bindkey "${terminfo[end]}" end-of-line
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS=("${(@)ZSH_AUTOSUGGEST_CLEAR_WIDGETS:#(up|down)-line-or-history}")
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down)
+#autosuggest_start
 
 POWERLINE_SHELL_CONTINUATION=1
 POWERLINE_SHELL_SELECT=1

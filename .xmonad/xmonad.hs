@@ -61,9 +61,8 @@ myStartupHook = do
     spawn "/home/daniel/.xmonad/wifistatus.sh"
     spawn "xsetroot -solid black -cursor_name left_ptr"
     spawn "compton -b"
-    --spawnOnce "urxvtd -q -f -o"
     spawn "export XDG_CURRENT_DESKTOP=KDE"
-    spawn "imlibsetroot -s h -p c /usr/share/wallpapers/Next/contents/images/2560x1440.png"
+    spawn "hsetroot -center /usr/share/wallpapers/Next/contents/images/2560x1440.png"
     --spawn "imlibsetroot -s f -p c ~/Pictures/Amazing Wallpapers/MTMwMjg4MjE4Mzk3NTc4NTE0.jpg"
     spawn "xrdb /home/daniel/.Xresources"
 
@@ -98,7 +97,7 @@ myWorkspaces = clickable . (map xmobarEscape) $ ["1","2","3","4","5","6","7","8"
   where clickable l = [ "<action=xdotool key alt+" ++ show (n) ++ ">" ++ ws ++ "</action>" | (i,ws) <- zip [1..9] l, let n = i ]
 
 scratchpads =
-    [ NS "ncmpcpp" "urxvt -e ncmpcpp" (title =? "ncmpcpp") nonFloating
+    [ NS "ncmpcpp" "terminator -e ncmpcpp" (title =? "ncmpcpp") nonFloating
     , NS "calendar" "gsimplecal" (appName =? "gsimplecal") (placeHook myMousePlacement <+> doFloat)
     ]
 
@@ -117,8 +116,8 @@ main = do
         , layoutHook = myLayout
         , logHook = dynamicLogWithPP . namedScratchpadFilterOutWorkspacePP $ xmobarPP
                         { ppOutput = hPutStrLn xmproc
-                        , ppTitle = xmobarColor "#369be2" "" . shorten myScreenWidth 
-                        , ppCurrent = xmobarColor "#369be2" ""
+                        , ppTitle = xmobarColor "#06989A" "" . shorten myScreenWidth 
+                        , ppCurrent = xmobarColor "#06989A" ""
                         , ppSep = " <icon=arrow1.xpm/> "
                         }
         , terminal = myTerminal
@@ -181,7 +180,7 @@ main = do
         , ((mod1Mask, xK_n), spawn "clementine") 
         , ((mod1Mask .|. controlMask, xK_n), raise (className =? "Clementine"))
 
-        , ((mod1Mask, xK_r), runInTerm "-title ranger" "ranger")
+        , ((mod1Mask, xK_r), runInTerm "-T ranger" "ranger")
         , ((mod1Mask .|. controlMask, xK_r), raise (fmap ("ranger" `isInfixOf`) title))
 
         , ((mod1Mask .|. controlMask, xK_o), raise (fmap ("tmuxinator" `isInfixOf`) title))
@@ -190,7 +189,7 @@ main = do
         , ((mod1Mask .|. controlMask, xK_u), raise (fmap ("Google Keep" `isInfixOf`) title))
 
         --, ((controlMask .|. mod1Mask, xK_Return), runInTerm "-title tmux" "exec tmux new-session -n$USER ")
-        , ((controlMask .|. mod1Mask, xK_Return), spawn "urxvt -e tmuxinator start general")
+        , ((controlMask .|. mod1Mask, xK_Return), spawn "terminator -T tmuxinator -e 'tmuxinator start general'")
         , ((controlMask .|. shiftMask, xK_Escape), spawn "ksysguard")
 
         --Scratchpads
@@ -198,6 +197,23 @@ main = do
 
         --Lock screen with screensaver
         , ((mod4Mask, xK_l), spawn "i3lock-wrapper")
+
+        --Tmux
+        , ((mod4Mask, xK_n), spawn "tmux new-window")
+        , ((mod4Mask, xK_comma), spawn "tmux new-window")
+        , ((mod4Mask, xK_Tab), spawn "tmux next-window")
+        , ((mod4Mask .|. shiftMask, xK_Tab), spawn "tmux previous-window")
+
+        , ((mod4Mask, xK_0), spawn "tmux select-window -t :0")
+        , ((mod4Mask, xK_1), spawn "tmux select-window -t :1")
+        , ((mod4Mask, xK_2), spawn "tmux select-window -t :2")
+        , ((mod4Mask, xK_3), spawn "tmux select-window -t :3")
+        , ((mod4Mask, xK_4), spawn "tmux select-window -t :4")
+        , ((mod4Mask, xK_5), spawn "tmux select-window -t :5")
+        , ((mod4Mask, xK_6), spawn "tmux select-window -t :6")
+        , ((mod4Mask, xK_7), spawn "tmux select-window -t :7")
+        , ((mod4Mask, xK_8), spawn "tmux select-window -t :8")
+        , ((mod4Mask, xK_9), spawn "tmux select-window -t :9")
 
         --Launch shutdown application
         , ((mod1Mask, xK_x), spawn "oblogout")
@@ -216,8 +232,8 @@ main = do
         , ((mod1Mask, xK_Tab), moveTo Next NonEmptyWS)
         , ((mod1Mask .|. shiftMask, xK_Tab), moveTo Prev NonEmptyWS)
         , ((mod1Mask, xK_grave), toggleWS)
-        , ((mod1Mask, xK_g), gotoMenuArgs ["-b", "-i", "-h", "26", "-sb", "#1D1F21", "-nb", "#3B3B4B", "-nf", "yellow", "-sf", "yellow", "-fn", "Oxygen Mono:size=10:antialias=true"])
-        , ((mod1Mask .|. shiftMask, xK_g), bringMenuArgs ["-b", "-i", "-h", "26", "-sb", "#1D1F21", "-nb", "#3B3B4B", "-nf", "yellow", "-sf", "yellow", "-fn", "Oxygen Mono:size=10:antialias=true"])
+        , ((mod1Mask, xK_g), gotoMenuArgs ["-b", "-i", "-h", "26", "-sb", "#1D1F21", "-nb", "#2b2b2c", "-nf", "yellow", "-sf", "yellow", "-fn", "Oxygen Mono:size=10:antialias=true"])
+        , ((mod1Mask .|. shiftMask, xK_g), bringMenuArgs ["-b", "-i", "-h", "26", "-sb", "#1D1F21", "-nb", "#2b2b2c", "-nf", "yellow", "-sf", "yellow", "-fn", "Oxygen Mono:size=10:antialias=true"])
 
         --Mac OS X has the best keybinding for closing windows 
         , ((mod1Mask, xK_w), kill) 
@@ -262,7 +278,7 @@ main = do
         , ((0, 0x1008FF12), spawn "amixer set Master toggle")
         ] 
 --Set terminal
-myTerminal = "urxvt"
+myTerminal = "terminator"
 
 --Set border info
 myBorderWidth = 2

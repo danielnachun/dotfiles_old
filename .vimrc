@@ -23,6 +23,7 @@ nmap <F10> :TagbarOpenAutoClose<CR>
 set laststatus=2
 set encoding=utf-8
 set termencoding=utf-8
+"set autochdir
 
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
@@ -33,21 +34,23 @@ set termencoding=utf-8
 "let g:syntastic_check_on_open = 0
 "let g:syntastic_check_on_wq = 0
 
-"filetype plugin on
-filetype off
+filetype plugin on
+filetype on
 filetype plugin indent on
 syntax on
 set ffs=unix,dos,mac
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_semantic_triggers = {'haskell' : ['.']}
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_python_binary_path = '/usr/bin/python2'
 let g:jedi#completions_enabled = 0
 "let g:multi_cursor_quit_key='<Shift><Esc>'
-let g:haddock_browser="/usr/bin/palemoon"
-"let r_syntax_folding = 1
+let g:haddock_browser="/usr/bin/google-chrome"
+let r_syntax_folding = 1
 set foldmethod=syntax
 set foldlevel=99
 let g:vimtex_latexmk_options="-xelatex"
+let g:tmux_navigator_no_mappings = 1
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-(>', '<Down>']
@@ -63,12 +66,15 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "let g:UltiSnipsJumpForwardTrigger="<c-x>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical" 
+let g:cumino_default_terminal="terminator"
 
 "command W w !sudo tee % > /dev/null
 "execute pathogen#infect()
-set rtp+=/usr/share/vim/vimfiles/autoload/neobundle.vim 
+set rtp+=~/.vim/bundle/neobundle.vim 
 call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundle 'jalvesaq/Nvim-R'
 NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'jalvesaq/vimcmdline'
 NeoBundle 'fs111/pydoc.vim'
 NeoBundle 'reinh/vim-makegreen'
 NeoBundle 'vim-scripts/TaskList.vim'
@@ -136,13 +142,11 @@ NeoBundle 'Shougo/vimproc.vim', {
         \}
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'lervag/vimtex'
-NeoBundle 'jcfaria/Vim-R-plugin'
 NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'suan/vim-instant-markdown'
 
 call neobundle#end()
 NeoBundleCheck
-NeoBundleClean
 "colorscheme molokai
 set background=light
 "highlight Normal ctermbg=NONE
@@ -150,23 +154,22 @@ set background=light
 "highlight LineNr ctermbg=NONE
 ""hi Visual ctermbg=11
 "hi Spellbad ctermbg=1 ctermfg=15
-hi Search ctermbg=59
+hi Search ctermfg=0 ctermbg=59
 hi Visual ctermfg=0 ctermbg=222
 
-noremap <C-J> <C-W>j
-noremap <C-K> <C-W>k
-noremap <C-H> <C-W>h
-noremap <C-L> <C-W>l
 " Lines added by the Vim-R-plugin command :RpluginConfig (2014-Oct-14 16:27):
 " Change the <LocalLeader> key:
 let maplocalleader = ","
 let mapleader= ","
-let vimrplugin_term = "urxvt"
-let vimrplugin_vimpager = "vertical"
-let vimrplugin_help_w = 80
-let vimrplugin_assign = 0
-let vimrplugin_rconsole_height = 20
-"let vimrplugin_vimpager = 
+let R_nvimpager = "vertical"
+let R_tmux_split = 1
+let R_in_buffer = 1
+let R_help_w = 80
+let R_assign = 3
+let R_rconsole_height = 20
+let R_notmuxconf = 1
+"let R_nvim_wd = 1
+let Rout_more_colors = 1
 " Use Ctrl+Space to do omnicompletion:
 if has("gui_running")
     inoremap <C-Space> <C-x><C-o>
@@ -198,3 +201,10 @@ let g:tagbar_type_r = {
         \ 'v:FunctionVariables',
     \ ]
 \ }
+
+autocmd BufEnter * silent! :lcd%:p:h
+
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
+noremap <C-H> <C-W>h
+noremap <C-L> <C-W>l

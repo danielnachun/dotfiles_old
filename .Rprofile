@@ -1,10 +1,9 @@
-
 options(repos=structure(c(CRAN="http://cran.stat.ucla.edu/")))
 # Lines added by the Vim-R-plugin command :RpluginConfig (2014-Oct-14 16:27):
 if(interactive()){
     options(setwidth.verbose = 1,
                colorout.verbose = 1,
-               vimcom.verbose = 1,
+               nvimcom.verbose = 1,
                pager = file.path(Sys.getenv("HOME"), "bin/vimrpager"), 
                help_type = "text")
                 
@@ -19,9 +18,6 @@ if(interactive()){
             ,help_type = "text")
     library(setwidth)
 
-    if(Sys.getenv("VIMRPLUGIN_TMPDIR") != "") {
-       library(vimcom)
-    }
     # syntax highlighting
     library(colorout)
     if (!Sys.getenv('TERM') %in% c('', 'linux'))
