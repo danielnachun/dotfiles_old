@@ -62,8 +62,7 @@ myStartupHook = do
     spawn "xsetroot -solid black -cursor_name left_ptr"
     spawn "compton -b"
     spawn "export XDG_CURRENT_DESKTOP=KDE"
-    spawn "hsetroot -center /usr/share/wallpapers/Next/contents/images/2560x1440.png"
-    --spawn "imlibsetroot -s f -p c ~/Pictures/Amazing Wallpapers/MTMwMjg4MjE4Mzk3NTc4NTE0.jpg"
+    spawn "hsetroot -center ~/Pictures/pattern-black.png"
     spawn "xrdb /home/daniel/.Xresources"
 
 --Placement hook for floating windows
@@ -97,7 +96,7 @@ myWorkspaces = clickable . (map xmobarEscape) $ ["1","2","3","4","5","6","7","8"
   where clickable l = [ "<action=xdotool key alt+" ++ show (n) ++ ">" ++ ws ++ "</action>" | (i,ws) <- zip [1..9] l, let n = i ]
 
 scratchpads =
-    [ NS "ncmpcpp" "terminator -e ncmpcpp" (title =? "ncmpcpp") nonFloating
+    [ NS "ncmpcpp" "terminator -T ncmpcpp -e ncmpcpp" (title =? "ncmpcpp") nonFloating
     , NS "calendar" "gsimplecal" (appName =? "gsimplecal") (placeHook myMousePlacement <+> doFloat)
     ]
 
@@ -131,6 +130,7 @@ main = do
         --Launch or locate specific applications
         [((mod1Mask, xK_p), spawn "rofi -show run")
         , ((mod1Mask .|. shiftMask, xK_p), spawn "dmenu_extended_run")
+        , ((mod1Mask, xK_o), spawn "~/abs/morc_menu/morc_menu")
         , ((mod1Mask, xK_f), spawn "dolphin")
         , ((mod1Mask .|. controlMask, xK_f), raise (className =? "dolphin"))
         
@@ -138,7 +138,7 @@ main = do
         , ((mod1Mask .|. controlMask .|. shiftMask, xK_f), raise (className =? "Krusader"))
         
         --, ((mod1Mask, xK_e), spawn "thunderbird")
-        --, ((mod1Mask .|. controlMask, xK_e), raise (className =? "Thunderbird"))
+        , ((mod1Mask .|. controlMask, xK_e), spawn "xdotool key ctrl+alt+b; chromix load https://inbox.google.com/")
 
         , ((mod1Mask, xK_b), spawn "google-chrome-stable --proxy-pac-url=http://proxy.ucla.edu/cgi/proxy")
         --, ((mod1Mask .|. controlMask, xK_b), raise (className =? "google-chrome" <&&> stringProperty "WM_WINDOW_ROLE" =? "browser"))
@@ -153,8 +153,8 @@ main = do
         , ((mod1Mask .|. shiftMask, xK_b), spawn "chromium")
         , ((mod1Mask .|. controlMask .|. shiftMask, xK_b), raise (className =? "chromium"))
 
-        , ((mod1Mask, xK_s), spawn "mendeleydesktop")
-        , ((mod1Mask .|. controlMask, xK_s), raise (className =? "Mendeleydesktop.x86_64"))
+        , ((mod1Mask .|. mod1Mask .|. shiftMask, xK_s), spawn "mendeleydesktop")
+        , ((mod1Mask .|. controlMask .|. shiftMask, xK_s), raise (className =? "Mendeleydesktop.x86_64"))
 
         , ((mod1Mask, xK_a), spawn "kwrite")
         , ((mod1Mask .|. controlMask, xK_a), raise (className =? "Kwrite"))
@@ -171,11 +171,11 @@ main = do
         , ((mod1Mask, xK_i), spawn "/opt/google/chrome/google-chrome '--profile-directory=Profile 2' --app-id=knipolnnllmklapflnccelgolnpehhpl")
         , ((mod1Mask .|. controlMask, xK_i), raise (fmap ("Hangouts" `isInfixOf`) title))
 
-        , ((mod1Mask .|. shiftMask, xK_i), spawn "scudcloud")
-        , ((mod1Mask .|. controlMask .|. shiftMask, xK_i), raise (className =? "Scudcloud"))
+        {-, ((mod1Mask .|. shiftMask, xK_i), spawn "scudcloud")-}
+        , ((mod1Mask .|. controlMask .|. shiftMask, xK_i), spawn "xdotool key ctrl+alt+b; chromix load https://coppolalab.slack.com")
 
-        , ((mod1Mask .|. shiftMask, xK_n), spawn "spotify")
-        , ((mod1Mask .|. controlMask .|. shiftMask, xK_n), raise (className =?  "Spotify"))
+        {-, ((mod1Mask .|. shiftMask, xK_n), spawn "spotify")-}
+        , ((mod1Mask .|. controlMask, xK_s), spawn "xdotool key ctrl+alt+b; chromix load https://play.spotify.com")
 
         , ((mod1Mask, xK_n), spawn "clementine") 
         , ((mod1Mask .|. controlMask, xK_n), raise (className =? "Clementine"))
@@ -188,12 +188,17 @@ main = do
         , ((mod1Mask, xK_u), spawn "/opt/google/chrome/google-chrome '--profile-directory=Profile 2' --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki" )
         , ((mod1Mask .|. controlMask, xK_u), raise (fmap ("Google Keep" `isInfixOf`) title))
 
+        {-, ((mod1Mask, xK_u), spawn "/opt/google/chrome/google-chrome '--profile-directory=Profile 2' --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki" )-}
+        , ((mod1Mask .|. shiftMask .|. controlMask, xK_u), spawn "xdotool key ctrl+alt+b; chromix load https://trello.com")
+
         --, ((controlMask .|. mod1Mask, xK_Return), runInTerm "-title tmux" "exec tmux new-session -n$USER ")
         , ((controlMask .|. mod1Mask, xK_Return), spawn "terminator -T tmuxinator -e 'tmuxinator start general'")
         , ((controlMask .|. shiftMask, xK_Escape), spawn "ksysguard")
 
         --Scratchpads
         , ((mod1Mask, xK_KP_Home), namedScratchpadAction scratchpads "calendar")
+        {-, ((mod1Mask, xK_n), namedScratchpadAction scratchpads "ncmpcpp")-}
+        {-, ((mod1Mask .|. controlMask, xK_n), raise (fmap("ncmpcpp" `isInfixOf`) title))-}
 
         --Lock screen with screensaver
         , ((mod4Mask, xK_l), spawn "i3lock-wrapper")
@@ -276,6 +281,10 @@ main = do
         , ((0, 0x1008FF11), spawn "amixer set Master 5%-")
         , ((0, 0x1008FF13), spawn "amixer set Master 5%+")
         , ((0, 0x1008FF12), spawn "amixer set Master toggle")
+
+        --Set compose key
+        , ((mod1Mask, xK_backslash), spawn "setxkbmap -option compose:lwin")
+        , ((mod1Mask .|. shiftMask, xK_backslash), spawn "setxkbmap -option")
         ] 
 --Set terminal
 myTerminal = "terminator"

@@ -27,4 +27,4 @@ else
     fi
 fi
 
-
+bspc wm -d > "$BSPWM_STATE" && bspc quit

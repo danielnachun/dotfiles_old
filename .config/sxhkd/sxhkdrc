@@ -1,0 +1,250 @@
+#!/bin/bash
+
+#Launch terminal
+raise_window="$HOME/.config/bspwm/raise_window.py"
+
+alt + q 
+    bspc wm -d > "$BSPWM_STATE" && bspc quit
+    
+alt + shift + q
+    bspc quit 1
+
+alt + shift + Return
+    terminator
+
+Navigate or move to window
+alt + {_,shift +}{1-9,0}
+    bspc {desktop -f, node -d} ^{1-9,10}
+
+#Navigate to tmux window 
+super + {0-9}
+    tmux select-window -t :{0-9}
+
+#Launch rofi
+alt + p
+    rofi -show run
+
+#Launch dmenu_extended
+alt + shift + p
+    dmenu_extended_run
+
+#Launch morc_menu
+alt + shift + o 
+    /home/daniel/abs/morc_menu/morc_menu
+
+#bspc node -f $($HOME/.config/bspwm/raise_window.py --className=dolphin)
+#Open Dolphin
+alt + {_, ctrl + } f
+    {dolphin, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --classname dolphin))")}
+
+#bspc node -f $($HOME/.config/bspwm/raise_window.py --className=krusader)
+#Open Krusader
+alt + shift + {_, ctrl + } f
+    {krusader, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --classname krusader))")}
+
+#Raise chrome, then open email
+alt + ctrl + e
+    bspc node -f $($HOME/.config/bspwm/get_chrome.zsh) && chromix load https://inbox.google.com
+
+#Open Chrome
+alt + b
+    google-chrome-stable --proxy-pac-url=http://proxy.ucla.edu/cgi/proxy
+
+#Raise chrome
+alt + ctrl + b
+    bspc node -f $($HOME/.config/bspwm/get_chrome.zsh)
+
+#Open KCalc
+alt + {_, ctrl + } c
+    {kcalc, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --classname kcalc))")}
+
+#Chromium?
+
+#bspc node -f $($HOME/.config/bspwm/raise_window.py --className=mendeleydesktop.x86_64)
+#Open Mendeley
+alt + shift + {_, ctrl + } s
+    {mendeleydesktop, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --classname mendeley))")}
+
+#bspc node -f $($HOME/.config/bspwm/raise_window.py --className=kwrite)
+#Open KWrite
+alt + {_, ctrl + } a
+    {kwrite, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --classname kwrite))")}
+
+#bspc node -f $($HOME/.config/bspwm/raise_window.py --className=kate)
+#Open Kate
+alt + shift + {_, ctrl + } a
+    {kate, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --classname kate))")}
+
+#{libreoffice, bspc node -f $($HOME/.config/bspwm/raise_window.py --className=libreoffice)}
+#Open LibreOffice
+alt + {_, ctrl + } v
+    {libreoffice, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --classname libreoffice))")}
+
+#Raise LibreOffice
+
+#Open Google Docs
+alt + shift + v
+    google-chrome-stable '--profile-directory=Profile 4' --app-id=apdfllckaahabafndbhieahigkjlhalf
+
+#bspc node -f $($HOME/.config/bspwm/raise_window.py --className=google-chrome --title='Google Drive:Google Docs:Google Sheets:Google Slides')
+#Raise Google Docs
+alt + shift + ctrl + v
+    bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --name "Google Drive|Google Docs|Google Sheets|Google Slides"))")
+
+#Open Hangouts
+alt + i
+    google-chrome-stable '--profile-directory=Profile 2' --app-id=knipolnnllmklapflnccelgolnpehhpl
+
+#Raise Hangouts
+#bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --name "Google Hangouts"))")
+alt + ctrl + i
+    bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --name "Google Hangouts"))")
+    
+#Raise Chrome, then Slack
+alt + ctrl + shift + i
+    bspc node -f $($HOME/.config/bspwm/get_chrome.zsh) && chromix load https://coppolalab.slack.com
+    
+#Raise Chrome, then Spotify
+alt + ctrl + s
+    bspc node -f $($HOME/.config/bspwm/get_chrome.zsh) && chromix load https://play.spotify.com
+
+#bspc node -f $($HOME/.config/bspwm/raise_window.py --className=clementine)
+#Launch Clementine
+alt + {_, ctrl + } n
+    {clementine, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --classname clementine))")}
+
+#bspc node -f $($HOME/.config/bspwm/raise_window.py --title=ranger
+#Open ranger in terminal
+alt + {_, ctrl + } r
+    {terminator -T ranger -e ranger, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --name ranger))")}
+
+#bspc node -f $($HOME/.config/bspwm/raise_window.py --title=tmuxinator)
+#Raise tmuxinator
+alt + ctrl + o
+    bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --name tmuxinator))")
+
+#Open Google Keep
+alt + u
+    google-chrome-stable '--profile-directory=Profile 2' --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki
+
+#bspc node -f $($HOME/.config/bspwm/raise_window.py --title='Google Keep')
+#Raise Google Keep
+alt + ctrl + u
+    bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --name "Google Keep"))")
+
+#Raise Trello
+alt + ctrl + shift + u
+    bspc node -f $($HOME/.config/bspwm/get_chrome.zsh) && chromix load https://trello.com
+
+#Open tmuxinator in terminal
+ctrl + alt + Return
+    terminator -T tmuxinator -e 'tmuxinator start general'
+
+#Lock screen
+super + l
+    i3lock-wrapper
+
+#New tmux window
+super + n
+    tmux new-window
+
+#Next tmux window
+super + Tab
+    tmux next-window
+
+#Previous tmux window
+super + shift + Tab
+    tmux previous-window
+
+#Log out window
+alt + x 
+    oblogout
+
+#Move to next non empty workspace
+#Move to previous non empty workspace
+alt + {_,shift + }Tab
+    bspc desktop -f {next.occupied,prev.occupied}
+
+#Move to most recent desktop
+alt + grave
+    bspc desktop -f last.occupied
+
+#Kill current window
+alt + w
+    bspc node -c
+
+#Enable lwin compose key
+alt + backslash
+    setxkbmap -option compose:lwin
+
+#Disable lwin compose key
+alt + shift + backslash
+    setxkbmap -option
+
+#Navigate nodes
+alt + {_,shift + }{h,j,k,l}
+    bspc node -{f,s} {west,south,north,east}
+
+#Change size of tiled nodes
+alt + ctrl + l
+    if [[ -n $(bspc query -N -n east) ]]; then bspc node -z right 20 0; else bspc node -z left 20 0; fi
+    
+alt + ctrl + h
+    if [[ -n $(bspc query -N -n west) ]]; then bspc node -z left -20 0; else bspc node -z right -20 0; fi
+
+alt + ctrl + j
+    if [[ -n $(bspc query -N -n south) ]]; then bspc node -z bottom 0 20; else bspc node -z top 0 20; fi
+    
+alt + ctrl + k
+    if [[ -n $(bspc query -N -n north) ]]; then bspc node -z top 0 -20; else bspc node -z bottom 0 -20; fi
+
+XF86AudioRaiseVolume
+    amixer set Master 5%+
+    
+XF86AudioLowerVolume
+    amixer set Master 5%-
+
+XF86AudioMute
+    amixer set Master toggle
+
+XF86MonBrightnessUp
+    light -A 5
+
+XF86MonBrightnessDown
+    light -U 5
+
+shift + ctrl + Escape
+    ksysguard
+
+alt + {_,shift + }y
+    {/home/daniel/.config/bspwm/wifion.sh,/home/daniel/.config/bspwm/wifioff.sh}
+
+alt + shift + equal
+    bspc node @/ -E
+
+alt + {_, shift} period
+    bspc node @parent -R {90, 270}
+
+alt + {_, shift} comma
+    bspc node @/ -F {horizontal, vertical}
+
+alt + space
+    bspc desktop -l next 
+
+alt + {_, shift + , ctrl + } t
+    bspc node -t {tiled, floating, pseudo_tiled}
+
+super + t
+    bspc node -t fullscreen
+
+alt + d
+    $HOME/.config/bspwm/connect_external.sh
+
+alt + shift + d
+    $HOME/.config/bspwm/disconnect_external.sh
+
+alt + g
+    bspc node -f $(rofi -dmenu <<< $(foreach win_id ($(bspc query -N -n .normal)) echo $win_id - $(sed 's/"//g' <<< $(cut -d ' ' -f 4 <<< $(xprop WM_CLASS -id $win_id))) - $(xtitle $win_id); end) | cut -c 1-10)
+
+alt + shift + g
+    bspc node $(rofi -dmenu <<< $(foreach win_id ($(bspc query -N -n .normal)) echo $win_id - $(sed 's/"//g' <<< $(cut -d ' ' -f 4 <<< $(xprop WM_CLASS -id $win_id))) - $(xtitle $win_id); end) | cut -c 1-10) -d $(bspc query -D -d)

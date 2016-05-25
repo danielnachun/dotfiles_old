@@ -1,3 +1,89 @@
+set nocompatible
+let g:plug_timeout = 240
+
+function! BuildYCM(info)
+  " info is a dictionary with 3 fields
+  " - name:   name of the plugin
+  " - status: 'installed', 'updated', or 'unchanged'
+  " - force:  set on PlugInstall! or PlugUpdate!
+  if a:info.status == 'installed' || a:info.force
+    !python2 ./install.py --all
+  endif
+endfunction
+
+call plug#begin('~/.vim/plugged')
+Plug 'Shougo/dein.vim'
+Plug 'jalvesaq/Nvim-R'
+Plug 'jalvesaq/vimcmdline'
+Plug 'jpalardy/vim-slime'
+Plug 'fs111/pydoc.vim'
+Plug 'reinh/vim-makegreen'
+Plug 'vim-scripts/TaskList.vim'
+Plug 'alfredodeza/pytest.vim'
+Plug 'tacahiroy/ctrlp-funky'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'dag/vim2hs'
+Plug 'lukerandall/haskellmode-vim'
+Plug 'adinapoli/cumino'
+Plug 'bitc/vim-hdevtools'
+Plug 'ivanov/vim-ipython'
+Plug 'kien/ctrlp.vim'
+Plug 'mrtazz/DoxygenToolkit.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'jiangmiao/auto-pairs'
+Plug 'wincent/Command-T'
+Plug 'tpope/vim-endwise'
+Plug 'sjl/gundo.vim'
+Plug 'tomasr/molokai'
+Plug 'scrooloose/nerdcommenter'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'nanotech/jellybeans.vim'
+Plug 'davidhalter/jedi-vim'
+Plug 'fholgado/minibufexpl.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'eiginn/netrw'
+Plug 'vim-scripts/OmniCppComplete'
+Plug 'amiorin/vim-project'
+Plug 'tpope/vim-surround'
+Plug 'ervandew/supertab'
+Plug 'scrooloose/syntastic'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'vim-scripts/vcscommand.vim'
+Plug 'szw/vim-ctrlspace'
+Plug 'tpope/vim-repeat'
+Plug 'godlygeek/tabular'
+Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/taglist.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-scripts/Color-Sampler-Pack'
+Plug 'thinca/vim-guicolorscheme'
+Plug 'vim-scripts/JavaDecompiler.vim'
+Plug 'vim-scripts/a.vim'
+Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-commentary'
+Plug 'easymotion/vim-easymotion'
+Plug 'eagletmt/ghcmod-vim'
+Plug 'Twinside/vim-haskellFold'
+Plug 'travitch/hasksyn'
+Plug 'vim-jp/vital.vim'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'eagletmt/neco-ghc'
+Plug 'vim-scripts/sudo.vim'
+Plug 'Shougo/unite.vim'
+Plug 'lervag/vimtex'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'suan/vim-instant-markdown'
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'enomsg/vim-HaskellConcealPlus'
+call plug#end()
+filetype plugin indent on
+syntax on
+
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -17,7 +103,6 @@ set wrapscan
 "set background=dark
 set mouse=a
 "set omnifunc=syntaxcomplete#Complete
-set nocompatible
 set hidden
 nmap <F10> :TagbarOpenAutoClose<CR>
 set laststatus=2
@@ -34,15 +119,14 @@ set termencoding=utf-8
 "let g:syntastic_check_on_open = 0
 "let g:syntastic_check_on_wq = 0
 
-filetype plugin on
-filetype on
-filetype plugin indent on
-syntax on
+"filetype plugin on
+"filetype on
 set ffs=unix,dos,mac
 let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
+let g:ycm_semantic_triggers = {'haskell' : ['.'], 'r' : ['re!\^\.\*$']}
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_python_binary_path = '/usr/bin/python2'
+let g:ycm_auto_trigger = 1
 let g:jedi#completions_enabled = 0
 "let g:multi_cursor_quit_key='<Shift><Esc>'
 let g:haddock_browser="/usr/bin/google-chrome"
@@ -70,83 +154,7 @@ let g:cumino_default_terminal="terminator"
 
 "command W w !sudo tee % > /dev/null
 "execute pathogen#infect()
-set rtp+=~/.vim/bundle/neobundle.vim 
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundle 'jalvesaq/Nvim-R'
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'jalvesaq/vimcmdline'
-NeoBundle 'fs111/pydoc.vim'
-NeoBundle 'reinh/vim-makegreen'
-NeoBundle 'vim-scripts/TaskList.vim'
-NeoBundle 'alfredodeza/pytest.vim'
-NeoBundle 'tacahiroy/ctrlp-funky'
-NeoBundle 'jistr/vim-nerdtree-tabs'
-NeoBundle 'dag/vim2hs'
-NeoBundle 'lukerandall/haskellmode-vim'
-NeoBundle 'adinapoli/cumino'
-NeoBundle 'bitc/vim-hdevtools'
-NeoBundle 'ivanov/vim-ipython'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'mrtazz/DoxygenToolkit.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'michaeljsmith/vim-indent-object'
-NeoBundle 'Valloric/YouCompleteMe'
-NeoBundle 'jiangmiao/auto-pairs'
-NeoBundle 'wincent/Command-T'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'sjl/gundo.vim'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'jlanzarotta/bufexplorer'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'davidhalter/jedi-vim'
-NeoBundle 'fholgado/minibufexpl.vim'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'eiginn/netrw'
-NeoBundle 'vim-scripts/OmniCppComplete'
-NeoBundle 'amiorin/vim-project'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'ervandew/supertab'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'vim-scripts/vcscommand.vim'
-NeoBundle 'szw/vim-ctrlspace'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'vim-scripts/taglist.vim'
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'vim-scripts/Color-Sampler-Pack'
-NeoBundle 'thinca/vim-guicolorscheme'
-NeoBundle 'vim-scripts/JavaDecompiler.vim'
-NeoBundle 'vim-scripts/a.vim'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'easymotion/vim-easymotion'
-NeoBundle 'eagletmt/ghcmod-vim'
-NeoBundle 'enomsg/vim-HaskellConcealPlus'
-NeoBundle 'Twinside/vim-haskellFold'
-NeoBundle 'travitch/hasksyn'
-NeoBundle 'vim-jp/vital.vim'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'eagletmt/neco-ghc'
-NeoBundle 'kevinw/pyflakes-vim'
-NeoBundle 'vim-scripts/sudo.vim'
-NeoBundle 'Shougo/vimproc.vim', {
-            \ 'build' : {
-            \'linux' : 'make'
-            \},
-        \}
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'lervag/vimtex'
-NeoBundle 'christoomey/vim-tmux-navigator'
-NeoBundle 'suan/vim-instant-markdown'
-
-call neobundle#end()
-NeoBundleCheck
+"NeoBundleCheck
 "colorscheme molokai
 set background=light
 "highlight Normal ctermbg=NONE
@@ -165,10 +173,11 @@ let R_nvimpager = "vertical"
 let R_tmux_split = 1
 let R_in_buffer = 1
 let R_help_w = 80
-let R_assign = 3
+let R_assign = 0
 let R_rconsole_height = 20
 let R_notmuxconf = 1
 "let R_nvim_wd = 1
+let R_nvimcom_wait = 60000
 let Rout_more_colors = 1
 " Use Ctrl+Space to do omnicompletion:
 if has("gui_running")
@@ -208,3 +217,4 @@ noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
 noremap <C-H> <C-W>h
 noremap <C-L> <C-W>l
+

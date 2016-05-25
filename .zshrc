@@ -281,7 +281,7 @@ function psu {
 
 #Aliases
 alias ack='nocorrect ack'
-alias cd='nocorrect cd'
+#alias cd='nocorrect cd'
 alias cp='nocorrect cp'
 alias ebuild='nocorrect ebuild'
 alias gcc='nocorrect gcc'
@@ -519,88 +519,104 @@ else
     fi
 fi
 
-export DISABLE_AUTO_UPDATE="true"
-
-source "$HOME/.zgen/zgen/zgen.zsh"
-if ! zgen saved; then
+source "$HOME/.zplug/init.zsh"
     #zgen prezto * color 'yes'
     #zgen prezto prompt theme 'sorin'
     #zgen prezto editor key-bindings 'vi'
     
-    zgen oh-my-zsh
-    zgen oh-my-zsh plugins/catimg
-    zgen oh-my-zsh plugins/command-not-found
-    zgen oh-my-zsh plugins/colorize
-    zgen oh-my-zsh plugins/colored-man
-    zgen oh-my-zsh plugins/copydir
-    zgen oh-my-zsh plugins/copyfile
-    zgen oh-my-zsh plugins/cp #use cpv
-    zgen oh-my-zsh plugins/cpanm
-    zgen oh-my-zsh plugins/dircycle
-    zgen oh-my-zsh plugins/dirhistory
-    zgen oh-my-zsh plugins/extract
-    zgen oh-my-zsh plugins/fasd
-    zgen oh-my-zsh plugins/golang
-    zgen oh-my-zsh plugins/history-substring-search
-    zgen oh-my-zsh plugins/history
-    zgen oh-my-zsh plugins/jump
-    zgen oh-my-zsh plugins/kate
-    zgen oh-my-zsh plugins/pep8
-    zgen oh-my-zsh plugins/perl
-    zgen oh-my-zsh plugins/pip
-    zgen oh-my-zsh plugins/python
- #   zgen oh-my-zsh plugins/pylinst
-    zgen oh-my-zsh plugins/pyenv
-    zgen oh-my-zsh plugins/rsync
-    #zgen oh-my-zsh plugins/safe-paste
-    zgen oh-my-zsh plugins/systemadmin
-    zgen oh-my-zsh plugins/systemd
-    zgen oh-my-zsh plugins/taskwarrior
-    zgen oh-my-zsh plugins/themes
-    zgen oh-my-zsh plugins/tmux
-    zgen oh-my-zsh plugins/tmuxinator
-    zgen oh-my-zsh plugins/vi-mode
-    zgen oh-my-zsh plugins/virtualenv
-    #zgen oh-my-zsh plugins/virtualenvwrapper
-    zgen oh-my-zsh plugins/vundle
-    zgen oh-my-zsh plugins/wd
- #   zgen oh-my-zsh plugins/web-search
-    zgen oh-my-zsh plugins/zsh_reload
-    zgen oh-my-zsh plugins/catimg
-    zgen oh-my-zsh plugins/cabal
-    zgen oh-my-zsh plugins/archlinux
-    zgen oh-my-zsh plugins/git
-    zgen oh-my-zsh plugins/sudo
-    zgen oh-my-zsh plugins/z
-    #zgen oh-my-zsh plugins/zsh-autosuggestions
-    
-    zgen load tarruda/zsh-autosuggestions
-    zgen load jimmijj/zsh-syntax-highlighting
-    zgen load vifon/deer
-    zgen load Tarrasch/zsh-bd
-    zgen load Tarrasch/zsh-functional
-    #zgen load Angelmmiguel/pm
-    #zgen load marzocchi/zsh-notify
-    zgen save
+#zplug "plugins/catimg" from:oh-my-zsh 
+#zplug "plugins/command-not-found" from:oh-my-zsh
+zplug "plugins/colorize", from:oh-my-zsh 
+zplug "plugins/colored-man", from:oh-my-zsh 
+zplug "plugins/copydir", from:oh-my-zsh 
+zplug "plugins/copyfile", from:oh-my-zsh 
+zplug "plugins/cp", from:oh-my-zsh 
+zplug "plugins/cpanm", from:oh-my-zsh, lazy:true
+zplug "plugins/dircycle", from:oh-my-zsh 
+zplug "plugins/dirhistory", from:oh-my-zsh 
+zplug "plugins/extract", from:oh-my-zsh 
+#zplug "plugins/fasd", from:oh-my-zsh 
+zplug "plugins/golang", from:oh-my-zsh, lazy:true
+zplug "plugins/history-substring-search", from:oh-my-zsh 
+zplug "plugins/history", from:oh-my-zsh 
+zplug "plugins/jump", from:oh-my-zsh 
+zplug "plugins/kate", from:oh-my-zsh 
+zplug "plugins/pep8", from:oh-my-zsh 
+zplug "plugins/perl", from:oh-my-zsh, from:oh-my-zsh
+zplug "plugins/pip", from:oh-my-zsh 
+zplug "plugins/python", from:oh-my-zsh 
+#   zplug oh-my-zsh "plugins/pylinst"
+zplug "plugins/pyenv", from:oh-my-zsh 
+zplug "plugins/rsync", from:oh-my-zsh 
+#zplug, from:oh-my-zsh "plugins/safe-paste"
+zplug "plugins/systemadmin", from:oh-my-zsh 
+zplug "plugins/systemd", from:oh-my-zsh 
+zplug "plugins/taskwarrior", from:oh-my-zsh, lazy:true
+zplug "plugins/themes", from:oh-my-zsh, lazy:true
+zplug "plugins/tmux", from:oh-my-zsh 
+zplug "plugins/tmuxinator", from:oh-my-zsh 
+zplug "plugins/vi-mode", from:oh-my-zsh 
+zplug "plugins/virtualenv", from:oh-my-zsh, lazy:true
+#zplug, from:oh-my-zsh "plugins/virtualenvwrapper"
+zplug "plugins/wd", from:oh-my-zsh 
+#   zplug oh-my-zsh "plugins/web-search"
+zplug "plugins/zsh_reload", from:oh-my-zsh 
+zplug "plugins/catimg", from:oh-my-zsh, lazy:true
+zplug "plugins/cabal", from:oh-my-zsh, lazy:true
+zplug "plugins/archlinux", from:oh-my-zsh 
+zplug "plugins/git", from:oh-my-zsh 
+zplug "plugins/sudo", from:oh-my-zsh 
+zplug "plugins/z", from:oh-my-zsh 
+#zplug, from:oh-my-zsh "plugins/zsh-autosuggestions"
+
+zplug "tarruda/zsh-autosuggestions"
+zplug "jimmijj/zsh-syntax-highlighting", nice:10
+zplug "vifon/deer", lazy:true
+zplug "Tarrasch/zsh-bd"
+zplug "Tarrasch/zsh-functional"
+#zplug "psprint/history-search-multi-word"
+#zplug "b4b4r07/enhancd", use:init.sh
+#zplug "Valiev/almostontop"
+#zplug "djui/alias-tips"
+#zplug "joepvd/grep2awk"
+#zplug "willghatch/zsh-snippets"
+#zplug "mafredri/zsh-async", lazy:true
+#zplug "zsh-users/zaw"
+#zplug "hchbaw/zce.zsh"
+#zplug "jreese/zsh-titles"
+#zplug "psprint/zsnapshot"
+#zplug "psprint/ztrace"
+#zplug "psprint/zsh-navigation-tools"
+#zplug load" Angelmmiguel/pm"
+#zplug load" marzocchi/zsh-notify"
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
 fi
 
+zplug load 
+
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
-#zle-line-init() {
+
+# zle-line-init() {
     #zle autosuggest-start
 #}
-zle -N zle-line-init
+#zle -N zle-line-init
 
 bindkey '^f' vi-forward-word
 bindkey '^e' end-of-line
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
-bindkey '^R' history-incremental-search-backward
+#bindkey '^R' history-incremental-search-backward
 #bindkey "${terminfo[khome]}" beginning-of-line
 #bindkey "${terminfo[kend]}" end-of-line
 #bindkey "${terminfo[home]}" beginning-of-line
 #bindkey "${terminfo[end]}" end-of-line
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS=("${(@)ZSH_AUTOSUGGEST_CLEAR_WIDGETS:#(up|down)-line-or-history}")
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down)
+#ZSH_AUTOSUGGEST_CLEAR_WIDGETS=("${(@)ZSH_AUTOSUGGEST_CLEAR_WIDGETS:#(up|down)-line-or-history}")
+#ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down)
 #autosuggest_start
 
 POWERLINE_SHELL_CONTINUATION=1
@@ -622,7 +638,6 @@ alias v='/home/daniel/abs/v-master/v'
 TRAPWINCH() {
   zle && { zle reset-prompt; zle -R }
 }
-
 
 
 # PM functions

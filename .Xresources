@@ -25,7 +25,7 @@ URxvt.keysym.Home:                      \033[1~
 URxvt.keysym.End:                       \033[4~
 URxvt.keysym.KP_Home:                   \033[1~
 URxvt.keysym.KP_End:                    \033[4~
-URxvt.font:                             xft:Oxygen Mono:size=10:antialias=true:hinting=true, xft:Deja Vu Sans Mono for Powerline:size=10:antialias=true:hinting=true, xft:Source Code Pro for Powerline:antialias=true:hinting=true
+URxvt.font:                             xft:Oxygen Mono for Powerline:size=10:antialias=true:hinting=true, xft:Deja Vu Sans Mono for Powerline:size=10:antialias=true:hinting=true, xft:Source Code Pro for Powerline:antialias=true:hinting=true
 !URxvt.font:                             xft:PowerlineSymbols, xft:Oxygen Mono:size=10:antialias=true 
 !URxvt.font:                             xft:Deja Vu Sans Mono for Powerline:size=10:antialias=true
 URxvt.scrollBar:                        false
@@ -222,6 +222,9 @@ rofi.key-run:alt+p
 rofi.bg:#2b2b2c
 rofi.bgalt:#1D1F21
 rofi.fg:#b3b3bb
+rofi.color-normal:#2b2b2c,#b3b3bb,#1d1f21,#b3b3bb,#2b2b2c
+!rofi.color-active:#2b2b2c,#b3b3bb,#1d1f21,#b3b3bb,#eee8d5
+rofi.color-window:#2b2b2c,#b3b3bb
 rofi.bw:2
 rofi.bc:#8e8e8e
 rofi.font:Oxygen Mono 10

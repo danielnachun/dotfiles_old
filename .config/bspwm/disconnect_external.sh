@@ -5,6 +5,7 @@ EXT="HDMI-2"
 EXT2="DP-1"
 EXT3="DP-2"
 
+xrandr --output $IN --auto
 if (xrandr | grep "$EXT connected"); then
 	xrandr --output $EXT --off 
 fi
@@ -14,12 +15,5 @@ fi
 if (xrandr | grep "$EXT3 connected"); then
     xrandr --output $EXT3 --off
 fi
-xrandr --output $IN --auto
 
-if [ $(pgrep trayer) ]; then
-    killall trayer
-fi
-
-#/home/daniel/.xmonad/starttrayer.sh   
-#/home/daniel/.xmonad/setdesktop.sh
-
+bspc wm -d > "$BSPWM_STATE" && bspc quit
