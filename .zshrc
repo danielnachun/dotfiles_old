@@ -574,19 +574,19 @@ zplug "jimmijj/zsh-syntax-highlighting", nice:10
 zplug "vifon/deer", lazy:true
 zplug "Tarrasch/zsh-bd"
 zplug "Tarrasch/zsh-functional"
-#zplug "psprint/history-search-multi-word"
-#zplug "b4b4r07/enhancd", use:init.sh
-#zplug "Valiev/almostontop"
-#zplug "djui/alias-tips"
-#zplug "joepvd/grep2awk"
-#zplug "willghatch/zsh-snippets"
-#zplug "mafredri/zsh-async", lazy:true
-#zplug "zsh-users/zaw"
-#zplug "hchbaw/zce.zsh"
-#zplug "jreese/zsh-titles"
-#zplug "psprint/zsnapshot"
-#zplug "psprint/ztrace"
-#zplug "psprint/zsh-navigation-tools"
+zplug "psprint/history-search-multi-word"
+zplug "b4b4r07/enhancd", use:init.sh
+zplug "Valiev/almostontop"
+zplug "djui/alias-tips"
+#zplug "joepvd/grep2awk", nice:10
+zplug "willghatch/zsh-snippets"
+zplug "mafredri/zsh-async", lazy:true
+zplug "zsh-users/zaw"
+zplug "hchbaw/zce.zsh"
+zplug "jreese/zsh-titles"
+zplug "psprint/zsnapshot"
+zplug "psprint/ztrace"
+zplug "psprint/zsh-navigation-tools"
 #zplug load" Angelmmiguel/pm"
 #zplug load" marzocchi/zsh-notify"
 
