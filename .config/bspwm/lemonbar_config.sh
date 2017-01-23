@@ -9,6 +9,8 @@ iconfont="FontAwesome-${fontsize}"
 iconfont2="Icons-${fontsize}"
 iconfont3="FontCustom-${fontsize}"
 iconfont4="DanielIcons-${fontsize}"
+#iconfont5="Foundation-${fontsize}"
+#iconfont6="Batch-${fontsize}"
 
 c_background="#00000000"
 c_green="#98c379"
