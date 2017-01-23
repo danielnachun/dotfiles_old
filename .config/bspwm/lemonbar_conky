@@ -19,7 +19,7 @@ ${battery_percent} \
 ${if_up enp5s0f2}${downspeed enp5s0f2} ${upspeed enp5s0f2}\
 ${else}${if_up wlp6s0}${downspeed wlp6s0} ${upspeed wlp6s0}\
 ${else} down down ${endif}${endif} \
-${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ KLAX temperature} \
+/*${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ KLAX temperature} \*/
 ${time %a %d %b %Y} \
 ${time %H:%M} 
 ]]

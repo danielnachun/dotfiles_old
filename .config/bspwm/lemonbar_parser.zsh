@@ -126,7 +126,7 @@ while read -r line ; do
         node_format="%{U${c_mediumblue} +u} ${node_state} %{U- -u}"
       fi
 
-      wsp_output="${wsp_output} ${desktop_format} ${node_format}"
+      wsp_output="${wsp_output} ${desktop_format}${node_format}"
       desktop_list=$(bspc query -D)
 
 
@@ -142,7 +142,7 @@ while read -r line ; do
                 ;;
              o*)
                  icon_string="$(. $(dirname $0)/get_icons.zsh $desktop_list[(w)$[$desktop-1]])"
-                wsp_output="${wsp_output} %{+u U${c_lightgray} A:bspc desktop -f $[$desktop-1]:} $[$desktop-1] %{-u U- A}"           
+                wsp_output="${wsp_output} %{+u U${c_lightgray} F${c_foreground_light} A:bspc desktop -f $[$desktop-1]:} $[$desktop-1] %{-u U- A}"           
                 ;;
           esac
       end

@@ -1,11 +1,10 @@
 [Unit]
-Description=Autolock with i3lock-wrapper
+Description=Autolock with kscreenlocker
 Documentation=
 After=display-manager.service
 
 [Service]
-ExecStart=/usr/bin/xautolock -time 5 -locker /usr/bin/i3lock-wrapper
-Restart=always
+ExecStart=/usr/bin/xautolock -noclose -time 5 -locker /usr/lib/kscreenlocker_greet
 
 [Install]
 WantedBy=default.target
