@@ -201,4 +201,7 @@ alias pml="pm list"
 #Prezto
 #zstyle ':prezto:module:editor' key-bindings 'vi'
 
-#. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
+if [ ! $(pgrep powerline-daemo) ]; then
+    powerline-daemon
+fi
+. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh

@@ -7,12 +7,14 @@ if [ -e $BSPWM_STATE ]; then
     pkill -f "conky.*lemonbar_conky"
     pkill lemonbar
     pkill sxhkd
+    killall compton
     killall cairo-dock
     rm "$BSPWM_STATE"
 fi
 
 kdeinit5
 sxhkd &
+
 compton -bC
 cairo-dock &
 

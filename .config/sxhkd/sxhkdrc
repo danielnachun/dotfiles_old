@@ -185,7 +185,7 @@ alt + shift + {_, ctrl + } v
 
 #Slack
 #bspc node -f $($HOME/.config/bspwm/get_chrome.zsh) && chromix load https://coppolalab.slack.com
-alt + ctrl + {_, shift + } i    
+alt + shift + {_, ctrl + } i    
     {slack, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --classname slack))")}
 
 #Ncmpcpp
