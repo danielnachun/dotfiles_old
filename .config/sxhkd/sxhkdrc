@@ -243,19 +243,19 @@ alt + shift + backslash
     setxkbmap -option
 
 XF86AudioRaiseVolume
-    amixer set Master 5%+; ../bspwm/get_vol.sh
+    amixer set Master 5%+ && /home/daniel/.config/bspwm/get_vol.sh
     
 XF86AudioLowerVolume
-    amixer set Master 5%-; ../bspwm/get_vol.sh
+    amixer set Master 5%- && /home/daniel/.config/bspwm/get_vol.sh
 
 XF86AudioMute
-    amixer set Master toggle; ../bspwm/get_vol.sh
+    amixer set Master toggle && /home/daniel/.config/bspwm/get_vol.sh
 
 XF86MonBrightnessUp
-    light -A 5
+    light -A 5 && printf "BRI%.0f\n" $(light -G) > /tmp/lemonbar_daniel &
 
 XF86MonBrightnessDown
-    light -U 5
+    light -U 5 && printf "BRI%.0f\n" $(light -G) > /tmp/lemonbar_daniel &
 
 alt + {_,shift + }y
     {/home/daniel/.config/bspwm/wifion.sh,/home/daniel/.config/bspwm/wifioff.sh}
