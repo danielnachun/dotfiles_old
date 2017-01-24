@@ -17,18 +17,18 @@ if(interactive()){
 
     # syntax highlighting
     library(colorout)
-    #if (!Sys.getenv('TERM') %in% c('', 'linux'))
-        #setOutputColors256(
-        #normal = 15,
-        #number = 12,
-        #negnum = 9,
-        #string = 10,
-        #const = 13,
-        #stderror = 120,
-        #error = c(1, 0, 1),
-        #warn = 5,
-        #verbose=FALSE
-    #)
+    if (!Sys.getenv('TERM') %in% c('', 'linux'))
+        setOutputColors256(
+        normal = 145,
+        number = 12,
+        negnum = 9,
+        string = 10,
+        const = 13,
+        stderror = 120,
+        error = c(1, 0, 1),
+        warn = 5,
+        verbose=FALSE
+    )
 }
 
 .bc = function() {

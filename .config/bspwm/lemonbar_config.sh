@@ -6,9 +6,10 @@ fontsize="10"
 panel_fifo="/tmp/lemonbar_${USER}"
 font="Source Code Pro for Powerline-${fontsize}"
 iconfont="FontAwesome-${fontsize}"
-iconfont2="Icons-${fontsize}"
-iconfont3="FontCustom-${fontsize}"
-iconfont4="DanielIcons-${fontsize}"
+iconfont2="EightyShades-${fontsize}"
+iconfont3="DanielIcons-${fontsize}"
+iconfont4="Icons-${fontsize}"
+#iconfont3="FontCustom-${fontsize}"
 #iconfont5="Foundation-${fontsize}"
 #iconfont6="Batch-${fontsize}"
 
@@ -40,21 +41,28 @@ upd_locks=1
 color_fore="$color_fglight"
 color_back="$color_bgdark"
 
+#Font Awesome
 icon_dl=$(printf "\uf063")
 icon_ul=$(printf "\uf062")
 icon_cal=$(printf "\uf073")
 icon_clock=$(printf "\uf017")
 icon_wifi=$(printf "\uf1eb")
-icon_ethernet=$(printf "\u0043")
 icon_brightness=$(printf "\uf39b")
 icon_acon=$(printf "\uf1e6")
-icon_acoff=$(printf "\uf116")
-icon_vol_on=$(printf "\uf028")
-icon_vol_off=$(printf "\uf026")
-icon_thermal=$(printf "\uf3b6")
 icon_shutdown=$(printf "\uf011")
-icon_memory=$(printf "\u0041")
-icon_cpu=$(printf "\u0042")
+
+#Unknown
+icon_acoff=$(printf "\uf116")
+icon_thermal=$(printf "\uf3b6")
+#icon_memory=$(printf "\u0082")
+
+#Eight Shades
+icon_vol_on=$(printf "\ue01b")
+icon_vol_off=$(printf "\ue01d")
+
+#Daniel Icons
+icon_cpu=$(printf "\u0081")
+icon_ethernet=$(printf "\u0082")
 
 icon_chrome=$(printf "\uf268") #Font Awesome
 icon_hangouts=$(printf "\uf3d4") #Font Icons

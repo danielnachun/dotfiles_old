@@ -20,6 +20,7 @@ zstyle ':completion:*' substitute 1
 zstyle ':completion:*' verbose true
 zstyle :compinstall filename '/home/daniel/.zshrc'
 
+#Aliases
 alias lb='ls++'
 alias le='ls++ -A'
 alias sl='noglob sl'
@@ -44,6 +45,16 @@ alias prloc='pacaur -Qi'         # Display information about a given package in 
 alias prlocs='pacaur -Qs'        # Search for package(s) in the local database
 alias prlst='pacaur -Qe'         # List installed packages, even those installed from AUR (they're tagged as "local")
 alias prorph='pacaur -Qtd'       # Remove orphans using yaourt
+
+user_commands=(
+  list-units is-active status show help list-unit-files
+  is-enabled list-jobs show-environment cat list-timers
+  start stop reload restart try-restart isolate kill
+  reset-failed enable disable reenable preset mask unmask
+  link load cancel set-environment unset-environment
+  edit)
+
+for c in $user_commands; do; alias scu-$c="systemctl --user $c"; done
 
 #Variables
 export SSH_ASKPASS=""
@@ -184,11 +195,6 @@ bindkey '^f' vi-forward-word
 bindkey '^e' end-of-line
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
-
-#Enhancd
-#unalias cd
-#alias cd='nocorrect cd'
-#alias ecd=enhancd
 
 # PM functions
 source ~/.pm/pm.zsh

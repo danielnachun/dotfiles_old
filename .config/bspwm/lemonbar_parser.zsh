@@ -2,7 +2,7 @@
 
 . $(dirname $0)/lemonbar_config.sh
 
-shutdown="%{+u U${c_graygreen} T3 A1:oblogout: F${c_white}} ${icon_shutdown} %{-u A F-}"
+shutdown="%{+u U${c_graygreen} T2 A1:oblogout: F${c_white}} ${icon_shutdown} %{-u A F-}"
 
 while read -r line ; do
   case $line in
@@ -17,10 +17,10 @@ while read -r line ; do
       else
           cpu_color="-"
       fi
-      cpu="%{+u U${c_lightgray} T5 F${c_white}}${icon_cpu}%{F-} %{F${cpu_color} T1}$(printf '%+4s' $sys_arr[(w)1]% {F-}%) %{-u U-}"
+      cpu="%{+u U${c_lightgray} T3 F${c_white}} ${icon_cpu}%{F-} %{F${cpu_color} T1}$(printf '%+4s' $sys_arr[(w)1]% {F-}%) %{-u U-}"
 
       # mem
-      mem="%{+u U${c_graygreen} T4 F${c_white}}${icon_memory}%{F-} %{T1}$(printf '%+5s' $sys_arr[(w)2]) %{-u U-}"
+      mem="%{+u U${c_graygreen} T4 F${c_white}} ${icon_memory}%{F-} %{T1}$(printf '%+5s' $sys_arr[(w)2]) %{-u U-}"
 
       #bat
       if [[ "$sys_arr[(w)3]" == "charged" ]]; then
@@ -56,7 +56,7 @@ while read -r line ; do
       fi
 
       net_up_icon="%{F${c_white}}${icon_ul}%{F-}"
-      net="%{+u U${c_lightgreen} A:'/home/daniel/.config/bspwm/startnm.sh':} ${net_icon}${stab}%{T3}${net_down_icon} %{T1}$(printf '%5s' $wland)  %{T3}${net_up_icon} %{T1}$(printf '%5s' $wlanu) %{-u U- A}"
+      net="%{+u U${c_lightgreen} A:'/home/daniel/.config/bspwm/startnm.sh':} ${net_icon}${stab}%{T2}${net_down_icon} %{T1}$(printf '%5s' $wland)  %{T2}${net_up_icon} %{T1}$(printf '%5s' $wlanu) %{-u U- A}"
 
       #weather
       weather_temp=$sys_arr[(w)7]
@@ -73,10 +73,10 @@ while read -r line ; do
       weather="%{+u U${c_mediumblue} F${temp_col} T1 A:/home/daniel/.config/bspwm/startweather.zsh:} $sys_arr[(w)7]%{F-}F %{-u U- A}"
 
       # date
-      date="%{+u U${c_lightgray} T3 A:/home/daniel/.config/bspwm/startcalendar.zsh: F${c_white}} ${icon_cal}%{F- T1} $sys_arr[(w)8] $sys_arr[(w)9] $sys_arr[(w)10] $sys_arr[(w)11] %{-u U- A}"
+      date="%{+u U${c_lightgray} T2 A:/home/daniel/.config/bspwm/startcalendar.zsh: F${c_white}} ${icon_cal}%{F- T1} $sys_arr[(w)8] $sys_arr[(w)9] $sys_arr[(w)10] $sys_arr[(w)11] %{-u U- A}"
 
       # time
-      time="%{+u U${c_orange} T3 A:/home/daniel/.config/bspwm/startcalendar.zsh: F${c_white}} ${icon_clock} %{F- T1}$sys_arr[(w)12] %{-u U- A}"
+      time="%{+u U${c_orange} T2 A:/home/daniel/.config/bspwm/startcalendar.zsh: F${c_white}} ${icon_clock} %{F- T1}$sys_arr[(w)12] %{-u U- A}"
       ;;
 
     VOL*)
@@ -87,9 +87,9 @@ while read -r line ; do
       vol_txt=$vol_arr[(w)2]
       vol_txt=$(sed 's/%//' <<< $vol_txt)
       if [[ "${vol_status}" == "on" ]]; then
-         vol_icon="%{F$c_green T2}${icon_vol_on}%{F-}"
+         vol_icon="%{F$c_green T3}${icon_vol_on}%{F-}"
       else
-         vol_icon="%{F$c_red T2}${icon_vol_off}%{F-} "
+         vol_icon="%{F$c_red T3}${icon_vol_off}%{F-}"
       fi
 
       vol="%{+u U${c_lightred} A:/home/daniel/.config/bspwm/startpavucontrol.zsh:} ${vol_icon}%{T1} $(printf '%+4s' $vol_txt%) %{-u U- A}"
@@ -97,7 +97,7 @@ while read -r line ; do
     
     THR*)
       thermal_arr=(${line#???})
-      thermal="%{+u U${c_orange} T3} %{F$c_white}${icon_thermal}%{F-}%{T1}$thermal_arr %{-u U- F-}"
+      thermal="%{+u U${c_orange} T5} %{F$c_white}${icon_thermal}%{F-}%{T1}$thermal_arr %{-u U- F-}"
       ;;
 
     BRI*)
@@ -106,7 +106,7 @@ while read -r line ; do
       if [[ $brightness_actual -eq 0 ]]; then
           brightness=""
       else
-          brightness="%{U${c_lightgreen} +u T3} ${icon_brightness} %{T1}$(printf '%3s' $brightness_arr)%%{-u U-} "
+          brightness="%{U${c_lightgreen} +u T2} ${icon_brightness} %{T1}$(printf '%3s' $brightness_arr)%%{-u U-} "
       fi
       ;;
 
