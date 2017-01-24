@@ -2,8 +2,9 @@
 
 if [ -e $BSPWM_STATE ]; then
     bspc wm -l "$BSPWM_STATE"
+    pkill -f "sh.*lemonbar.zsh"
     pkill -f "sh.*lemonbar.sh"
-    pkill -f "sh.*lemonbar_parser.sh"
+    pkill -f "sh.*lemonbar_parser.zsh"
     pkill -f "conky.*lemonbar_conky"
     pkill lemonbar
     pkill sxhkd
@@ -29,7 +30,7 @@ bspc subscribe node_manage > /tmp/managed &
 bspc subscribe node_manage | while read line; do xdotool set_window --name "$(xdotool getwindowname $(bspc query -N -n))" $(bspc query -N -n); done &
 
 #Keep Cairo dock above other windows
-bspc subscribe node_manage | while read line; sleep 1; do wid=$(xdo id -a "cairo-dock" | sort | tail -n 1); xdo raise $(wid); done &
+bspc subscribe node_manage | while read line; sleep 1; do wid=$(xdo id -a "cairo-dock" | sort | tail -n 1); xdo raise "$wid"; done &
 
 #Borders
 bspc config border_width 2
@@ -69,4 +70,4 @@ bspc config external_rules_command "/home/daniel/.config/bspwm/external_rules"
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 
-sh ~/.config/bspwm/lemonbar.sh
+zsh ~/.config/bspwm/lemonbar.zsh &

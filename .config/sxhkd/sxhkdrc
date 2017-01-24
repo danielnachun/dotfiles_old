@@ -243,13 +243,13 @@ alt + shift + backslash
     setxkbmap -option
 
 XF86AudioRaiseVolume
-    amixer set Master 5%+
+    amixer set Master 5%+; ../bspwm/get_vol.sh
     
 XF86AudioLowerVolume
-    amixer set Master 5%-
+    amixer set Master 5%-; ../bspwm/get_vol.sh
 
 XF86AudioMute
-    amixer set Master toggle
+    amixer set Master toggle; ../bspwm/get_vol.sh
 
 XF86MonBrightnessUp
     light -A 5

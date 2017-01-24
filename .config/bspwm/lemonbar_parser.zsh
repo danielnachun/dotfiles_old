@@ -113,7 +113,7 @@ while read -r line ; do
     WM*)
       wsp=${line#?}
       wsp_array=("${(@s/:/)wsp}")
-      wsp_output="%{-u}"
+      wsp_output="%{T- -u}"
       n_loop=$[${n_desktops}+1]
 
       desktop_layout=$wsp_array[(w)$[$n_loop+1]] 
