@@ -17,10 +17,10 @@ while read -r line ; do
       else
           cpu_color="-"
       fi
-      cpu="%{+u U${c_lightgray} T4 F${c_white}} ${icon_cpu}%{F-} %{F${cpu_color} T1}$(printf '%+4s' $sys_arr[(w)1]% {F-}%) %{-u U-}"
+      cpu="%{+u U${c_lightgray} T4 F${c_white}} ${icon_cpu}%{F-} %{F${cpu_color} T1}$(printf '%+3s' $sys_arr[(w)1]% {F-}%) %{-u U-}"
 
       # mem
-      mem="%{+u U${c_graygreen} T4 F${c_white}} ${icon_memory}%{F-} %{T1}$(printf '%+5s' $sys_arr[(w)2]) %{-u U-}"
+      mem="%{+u U${c_graygreen} T4 F${c_white}} ${icon_memory}%{F-} %{T1}$(printf '%+6s' $sys_arr[(w)2]) %{-u U-}"
 
       #bat
       if [[ "$sys_arr[(w)3]" == "charged" ]]; then
@@ -134,15 +134,15 @@ while read -r line ; do
           current_desktop=$wsp_array[(w)$desktop]
           case $current_desktop in
              O*)
-                 icon_string="$(. $(dirname $0)/get_icons.zsh $desktop_list[(w)$[$desktop-1]])"
-                 wsp_output="${wsp_output} %{+u U${c_orange}} $[$desktop-1] %{-u U-}"
+                 #icon_string="$(. $(dirname $0)/get_icons.zsh $desktop_list[(w)$[$desktop-1]])"
+                 wsp_output="${wsp_output} %{+u U${c_orange}} ${current_desktop:1:1} %{-u U-}"
                 ;;
              F*)
-                wsp_output="${wsp_output} %{+u U${c_orange}} $[$desktop-1] %{-u U-}"
+                 wsp_output="${wsp_output} %{+u U${c_orange}} ${current_desktop:1:1} %{-u U-}"
                 ;;
              o*)
-                 icon_string="$(. $(dirname $0)/get_icons.zsh $desktop_list[(w)$[$desktop-1]])"
-                wsp_output="${wsp_output} %{+u U${c_lightgray} F${c_foreground_light} A:bspc desktop -f $[$desktop-1]:} $[$desktop-1] %{-u F- U- A}"           
+                 #icon_string="$(. $(dirname $0)/get_icons.zsh $desktop_list[(w)$[$desktop-1]])"
+                 wsp_output="${wsp_output} %{+u U${c_lightgray} F${c_foreground_light} A:bspc desktop -f ${current_desktop:1:1}:} ${current_desktop:1:1} %{-u F- U- A}"           
                 ;;
           esac
       end
