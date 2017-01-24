@@ -51,18 +51,20 @@ icon_brightness=$(printf "\uf39b")
 icon_acon=$(printf "\uf1e6")
 icon_shutdown=$(printf "\uf011")
 
+#Icons
+icon_thermal=$(printf "\uf3b6")
+
 #Unknown
 icon_acoff=$(printf "\uf116")
-icon_thermal=$(printf "\uf3b6")
-#icon_memory=$(printf "\u0082")
 
 #Eight Shades
 icon_vol_on=$(printf "\ue01b")
 icon_vol_off=$(printf "\ue01d")
 
 #Daniel Icons
-icon_cpu=$(printf "\u0081")
-icon_ethernet=$(printf "\u0082")
+icon_ethernet=$(printf "\u0042")
+icon_memory=$(printf "\u0043")
+icon_cpu=$(printf "\u0044")
 
 icon_chrome=$(printf "\uf268") #Font Awesome
 icon_hangouts=$(printf "\uf3d4") #Font Icons

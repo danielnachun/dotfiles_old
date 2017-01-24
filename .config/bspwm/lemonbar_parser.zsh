@@ -17,7 +17,7 @@ while read -r line ; do
       else
           cpu_color="-"
       fi
-      cpu="%{+u U${c_lightgray} T3 F${c_white}} ${icon_cpu}%{F-} %{F${cpu_color} T1}$(printf '%+4s' $sys_arr[(w)1]% {F-}%) %{-u U-}"
+      cpu="%{+u U${c_lightgray} T4 F${c_white}} ${icon_cpu}%{F-} %{F${cpu_color} T1}$(printf '%+4s' $sys_arr[(w)1]% {F-}%) %{-u U-}"
 
       # mem
       mem="%{+u U${c_graygreen} T4 F${c_white}} ${icon_memory}%{F-} %{T1}$(printf '%+5s' $sys_arr[(w)2]) %{-u U-}"
@@ -41,7 +41,7 @@ while read -r line ; do
       if [[ "${wifistats}" == "UP" ]]; then
         net_icon="%{F${c_white} T2}${icon_wifi}%{F-}"
       else
-        net_icon="%{F${c_white} T5}${icon_ethernet}%{F-}"
+        net_icon="%{F${c_white} T4}${icon_ethernet}%{F-}"
       fi
       wland="${wland_v}"
       #if [[ echo $wlan ]]
