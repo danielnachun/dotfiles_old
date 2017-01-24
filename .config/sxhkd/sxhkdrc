@@ -14,7 +14,7 @@ alt + shift + Return
 
 #Open tmuxinator in terminal
 ctrl + alt + Return
-    konsole -p tabletitle=tmuxinator -e 'tmuxinator start general'
+    konsole -p tabtitle=tmuxinator -e 'sh -c "TERM=konsole-256color tmuxinator start general"'
 
 #Raise tmuxinator
 #bspc node -f $($HOME/.config/bspwm/raise_window.py --title=tmuxinator)
