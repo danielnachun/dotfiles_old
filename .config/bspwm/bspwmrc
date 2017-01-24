@@ -23,7 +23,7 @@ nitrogen --restore
 
 #Manage hooks
 #Track windows for "tagging"
-bspc subscribe node_manage | cut -d ' ' -f 3 > /tmp/managed &
+bspc subscribe node_manage > /tmp/managed &
 
 #Set window titles to make cairo dock work correctly
 bspc subscribe node_manage | while read line; do xdotool set_window --name "$(xdotool getwindowname $(bspc query -N -n))" $(bspc query -N -n); done &

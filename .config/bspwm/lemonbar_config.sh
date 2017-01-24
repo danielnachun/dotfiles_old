@@ -26,6 +26,7 @@ c_lightred="#ff6b6b"
 c_lightblue="#4ecdc4"
 c_graygreen="#53777a"
 c_lightgray="#e0e4cc"
+c_white="#f3f3f5"
 
 color_bgdark="$c_background"
 color_fglight="$c_foreground"

@@ -135,7 +135,7 @@ alt + shift + g
 #Launch apps
 #Open Chrome
 alt + {_, ctrl + } b
-    {google-chrome-beta --profile-directory=Default --proxy-pac-url=http://proxy.ucla.edu/cgi/proxy; sleep 1; head -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/chrome_daniel, bspc node -f $(cat /tmp/chrome_daniel)}
+    {google-chrome-beta --profile-directory=Default --proxy-pac-url=http://proxy.ucla.edu/cgi/proxy; sleep 1; tail -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/chrome_daniel, bspc node -f $(cat /tmp/chrome_daniel)}
 
 #Inbox by Gmail
 alt + {_, ctrl + } e
@@ -177,11 +177,11 @@ alt + {_, ctrl + } s
 #bspc node -f $($HOME/.config/bspwm/raise_window.py --className=mendeleydesktop.x86_64)
 #{mendeleydesktop, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --classname mendeley))")}
 alt + shift + {_, ctrl + } s
-    {google-chrome-beta --profile-directory='Profile 1' --proxy-pac-url=proxy.ucla.edu/cgi/proxy --new-window https://paperpile.com/app; sleep 1; head -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/paperpile, bspc node -f $(cat /tmp/chrome_daniel)}
+    {google-chrome-beta --profile-directory='Profile 1' --proxy-pac-url=proxy.ucla.edu/cgi/proxy --new-window https://paperpile.com/app; sleep 1; tail -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/paperpile, bspc node -f $(cat /tmp/paperpile)}
 
 #Google Drive
 alt + shift + {_, ctrl + } v
-    {google-chrome-beta --profile-directory='Profile 1' --proxy-pac-url=proxy.ucla.edu/cgi/proxy --new-window https://drive.google.com; sleep 1; head -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/chrome_ucla, bspc node -f $(cat /tmp/chrome_daniel)}
+    {google-chrome-beta --profile-directory='Profile 1' --proxy-pac-url=proxy.ucla.edu/cgi/proxy --new-window https://drive.google.com; sleep 1; tail -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/chrome_ucla, bspc node -f $(cat /tmp/chrome_ucla)}
 
 #Slack
 #bspc node -f $($HOME/.config/bspwm/get_chrome.zsh) && chromix load https://coppolalab.slack.com

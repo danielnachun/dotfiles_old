@@ -17,7 +17,7 @@ while read -r line ; do
       else
           cpu_color="-"
       fi
-      cpu="%{+u U${c_lightgray} T5} ${icon_cpu} %{F${cpu_color} T1}$(printf '%+4s' $sys_arr[(w)1]% {F-}%) %{-u U-}"
+      cpu="%{+u U${c_lightgray} T5 F${c_white}}${icon_cpu}%{F-} %{F${cpu_color} T1}$(printf '%+4s' $sys_arr[(w)1]% {F-}%) %{-u U-}"
 
       # mem
       mem="%{+u U${c_graygreen} T5} ${icon_memory} %{T1}$(printf '%+5s' $sys_arr[(w)2]) %{-u U-}"
@@ -97,7 +97,7 @@ while read -r line ; do
     
     THR*)
       thermal_arr=(${line#???})
-      thermal="%{+u U${c_orange} T3} ${icon_thermal}%{T1}$thermal_arr %{-u U- F-}"
+      thermal="%{+u U${c_orange} T3} %{F$c_white}${icon_thermal}%{F-}%{T1}$thermal_arr %{-u U- F-}"
       ;;
 
     BRI*)
@@ -123,7 +123,7 @@ while read -r line ; do
 
       node_state=$wsp_array[(w)$[$n_loop+2]]
       if [[ -n $node_state ]]; then
-        node_format="%{U${c_mediumblue} +u} ${node_state} %{U- -u}"
+        node_format=" %{U${c_mediumblue} +u} ${node_state} %{U- -u}"
       fi
 
       wsp_output="${wsp_output} ${desktop_format}${node_format}"
