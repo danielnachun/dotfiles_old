@@ -196,6 +196,9 @@ bindkey '^e' end-of-line
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
 
+#Fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # PM functions
 source ~/.pm/pm.zsh
 alias pma="pm add"
@@ -207,6 +210,7 @@ alias pml="pm list"
 #Prezto
 #zstyle ':prezto:module:editor' key-bindings 'vi'
 
+#Powerline
 if [ ! $(pgrep powerline-daemo) ]; then
     powerline-daemon
 fi

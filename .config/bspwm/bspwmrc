@@ -35,7 +35,7 @@ bspc subscribe node_manage | while read line; sleep 1; do wid=$(xdo id -a "cairo
 #Borders
 bspc config border_width 2
 bspc config normal_border_color '#000000'
-bspc config focused_border_color '#b3b3bb'
+bspc config focused_border_color '#5294e2'
 
 #Padding
 bspc config window_gap 20
