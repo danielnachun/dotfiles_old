@@ -62,9 +62,9 @@ icon_vol_on=$(printf "\ue01b")
 icon_vol_off=$(printf "\ue01d")
 
 #Daniel Icons
-icon_ethernet=$(printf "\u02b0")
-icon_memory=$(printf "\u02b1")
-icon_cpu=$(printf "\u02b2")
+icon_ethernet=$(printf "\u02b1")
+icon_memory=$(printf "\u02b2")
+icon_cpu=$(printf "\u02b0")
 
 icon_chrome=$(printf "\uf268") #Font Awesome
 icon_hangouts=$(printf "\uf3d4") #Font Icons

@@ -30,10 +30,10 @@ set ffs=unix,dos,mac
 set foldmethod=syntax
 set foldlevel=99
 set termguicolors
+set omnifunc=syntaxcomplete#Complete
 "set background=dark
 "set autochdir
 "set winminheight=20
-"set omnifunc=syntaxcomplete#Complete
 
 "What were these for?
 "set statusline+=%#warningmsg#
@@ -243,6 +243,10 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='onedark'
 
+"CSV
+let g:csv_autocmd_arrange      = 1
+"let g:csv_autocmd_arrange_size = 1024*1024
+
 "Ctrlp
 "let g:ctrlp_cmd = 'CtrlPMRU'
 " narrow the list down with a word under cursor
@@ -252,6 +256,10 @@ let g:airline_theme='onedark'
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#file#enable_buffer_path = 0
 let g:deoplete#sources#go#gocode_binary = '/usr/bin/gocode'
+let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
 
 "Fugitive
 "Command to automatically commit and push changes
@@ -364,7 +372,6 @@ colorscheme onedark
 "set background=dark
 
 "YCM
-let g:SuperTabDefaultCompletionType = '<C-(>'
 "let g:ycm_autoclose_preview_window_after_completion = 1
 "let g:ycm_semantic_triggers = {'haskell' : ['.'], 'r' : ['re!\^\.\*$']}
 "let g:ycm_confirm_extra_conf = 0

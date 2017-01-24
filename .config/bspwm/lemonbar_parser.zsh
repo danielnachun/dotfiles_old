@@ -20,7 +20,7 @@ while read -r line ; do
       cpu="%{+u U${c_lightgray} T4 F${c_white}} ${icon_cpu}%{F-} %{F${cpu_color} T1}$(printf '%+3s' $sys_arr[(w)1]% {F-}%) %{-u U-}"
 
       # mem
-      mem="%{+u U${c_graygreen} T4 F${c_white}} ${icon_memory}%{F-} %{T1}$(printf '%+6s' $sys_arr[(w)2]) %{-u U-}"
+      mem="%{+u U${c_graygreen} T4 F${c_white}} ${icon_memory}%{F-} %{T1}$(printf '%+5s' $sys_arr[(w)2]) %{-u U-}"
 
       #bat
       if [[ "$sys_arr[(w)3]" == "charged" ]]; then

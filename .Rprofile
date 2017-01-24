@@ -5,11 +5,11 @@ if(interactive()){
                colorout.verbose = 1,
                nvimcom.verbose = 1,
                help_type = "text")
-                
 
     options(editor='nvim')
     options(menu.graphics = FALSE)
     options(save.defaults = list(compress = FALSE))
+    options(prompt = " ")
 
     library(nvimcom)
     library(setwidth)
