@@ -2,7 +2,7 @@
 
 . $(dirname $0)/lemonbar_config.sh
 
-shutdown="%{+u U${c_graygreen} T3 A1:oblogout:} ${icon_shutdown} %{-u A}"
+shutdown="%{+u U${c_graygreen} T3 A1:oblogout: F${c_white}} ${icon_shutdown} %{-u A F-}"
 
 while read -r line ; do
   case $line in
@@ -20,7 +20,7 @@ while read -r line ; do
       cpu="%{+u U${c_lightgray} T5 F${c_white}}${icon_cpu}%{F-} %{F${cpu_color} T1}$(printf '%+4s' $sys_arr[(w)1]% {F-}%) %{-u U-}"
 
       # mem
-      mem="%{+u U${c_graygreen} T5} ${icon_memory} %{T1}$(printf '%+5s' $sys_arr[(w)2]) %{-u U-}"
+      mem="%{+u U${c_graygreen} T4 F${c_white}}${icon_memory}%{F-} %{T1}$(printf '%+5s' $sys_arr[(w)2]) %{-u U-}"
 
       #bat
       if [[ "$sys_arr[(w)3]" == "charged" ]]; then
@@ -39,14 +39,14 @@ while read -r line ; do
 
       wifistats=$(ip link show ${wifi_device} | head -n 1 | cut -d "," -f 3)
       if [[ "${wifistats}" == "UP" ]]; then
-        net_icon="%{T2}${icon_wifi}"
+        net_icon="%{F${c_white} T2}${icon_wifi}%{F-}"
       else
-        net_icon="%{T5}${icon_ethernet}"
+        net_icon="%{F${c_white} T5}${icon_ethernet}%{F-}"
       fi
       wland="${wland_v}"
       #if [[ echo $wlan ]]
       wlanu="${wlanu_v}"
-      net_down_icon="${icon_dl}"
+      net_down_icon="%{F${c_white}}${icon_dl}%{F-}"
 
       if grep -q "B" <<< $wland; then
         wland="0K"
@@ -55,7 +55,7 @@ while read -r line ; do
         wlanu="0K"
       fi
 
-      net_up_icon="${icon_ul}"
+      net_up_icon="%{F${c_white}}${icon_ul}%{F-}"
       net="%{+u U${c_lightgreen} A:'/home/daniel/.config/bspwm/startnm.sh':} ${net_icon}${stab}%{T3}${net_down_icon} %{T1}$(printf '%5s' $wland)  %{T3}${net_up_icon} %{T1}$(printf '%5s' $wlanu) %{-u U- A}"
 
       #weather
@@ -73,10 +73,10 @@ while read -r line ; do
       weather="%{+u U${c_mediumblue} F${temp_col} T1 A:/home/daniel/.config/bspwm/startweather.zsh:} $sys_arr[(w)7]%{F-}F %{-u U- A}"
 
       # date
-      date="%{+u U${c_lightgray} T3 A:/home/daniel/.config/bspwm/startcalendar.zsh:} ${icon_cal}%{T1} $sys_arr[(w)8] $sys_arr[(w)9] $sys_arr[(w)10] $sys_arr[(w)11] %{-u U- A}"
+      date="%{+u U${c_lightgray} T3 A:/home/daniel/.config/bspwm/startcalendar.zsh: F${c_white}} ${icon_cal}%{F- T1} $sys_arr[(w)8] $sys_arr[(w)9] $sys_arr[(w)10] $sys_arr[(w)11] %{-u U- A}"
 
       # time
-      time="%{+u U${c_orange} T3 A:/home/daniel/.config/bspwm/startcalendar.zsh:} ${icon_clock} %{T1}$sys_arr[(w)12] %{-u U- A}"
+      time="%{+u U${c_orange} T3 A:/home/daniel/.config/bspwm/startcalendar.zsh: F${c_white}} ${icon_clock} %{F- T1}$sys_arr[(w)12] %{-u U- A}"
       ;;
 
     VOL*)
