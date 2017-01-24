@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 
-if [[ $(pgrep -c "nm-connection") -eq 0 ]]; then
-    nm-connection-editor &
+if [[ $(pgrep -cf kde5-nm-connection-editor) -eq 0 ]]; then
+    kde5-nm-connection-editor &
 else
-    killall nm-connection-editor
+    killall kde5-nm-connection-editor
 fi
