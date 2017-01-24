@@ -84,7 +84,6 @@ let maplocalleader = ","
 let g:plug_timeout = 240
 call plug#begin('~/.nvim/plugged')
 
-
 "Miscellaneous
 Plug 'vim-airline/vim-airline' "status bar
 Plug 'vim-airline/vim-airline-themes' "status bar
