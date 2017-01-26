@@ -5,7 +5,7 @@ After=display-manager.service
 
 [Service]
 Environment=DISPLAY=:0
-ExecStart=/usr/bin/xautolock -noclose -time 5 -locker /usr/lib/kscreenlocker_greet
+ExecStart=/usr/bin/xautolock -noclose -corners 0-000 -time 5 -locker /usr/lib/kscreenlocker_greet
 Restart=always
 StartLimitBurst=50
 

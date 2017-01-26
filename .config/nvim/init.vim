@@ -54,6 +54,7 @@ set omnifunc=syntaxcomplete#Complete
 autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
 autocmd BufEnter,WinEnter * silent! :lcd%:p:h
+autocmd TermOpen * :resize 18
 
 "Navigate buffers
 noremap <C-J> <C-W>j
@@ -295,6 +296,7 @@ let R_help_w = 80 "set help width
 let R_assign = 0 "don't autoinsert <-
 let Rout_more_colors = 1 "use more colors
 let R_esc_term = 0 
+"let R_vsplit = 1
 "let R_tmux_split = 1
 "let R_in_buffer = 1
 "let R_rconsole_height = 20
@@ -314,11 +316,12 @@ endif
 " Press the space bar to send lines (in Normal mode) and selections to R:
 vmap <Space> <Plug>RDSendSelection
 nmap <Space> <Plug>RDSendLine
-map <silent> <LocalLeader>rk :call RAction("levels")<CR>
-map <silent> <LocalLeader>t :call RAction("tail")<CR>
-map <silent> <LocalLeader>h :call RAction("head")<CR>
-map <silent> <LocalLeader>p :call RAction("print")<CR>
-map <silent> <LocalLeader>d :call RAction("dim")<CR>
+nmap <silent> <LocalLeader>rk :call RAction("levels")<CR>
+nmap <silent> <LocalLeader>t :call RAction("tail")<CR>
+nmap <silent> <LocalLeader>h :call RAction("head")<CR>
+nmap <silent> <LocalLeader>p :call RAction("print")<CR>
+nmap <silent> <LocalLeader>d :call RAction("dim")<CR>
+nmap <silent> <LocalLeader>s :call RAction("str")<CR>
 
 "Rooter
 "let g:rooter_change_directory_for_non_project_files = 'current'

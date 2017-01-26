@@ -55,6 +55,10 @@ user_commands=(
   edit)
 
 for c in $user_commands; do; alias scu-$c="systemctl --user $c"; done
+alias scu-enable-now="scu-enable --now"
+alias scu-disable-now="scu-disable --now"
+alias scu-mask-now="scu-mask --now"
+alias scu-daemon-reload="systemctl --user daemon-reload"
 
 #Variables
 export SSH_ASKPASS=""
