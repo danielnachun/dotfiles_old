@@ -56,16 +56,19 @@ bspc config remove_unplugged_monitors true
 bspc config merge_overlapping_monitors true
 
 #Floating rules
+bspc rule -a Kcalc state=floating
+bspc rule -a kde5-nm-connection-editor state=floating
 bspc rule -a krunner manage=on state=floating border=off layer=above
 bspc rule -a Cairo-dock state=floating border=off layer=above
 bspc rule -a Oblogout state=fullscreen
-bspc rule -a Kcalc state=floating
-bspc rule -a Pavucontrol state=floating
-bspc rule -a kde5-nm-connection-editor state=floating
 bspc rule -a Org.gnome.Weather.Application state=floating
+bspc rule -a Pavucontrol state=floating
+bspc rule -a R_x11 state=floating
+#bspc rule -a ksysguard state=floating
+
+#Tiled rules
 bspc rule -a *:libreoffice state=tiled
 bspc rule -a *:zathura state=tiled
-#bspc rule -a ksysguard state=floating
 
 bspc config external_rules_command "/home/daniel/.config/bspwm/external_rules"
 
