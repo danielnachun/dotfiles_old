@@ -7,7 +7,7 @@ shutdown="%{+u U${c_graygreen} T2 A1:oblogout: F${c_white}} ${icon_shutdown} %{-
 while read -r line ; do
   case $line in
     SYS*)
-      # conky, 1 = cpu, 2 = mem, 3 = bat_stat, 4 = bat_charge, 5 = net_up, 6 = net_down, 7 = weather, 8 = weekday, 9 = day, 10 = month, 11 = year, 12 = time
+      # conky, 1 = cpu, 2 = mem, 3 = bat_stat, 4 = net_up, 5 = net_down, 6 = weather, 7 = weekday, 8 = day, 9 = month, 10 = year, 11 = time, 12 = bat_charge 
       sys_arr=${line#???}
 
       # cpu
@@ -23,18 +23,24 @@ while read -r line ; do
       mem="%{+u U${c_graygreen} T4 F${c_white}} ${icon_memory}%{F-} %{T1}$(printf '%+5s' $sys_arr[(w)2]) %{-u U-}"
 
       #bat
-      if [[ "$sys_arr[(w)3]" == "charged" ]]; then
+      if [[ "$sys_arr[(w)12]" == "charged" ]]; then
           bat_icon="%{F${c_green}}%{T2}${icon_acon}%{F-}"
+          bat="%{+u U${c_lightblue}} ${bat_icon}%{T1} %{-u U-}"
       else
-          bat_icon="%{F${c_red}}%{T4}${icon_acoff}%{F-}"
+          if [[ "$sys_arr[(w)12]" == "charging" ]]; then
+              bat_icon="%{F${c_red}}%{T2}${icon_acon}%{F-}"
+              bat="%{+u U${c_lightblue}} ${bat_icon}%{T1} $(printf '%+3s' $sys_arr[(w)3])% %{-u U-}"
+          else
+              bat_icon="%{F${c_red}}%{T2}${icon_acoff}%{F-}"
+              bat="%{+u U${c_lightblue}} ${bat_icon}%{T1} $(printf '%+3s' $sys_arr[(w)3])% %{-u U-}"
+          fi
       fi
-      bat="%{+u U${c_lightblue}} ${bat_icon}%{T1} $sys_arr[(w)4]% %{-u U-}"
 
       # wlan
-      if [[ "$sys_arr[(w)5]" == "down" ]]; then
+      if [[ "$sys_arr[(w)4]" == "down" ]]; then
         wland_v="×"; wlanu_v="×";
       else
-          wland_v=$sys_arr[(w)5]; wlanu_v=$sys_arr[(w)6];
+          wland_v=$sys_arr[(w)4]; wlanu_v=$sys_arr[(w)5];
       fi
 
       wifistats=$(ip link show ${wifi_device} | head -n 1 | cut -d "," -f 3)
@@ -59,7 +65,7 @@ while read -r line ; do
       net="%{+u U${c_lightgreen} A:'/home/daniel/.config/bspwm/startnm.sh':} ${net_icon}${stab}%{T2}${net_down_icon} %{T1}$(printf '%5s' $wland)  %{T2}${net_up_icon} %{T1}$(printf '%5s' $wlanu) %{-u U- A}"
 
       #weather
-      weather_temp=$sys_arr[(w)7]
+      weather_temp=$sys_arr[(w)6]
       if [[ "${weather_temp}" -lt 60 ]]; then
          temp_col=${c_blue}
       else
@@ -70,13 +76,13 @@ while read -r line ; do
          fi
       fi
 
-      weather="%{+u U${c_mediumblue} F${temp_col} T1 A:/home/daniel/.config/bspwm/startweather.zsh:} $sys_arr[(w)7]%{F-}F %{-u U- A}"
+      weather="%{+u U${c_mediumblue} F${temp_col} T1 A:/home/daniel/.config/bspwm/startweather.zsh:} $weather_temp%{F-}F %{-u U- A}"
 
       # date
-      date="%{+u U${c_lightgray} T2 A:/home/daniel/.config/bspwm/startcalendar.zsh: F${c_white}} ${icon_cal}%{F- T1} $sys_arr[(w)8] $sys_arr[(w)9] $sys_arr[(w)10] $sys_arr[(w)11] %{-u U- A}"
+      date="%{+u U${c_lightgray} T2 A:/home/daniel/.config/bspwm/startcalendar.zsh: F${c_white}} ${icon_cal}%{F- T1} $sys_arr[(w)7] $sys_arr[(w)8] $sys_arr[(w)9] $sys_arr[(w)10] %{-u U- A}"
 
       # time
-      time="%{+u U${c_orange} T2 A:/home/daniel/.config/bspwm/startcalendar.zsh: F${c_white}} ${icon_clock} %{F- T1}$sys_arr[(w)12] %{-u U- A}"
+      time="%{+u U${c_orange} T2 A:/home/daniel/.config/bspwm/startcalendar.zsh: F${c_white}} ${icon_clock} %{F- T1}$sys_arr[(w)11] %{-u U- A}"
       ;;
 
     VOL*)

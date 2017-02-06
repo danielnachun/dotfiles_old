@@ -97,11 +97,11 @@ Plug 'christoomey/vim-tmux-navigator' "tmux shortcuts
 Plug 'tpope/vim-unimpaired' "miscellaneous paired mappings
 Plug 'tpope/vim-abolish' "act on word variants
 Plug 'christoomey/vim-system-copy' "use system clipboard
+Plug 'zhaocai/goldenview.vim' "split buffers
 
 "Plug 'vim-scripts/a.vim'
 "Plug 'vim-jp/vital.vim'
 "Plug 'vim-scripts/sudo.vim' "save as sudo - probably remove
-"Plug 'Shougo/unite.vim' "replace with dark version - replace with FZF
 "Plug 'mrtazz/DoxygenToolkit.vim'
 "Plug 'Shougo/vimproc.vim', {'do' : 'make'} "still needed?
 "Plug 'vim-scripts/TaskList.vim'
@@ -154,8 +154,7 @@ Plug 'justinmk/vim-dirvish' "remote file editing
 Plug 'amiorin/vim-project' "huh?
 Plug 'tpope/vim-eunuch' "POSIX file commands
 "Plug 'eiginn/netrw' "remote edit
-"Plug 'Shougo/vimfiler.vim' "still requires Unite!
-"Plug 'kien/ctrlp.vim' "Launch recently used files - FZF
+Plug 'Shougo/vimfiler.vim' "still requires Unite!
 
 "Haskell
 Plug 'dag/vim2hs'
@@ -177,6 +176,16 @@ Plug 'tommcdo/vim-lion'
 "Java - why the hell is this installed?
 "Plug 'vim-scripts/JavaDecompiler.vim'
 
+"Kana
+Plug 'kana/vim-smartchr' "replace characters
+Plug 'kana/vim-smartinput' "better version of auto-pair
+Plug 'kana/vim-niceblock' "better visual block mode
+Plug 'kana/vim-fakeclip' "better clipboard
+Plug 'kana/vim-submode' "create submodes
+Plug 'kana/vim-altercmd' "alter existing command
+Plug 'kana/vim-narrow'
+Plug 'kana/vim-advice' "alter commands?
+
 "LaTeX
 Plug 'lervag/vimtex' "LaTeX continuous compile
 
@@ -186,10 +195,19 @@ Plug 'suan/vim-instant-markdown' "Markdown contiuous compile
 "Movement
 Plug 'easymotion/vim-easymotion' "use letters to jump to words
 Plug 'terryma/vim-multiple-cursors' "sublime text multiple cursor
+Plug 'kana/vim-smartword' "better word movement
+Plug 'kana/vim-better-tag-jump' "tag jump
+Plug 'kana/vim-exjumplist' "jumplist motions
+
+"Operators
+Plug 'kana/vim-operator-user' "define own operator
+Plug 'kana/vim-operator-replace' "replace existing operator
+Plug 'kana/vim-operator-siege'
 
 "Python
 Plug 'fs111/pydoc.vim' "python documentation?
 Plug 'alfredodeza/pytest.vim' "test python code
+"python-mode
 "Plug 'ivanov/vim-ipython' "python REPL
 
 "REPL
@@ -203,9 +221,11 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } "search with f
 Plug 'junegunn/fzf.vim' "search commands
 Plug 'rking/ag.vim' "keep around
 Plug 'Shougo/denite.nvim' "more interfaces when fzf not available
-"Plug 'tacahiroy/ctrlp-funky' "navigate to functions - replace with FZF
-"Plug 'mileszs/ack.vim'
-"Plug 'wincent/Command-T'
+Plug 'Shougo/unite.vim' "replace with dark version - replace with FZF
+Plug 'mileszs/ack.vim'
+Plug 'tacahiroy/ctrlp-funky' "navigate to functions - replace with FZF
+Plug 'wincent/Command-T'
+Plug 'kien/ctrlp.vim' "Launch recently used files - FZF
 
 "Snippets
 Plug 'SirVer/ultisnips' "snippets engine - check others
@@ -214,8 +234,8 @@ Plug 'honza/vim-snippets' "snippets definition
 "Surround
 Plug 'tpope/vim-endwise' "add end of conditional statements, loops, etc.
 Plug 'tpope/vim-surround' "to add quotes etc. around word
-Plug 'jiangmiao/auto-pairs' "add parentheses
 Plug 'wellle/targets.vim' "more text targets (i.e. parentheses)
+"Plug 'jiangmiao/auto-pairs' "add parentheses
 
 "Syntax checking
 Plug 'scrooloose/syntastic' "check syntax
@@ -230,11 +250,27 @@ Plug 'szw/vim-ctrlspace' "navigate tabs - replace with FZF?
 Plug 'majutsushi/tagbar' "show tags in navigable bar
 Plug 'vim-scripts/taglist.vim' "show tags in bar - prob. redundant
 
+"Text objects
+Plug 'kana/vim-textobj-user' "whole buffer text object
+Plug 'kana/vim-textobj-entire' "whole buffer text object
+Plug 'kana/vim-textobj-function' "function text object
+Plug 'kana/vim-textobj-line' "line text object
+Plug 'kana/vim-textobj-help' "help text object
+Plug 'kana/vim-textobj-syntax' "syntax text object
+Plug 'kana/vim-textobj-lastpat' "lastpattern text object
+Plug 'kana/vim-textobj-indent' "indent text object
+Plug 'kana/vim-textobj-fold' "fold text object
+
+
 "VCS
 Plug 'tpope/vim-fugitive' "git plugin
 "Plug 'vim-scripts/vcscommand.vim' "is this needed?
 
+Plug 'ryanoasis/vim-devicons' "unicode icons everywhere
 call plug#end()
+
+"tpope/dispatch - async - needed?
+"skywind3000/asyncrun.vim - async
 
 "Ag 
 map <leader>a <Esc>:FzfAg!
@@ -249,7 +285,8 @@ let g:csv_autocmd_arrange      = 1
 "let g:csv_autocmd_arrange_size = 1024*1024
 
 "Ctrlp
-"let g:ctrlp_cmd = 'CtrlPMRU'
+let g:ctrlp_cmd = 'CtrlPMRU'
+let g:ctrlp_map = '<c-w>'
 " narrow the list down with a word under cursor
 "nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
@@ -272,6 +309,9 @@ nnoremap <leader>fu :FzfBTags<CR>
 nnoremap <leader>lu :FzfBLines<CR>
 let g:fzf_command_prefix = 'Fzf'
 let g:fzf_layout = {'down' : '~25%'}
+
+"Goldenview
+let g:goldenview__enable_default_mapping = 0
 
 "Gundo
 map <leader>g :GundoToggle<CR>

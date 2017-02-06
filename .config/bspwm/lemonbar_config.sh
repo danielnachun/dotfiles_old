@@ -55,7 +55,7 @@ icon_shutdown=$(printf "\uf011")
 icon_thermal=$(printf "\uf3b6")
 
 #Unknown
-icon_acoff=$(printf "\uf116")
+icon_acoff=$(printf "\uf240")
 
 #Eight Shades
 icon_vol_on=$(printf "\ue01b")

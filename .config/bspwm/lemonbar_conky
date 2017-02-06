@@ -14,12 +14,12 @@ conky.text = [[
 SYS\
 ${cpu} \
 ${mem} \
-${battery BAT0} \
 ${battery_percent} \
 ${if_up enp5s0f2}${downspeed enp5s0f2} ${upspeed enp5s0f2}\
 ${else}${if_up wlp6s0}${downspeed wlp6s0} ${upspeed wlp6s0}\
 ${else} down down ${endif}${endif} \
 ${weather http://tgftp.nws.noaa.gov/data/observations/metar/stations/ KLAX temperature} \
 ${time %a %d %b %Y} \
-${time %H:%M} 
+${time %H:%M} \
+${battery BAT0}
 ]]
