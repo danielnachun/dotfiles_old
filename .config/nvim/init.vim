@@ -146,15 +146,15 @@ Plug 'SevereOverfl0w/deoplete-github' "Github completion
 "Plug 'vim-scripts/OmniCppComplete' "c++ completion
 
 "File Management 
-"Plug 'airblade/vim-rooter' "set root dir correctly
 Plug 'scrooloose/nerdtree' "Open other files 
 Plug 'jistr/vim-nerdtree-tabs' "Keep nerdtree open in all tabs
 Plug 'mhinz/vim-startify' "vim start screen!
 Plug 'justinmk/vim-dirvish' "remote file editing
 Plug 'amiorin/vim-project' "huh?
 Plug 'tpope/vim-eunuch' "POSIX file commands
-"Plug 'eiginn/netrw' "remote edit
 Plug 'Shougo/vimfiler.vim' "still requires Unite!
+"Plug 'eiginn/netrw' "remote edit
+"Plug 'airblade/vim-rooter' "set root dir correctly
 
 "Haskell
 Plug 'dag/vim2hs'
@@ -222,10 +222,10 @@ Plug 'junegunn/fzf.vim' "search commands
 Plug 'rking/ag.vim' "keep around
 Plug 'Shougo/denite.nvim' "more interfaces when fzf not available
 Plug 'Shougo/unite.vim' "replace with dark version - replace with FZF
-Plug 'mileszs/ack.vim'
 Plug 'tacahiroy/ctrlp-funky' "navigate to functions - replace with FZF
-Plug 'wincent/Command-T'
 Plug 'kien/ctrlp.vim' "Launch recently used files - FZF
+Plug 'mileszs/ack.vim'
+Plug 'wincent/Command-T'
 
 "Snippets
 Plug 'SirVer/ultisnips' "snippets engine - check others
@@ -286,9 +286,10 @@ let g:csv_autocmd_arrange      = 1
 
 "Ctrlp
 let g:ctrlp_cmd = 'CtrlPMRU'
-let g:ctrlp_map = '<c-w>'
+"let g:ctrlp_map = '<c-w>'
 " narrow the list down with a word under cursor
-"nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+nnoremap <leader>fu :FzfBTags<CR>
+nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 "Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -304,8 +305,7 @@ let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc
 map <leader>vv :Gcommit -a -m "HEAD"<CR> :Gpush -q<CR>
 
 "FZF
-noremap <C-P> :FzfHistory<CR>
-nnoremap <leader>fu :FzfBTags<CR>
+"noremap <C-P> :FzfHistory<CR>
 nnoremap <leader>lu :FzfBLines<CR>
 let g:fzf_command_prefix = 'Fzf'
 let g:fzf_layout = {'down' : '~25%'}
