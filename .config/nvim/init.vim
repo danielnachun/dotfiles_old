@@ -108,6 +108,7 @@ Plug 'zhaocai/goldenview.vim' "split buffers
 
 "Colorschemes
 Plug 'joshdick/onedark.vim'
+Plug 'arcticicestudio/nord-vim'
 "Plug 'rakr/vim-one'
 "Plug 'altercation/vim-colors-solarized'
 "Plug 'vim-scripts/Color-Sampler-Pack'
@@ -288,7 +289,7 @@ let g:csv_autocmd_arrange      = 1
 let g:ctrlp_cmd = 'CtrlPMRU'
 "let g:ctrlp_map = '<c-w>'
 " narrow the list down with a word under cursor
-nnoremap <leader>fu :FzfBTags<CR>
+nnoremap <leader>fu :CtrlPFunky<CR>
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 "Deoplete
@@ -339,7 +340,7 @@ let R_esc_term = 0
 "let R_vsplit = 1
 "let R_tmux_split = 1
 "let R_in_buffer = 1
-"let R_rconsole_height = 20
+let R_rconsole_width = 0
 "let R_notmuxconf = 1
 "let R_nvim_wd = 1
 "let R_wait = 60000

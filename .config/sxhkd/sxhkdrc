@@ -16,6 +16,12 @@ alt + shift + Return
 ctrl + alt + Return
     konsole -p tabtitle=tmuxinator -e 'sh -c "TERM=konsole-256color tmuxinator start general"'
 
+#Open tmuxinator in terminal
+    #tdrop -a -w 50% -x 25% konsole
+    #tdrop -a -w -4 konsole
+super + Return
+    tdrop -p "bspc rule -a konsole -o state=floating border=off" -f "--profile Tdrop" konsole
+
 #Raise tmuxinator
 #bspc node -f $($HOME/.config/bspwm/raise_window.py --title=tmuxinator)
 alt + ctrl + o
@@ -153,7 +159,7 @@ alt + {_, ctrl + } i
     
 #Open Google Keep
 alt + {_, ctrl + } u
-    {google-chrome-stable '--profile-directory=Default' --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --name "Google Keep"))")}
+    {google-chrome-beta '--profile-directory=Default' --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --name "Google Keep"))")}
 
 #Trello
 #bspc node -f $($HOME/.config/bspwm/get_chrome.zsh) && chromix load https://trello.com

@@ -13,6 +13,7 @@ iconfont4="Icons-${fontsize}"
 #iconfont5="Foundation-${fontsize}"
 #iconfont6="Batch-${fontsize}"
 
+#c_background="#5a000000"
 c_background="#00000000"
 c_green="#98c379"
 c_red="#e06c75"

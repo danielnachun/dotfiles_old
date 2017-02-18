@@ -10,6 +10,7 @@ if [ -e $BSPWM_STATE ]; then
     pkill sxhkd
     killall compton
     killall cairo-dock
+    killall xdotool
     rm "$BSPWM_STATE"
 fi
 
@@ -26,11 +27,15 @@ nitrogen --restore
 #Track windows for "tagging"
 bspc subscribe node_manage > /tmp/managed &
 
-#Set window titles to make cairo dock work correctly
-bspc subscribe node_manage | while read line; do xdotool set_window --name "$(xdotool getwindowname $(bspc query -N -n))" $(bspc query -N -n); done &
+#Cairo dock
+bspc subscribe node_manage | while read line; do xdotool set_window --name "$(xdotool getwindowname $(bspc query -N -n))" $(bspc query -N -n); done & #Set window titles to make cairo dock work correctly
+bspc subscribe node_manage | while read line; sleep 1; do wid=$(xdo id -a "cairo-dock" | sort | sed '2q;d'); xdo raise "$wid"; done & #Keep Cairo dock above other windows
+#xdotool behave_screen_edge bottom exec /usr/bin/bspc config bottom_padding 40 & #Raise Cairo dock
+#xdotool search --onlyvisible --classname cairo-dock behave %@ mouse-leave sleep 1 exec /usr/bin/bspc config bottom_padding 0 & #Hide Cairo dock
 
-#Keep Cairo dock above other windows
-bspc subscribe node_manage | while read line; sleep 1; do wid=$(xdo id -a "cairo-dock" | sort | sed '2q;d'); xdo raise "$wid"; done &
+#Switch workspaces
+#xdotool behave_screen_edge left exec bspc desktop -f prev.occupied &
+#xdotool behave_screen_edge right exec bspc desktop -f next.occupied &
 
 #Borders
 bspc config border_width 2
