@@ -11,6 +11,7 @@ if [ -e $BSPWM_STATE ]; then
     killall compton
     killall cairo-dock
     killall xdotool
+    killall krunner
     rm "$BSPWM_STATE"
 fi
 
@@ -22,6 +23,7 @@ cairo-dock &
 
 xsetroot -solid black -cursor_name left_ptr
 nitrogen --restore
+env KDE_FULL_SESSION=true /usr/bin/krunner &
 
 #Manage hooks
 #Track windows for "tagging"

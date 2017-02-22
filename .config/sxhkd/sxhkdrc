@@ -36,6 +36,10 @@ super + {0-9}
 super + n
     tmux new-window
 
+#Kill tmux window
+super + w
+    tmux kill-window
+
 #Next tmux window
 super + Tab
     tmux next-window
