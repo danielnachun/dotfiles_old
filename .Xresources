@@ -217,19 +217,22 @@ xmessage*baseTranslations:#augment\
 <Key>Return:exit()\n\
 <Key>space:exit()
 
-rofi.bg:#2b2b2c
-rofi.fg:#b3b3bb
-rofi.color-normal:#282c34,#abb2bf,#282c34,#abb2bf,#282c34
-rofi.color-window:#282c34,#abb2bf
+!rofi.bg:#404552
+!rofi.fg:#D3DAE3
+rofi.color-normal:#383c4a,#d3dae3,#383c4a,#5294e2,#d3dae3
+rofi.color-window:#383c4a,#d3dae3
 rofi.bw:0
 rofi.bc:#8e8e8e
-rofi.font:Source Code Pro 14
+rofi.font:Noto Sans 10
 rofi.terminal:konsole
-rofi.fullscreen:true
+rofi.width:550
+rofi.opacity:50
+rofi.lines:10
+!rofi.fullscreen:true
 rofi.hide-scrollbar:true
-rofi.padding:300
+!rofi.padding:300
 rofi.separator-style:none
-rofi.location:0
+rofi.location:2
 !rofi.width:60
 !rofi.key-run:alt+p
 !rofi.key-run:

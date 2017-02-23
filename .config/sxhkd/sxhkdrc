@@ -127,6 +127,7 @@ alt + p
     krunner
 
 #Create rofi menu with windows listed to go to
+    #rofi -show window
 alt + g
     bspc node -f $(rofi -dmenu  <<< $(foreach win_id ($(bspc query -N -n .normal)) echo $win_id - $(sed 's/"//g' <<< $(cut -d ' ' -f 4 <<< $(xprop WM_CLASS -id $win_id))) - $(xtitle $win_id); end) | cut -c 1-10)
 
@@ -146,6 +147,9 @@ alt + shift + g
 #Open Chrome
 alt + {_, ctrl + } b
     {google-chrome-beta --profile-directory=Default --proxy-pac-url=http://proxy.ucla.edu/cgi/proxy; sleep 1; tail -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/chrome_daniel, bspc node -f $(cat /tmp/chrome_daniel)}
+
+super + {_, alt + } b
+    {chromix-too focus $(cut -d ' ' -f 1 <<< $(rofi -dmenu <<< $(chromix-too ls | cut -d ' ' -f 2-))); bspc node -f $(cat /tmp/chrome_daniel), chromix-too open $(rofi -dmenu <<< $(chromix-too raw chrome.bookmarks.getTree | jq -r '.. | .url?' | ag -v null)); bspc node -f $(cat /tmp/chrome_daniel)}
 
 #Inbox by Gmail
 alt + {_, ctrl + } e

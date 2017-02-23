@@ -1,11 +1,12 @@
 {
     "alias_applications": false,
-    "aliased_applications_format": "{name} ({command})",
+    "alias_display_format": "{name} ({command})",
     "exclude_items": [],
     "filebrowser": "xdg-open",
     "fileopener": "xdg-open",
     "filter_binaries": false,
     "follow_symlinks": false,
+    "frequently_used": 0,
     "ignore_folders": [],
     "include_applications": true,
     "include_binaries": true,
@@ -19,7 +20,14 @@
     "menu_arguments": [
         "-dmenu"
     ],
+    "password_helper": [
+        "zenity",
+        "--password",
+        "--title={prompt}"
+    ],
+    "path_aliasFile": "",
     "path_shellCommand": "~/.dmenuEextended_shellCommand.sh",
+    "prompt": "Open:",
     "scan_hidden_folders": false,
     "terminal": "urxvt",
     "valid_extensions": [
