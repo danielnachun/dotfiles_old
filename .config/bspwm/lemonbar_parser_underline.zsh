@@ -76,7 +76,7 @@ while read -r line ; do
          fi
       fi
 
-      weather="%{+u U${c_mediumblue} F${temp_col} T1 A:/home/daniel/.config/bspwm/startweather.zsh:} $weather_temp%{F-}F %{-u U- A}"
+      weather="%{+u U${c_mediumblue} F${temp_col} T1 A:/home/daniel/.config/bspwm/startweather.zsh:} $weather_temp%{F${c_white}}F %{F- -u U- A}"
 
       # date
       date="%{+u U${c_lightgray} T2 A:/home/daniel/.config/bspwm/startcalendar.zsh: F${c_white}} ${icon_cal}%{F- T1} $sys_arr[(w)7] $sys_arr[(w)8] $sys_arr[(w)9] $sys_arr[(w)10] %{-u U- A}"
