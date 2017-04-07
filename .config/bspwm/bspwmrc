@@ -66,11 +66,13 @@ bspc config merge_overlapping_monitors true
 bspc rule -a Kcalc state=floating
 bspc rule -a kde5-nm-connection-editor state=floating
 bspc rule -a krunner manage=on state=floating border=off layer=above
+bspc rule -a albert manage=on state=floating border=off layer=above
 bspc rule -a Cairo-dock state=floating border=off layer=above
 bspc rule -a Oblogout state=fullscreen
 bspc rule -a Org.gnome.Weather.Application state=floating
 bspc rule -a Pavucontrol state=floating
 bspc rule -a R_x11 state=floating
+bspc rule -a Synapse border=off
 #bspc rule -a ksysguard state=floating
 
 #Tiled rules

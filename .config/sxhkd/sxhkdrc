@@ -146,17 +146,17 @@ alt + shift + g
 #Launch apps
 #Open Chrome
 alt + {_, ctrl + } b
-    {google-chrome-beta --profile-directory=Default --proxy-pac-url=http://proxy.ucla.edu/cgi/proxy; sleep 1; tail -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/chrome_daniel, bspc node -f $(cat /tmp/chrome_daniel)}
+    {google-chrome-stable --profile-directory=Default --proxy-pac-url=http://proxy.ucla.edu/cgi/proxy; sleep 1; tail -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/chrome_daniel, bspc node -f $(cat /tmp/chrome_daniel)}
 
 super + {_, alt + } b
     {chromix-too focus $(cut -d ' ' -f 1 <<< $(rofi -dmenu <<< $(chromix-too ls | cut -d ' ' -f 2-))); bspc node -f $(cat /tmp/chrome_daniel), chromix-too open $(rofi -dmenu <<< $(chromix-too raw chrome.bookmarks.getTree | jq -r '.. | .url?' | ag -v null)); bspc node -f $(cat /tmp/chrome_daniel)}
 
 #Inbox by Gmail
 alt + {_, ctrl + } e
-    {google-chrome-beta --profile-directory=Default --app=https://inbox.google.com, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --name "Inbox"))")}
+    {google-chrome-stable --profile-directory=Default --app=https://inbox.google.com, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --name "Inbox"))")}
 
 #Open Hangouts
-    #google-chrome-stable '--profile-directory=Profile 2' --app-id=knipolnnllmklapflnccelgolnpehhpl
+    #google-chrome-stable '--profile-directory=Profile 4' --app-id=knipolnnllmklapflnccelgolnpehhpl
 #alt + i
     #yakyak
 
@@ -167,35 +167,35 @@ alt + {_, ctrl + } i
     
 #Open Google Keep
 alt + {_, ctrl + } u
-    {google-chrome-beta '--profile-directory=Default' --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --name "Google Keep"))")}
+    {google-chrome-stable '--profile-directory=Default' --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --name "Google Keep"))")}
 
 #Trello
 #bspc node -f $($HOME/.config/bspwm/get_chrome.zsh) && chromix load https://trello.com
 alt + shift + {_, ctrl + } u
-    {google-chrome-beta --profile-directory=Default --app=https://trello.com, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --name "Trello"))")}
+    {google-chrome-stable --profile-directory=Default --app=https://trello.com, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --name "Trello"))")}
 
 #Google Calendar
 alt + {_, ctrl + } m
-    {google-chrome-beta --profile-directory=Default --app=https://calendar.google.com, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --name "Calendar"))")}
+    {google-chrome-stable --profile-directory=Default --app=https://calendar.google.com, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --name "Calendar"))")}
 
 #Google Photos
 alt + shift + {_, ctrl + } m
-    {google-chrome-beta --profile-directory=Default --app=https://photos.google.com, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --name "Photos"))")}
+    {google-chrome-stable --profile-directory=Default --app=https://photos.google.com, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --name "Photos"))")}
 
 #Spotify
 #bspc node -f $($HOME/.config/bspwm/get_chrome.zsh) && chromix load https://play.spotify.com
 alt + {_, ctrl + } s
-    {google-chrome-beta --profile-directory=Default --app=https://play.spotify.com, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --name "Spotify"))")}
+    {google-chrome-stable --profile-directory=Default --app=https://play.spotify.com, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --name "Spotify"))")}
 
 #Paperpile
 #bspc node -f $($HOME/.config/bspwm/raise_window.py --className=mendeleydesktop.x86_64)
 #{mendeleydesktop, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --classname mendeley))")}
 alt + shift + {_, ctrl + } s
-    {google-chrome-beta --profile-directory='Profile 1' --proxy-pac-url=proxy.ucla.edu/cgi/proxy --new-window https://paperpile.com/app; sleep 1; tail -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/paperpile, bspc node -f $(cat /tmp/paperpile)}
+    {google-chrome-stable --profile-directory='Profile 4' --proxy-pac-url=proxy.ucla.edu/cgi/proxy --new-window https://paperpile.com/app; sleep 1; tail -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/paperpile, bspc node -f $(cat /tmp/paperpile)}
 
 #Google Drive
 alt + shift + {_, ctrl + } v
-    {google-chrome-beta --profile-directory='Profile 1' --proxy-pac-url=proxy.ucla.edu/cgi/proxy --new-window https://drive.google.com; sleep 1; tail -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/chrome_ucla, bspc node -f $(cat /tmp/chrome_ucla)}
+    {google-chrome-stable --profile-directory='Profile 4' --proxy-pac-url=proxy.ucla.edu/cgi/proxy --new-window https://drive.google.com; sleep 1; tail -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/chrome_ucla, bspc node -f $(cat /tmp/chrome_ucla)}
 
 #Slack
 #bspc node -f $($HOME/.config/bspwm/get_chrome.zsh) && chromix load https://coppolalab.slack.com
@@ -213,7 +213,7 @@ alt + shift + {_, ctrl + } n
 #bspc node -f $($HOME/.config/bspwm/raise_window.py --title=ranger
 #Open ranger in terminal
 alt + {_, ctrl + } r
-    {konsole -p tabtitle=ranger -e "su daniel -c 'EDITOR=nvim ranger'", bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --name ranger))")}
+    {konsole -p tabtitle=ranger -e env EDITOR=nvim ranger, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --name ranger))")}
 
 #bspc node -f $($HOME/.config/bspwm/raise_window.py --className=dolphin)
 #Open Dolphin

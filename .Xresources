@@ -25,7 +25,7 @@ URxvt.keysym.Home:                      \033[1~
 URxvt.keysym.End:                       \033[4~
 URxvt.keysym.KP_Home:                   \033[1~
 URxvt.keysym.KP_End:                    \033[4~
-URxvt.font:                             xft:Oxygen Mono for Powerline:size=10:antialias=true:hinting=true, xft:Deja Vu Sans Mono for Powerline:size=10:antialias=true:hinting=true, xft:Source Code Pro for Powerline:antialias=true:hinting=true
+URxvt.font:                             xft:Source Code Pro for Powerline:size=10:antialias=true:hinting=true
 !URxvt.font:                             xft:PowerlineSymbols, xft:Oxygen Mono:size=10:antialias=true 
 !URxvt.font:                             xft:Deja Vu Sans Mono for Powerline:size=10:antialias=true
 URxvt.scrollBar:                        false

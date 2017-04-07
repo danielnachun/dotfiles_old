@@ -407,8 +407,8 @@ let g:UltiSnipsEditSplit="vertical"
 "let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "Vimtex
-let g:vimtex_latexmk_options="-xelatex" "Use XeLaTeX to compile for better font support
-let g:vimtex_latexmk_progname="/usr/bin/nvr" "Use NeoVim remote to allow feedback about errors
+"let g:vimtex_latexmk_options="-xelatex" "Use XeLaTeX to compile for better font support
+let g:vimtex_compiler_progname='/usr/bin/nvr' "Use NeoVim remote to allow feedback about errors
 let g:vimtex_fold_enabled = 1 "Auto fold (not working!)
 
 "Vim-One

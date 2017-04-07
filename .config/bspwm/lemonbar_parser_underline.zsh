@@ -196,5 +196,5 @@ while read -r line ; do
   esac
 
   # And finally, output
-  printf "%s\n" "%{l}${wsp_output}${stab}${title}%{r} ${lock_string}${stab}%{A:zsh /home/daniel/.config/bspwm/startksysguard.zsh:}${cpu}${stab}${thermal}${stab}${mem}${stab}%{A}${brightness}${bat}${stab}${vol}${stab}${net}${stab}${weather}${stab}${date}${stab}${time}${stab}${shutdown}${stab}"
+  printf "%s\n" "%{l}${wsp_output}${stab}${title}%{r} ${lock_string}${stab}%{A:zsh /home/daniel/.config/bspwm/startksysguard.zsh:}${cpu}${stab}${thermal}${stab}${mem}${stab}%{A}${net}${stab}${brightness}${bat}${stab}${vol}${stab}${weather}${stab}${date}${stab}${time}${stab}${shutdown}${stab}"
 done
