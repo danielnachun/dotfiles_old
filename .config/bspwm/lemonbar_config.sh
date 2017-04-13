@@ -4,7 +4,7 @@ stab=' '
 geometry="x26"
 fontsize="10"
 panel_fifo="/tmp/lemonbar_${USER}"
-monofont="Source Code Pro for Powerline-${fontsize}"
+monofont="monospace-${fontsize}"
 sansfont="Noto Sans-${fontsize}"
 iconfont="FontAwesome-${fontsize}"
 iconfont2="EightyShades-${fontsize}"
@@ -54,6 +54,10 @@ icon_wifi=$(printf "\uf1eb")
 icon_brightness=$(printf "\uf39b")
 icon_acon=$(printf "\uf1e6")
 icon_shutdown=$(printf "\uf011")
+icon_plus=$(printf "\uf067")
+icon_minus=$(printf "\uf068")
+icon_circle=$(printf "\uf10c")
+icon_dot=$(printf "\uf111")
 
 #Icons
 icon_thermal=$(printf "\uf3b6")

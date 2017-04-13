@@ -3,6 +3,14 @@
 . $(dirname $0)/lemonbar_config.sh
 
 shutdown="%{+u U${c_graygreen} T2 A1:oblogout: F${c_white}} ${icon_shutdown} %{-u A F-}"
+sysmon_toggle="%{+u U${c_red} F${c_white} T2} ${icon_circle} %{T- U- -u}"
+
+#if [[ "$(cat $(dirname $0)/system_monitor)" == "on" ]]; then
+    #sysmon_toggle="%{F${c_white} T2}${icon_dot}%{T-}"
+#else
+    #sysmon_toggle="%{F${c_white} T2}${icon_circle}%{T-}"
+#fi
+
 
 while read -r line ; do
   case $line in
@@ -17,10 +25,19 @@ while read -r line ; do
       else
           cpu_color="-"
       fi
-      cpu="%{+u U${c_lightgray} T4 F${c_white}} ${icon_cpu}%{F-} %{F${cpu_color} T1}$(printf '%+3s' $sys_arr[(w)1]% {F-}%) %{-u U-}"
+      
+      if [[ "$(cat $(dirname $0)/system_monitor)" == "on" ]]; then
+        cpu="%{+u U${c_lightgray} T4 F${c_white}} ${icon_cpu}%{F-} %{F${cpu_color} T1}$(printf '%+3s' $sys_arr[(w)1]% {F-}%) %{-u U-}${stab}"
+      else
+        cpu=""
+      fi
 
       # mem
-      mem="%{+u U${c_graygreen} T4 F${c_white}} ${icon_memory}%{F-} %{T1}$(printf '%+5s' $sys_arr[(w)2]) %{-u U-}"
+      if [[ "$(cat $(dirname $0)/system_monitor)" == "on" ]]; then
+        mem="%{+u U${c_graygreen} T4 F${c_white}} ${icon_memory}%{F-} %{T1}$(printf '%+5s' $sys_arr[(w)2]) %{-u U-}${stab}"
+      else
+        mem=""
+      fi
 
       #bat
       if [[ "$sys_arr[(w)12]" == "charged" ]]; then
@@ -62,7 +79,13 @@ while read -r line ; do
       fi
 
       net_up_icon="%{F${c_white}}${icon_ul}%{F-}"
-      net="%{+u U${c_lightgreen} A:'/home/daniel/.config/bspwm/startnm.sh':} ${net_icon}${stab}%{T2}${net_down_icon} %{T1}$(printf '%5s' $wland)  %{T2}${net_up_icon} %{T1}$(printf '%5s' $wlanu) %{-u U- A}"
+      net="%{+u U${c_lightgreen} A1:'/home/daniel/.config/bspwm/startnm.sh':} ${net_icon}${stab}"
+      if [[ "$(cat $(dirname $0)/system_monitor)" == "on" ]]; then
+        net="${net}%{T2}${net_down_icon} %{T1}$(printf '%5s' $wland)  %{T2}${net_up_icon} %{T1}$(printf '%5s' $wlanu) %{-u U- A}"
+      else
+        net="${net}%{-u}%{A}"
+      fi
+
 
       #weather
       weather_temp=$sys_arr[(w)6]
@@ -76,13 +99,13 @@ while read -r line ; do
          fi
       fi
 
-      weather="%{+u U${c_mediumblue} F${temp_col} T1 A:/home/daniel/.config/bspwm/startweather.zsh:} $weather_temp%{F${c_white}}F %{F- -u U- A}"
+      weather="%{+u U${c_mediumblue} F${temp_col} T1 A1:/home/daniel/.config/bspwm/startweather.zsh:} $weather_temp%{F${c_white}}F %{F- -u U- A}"
 
       # date
-      date="%{+u U${c_lightgray} T2 A:/home/daniel/.config/bspwm/startcalendar.zsh: F${c_white}} ${icon_cal}%{F- T1} $sys_arr[(w)7] $sys_arr[(w)8] $sys_arr[(w)9] $sys_arr[(w)10] %{-u U- A}"
+      date="%{+u U${c_lightgray} T2 A1:/home/daniel/.config/bspwm/startcalendar.zsh: F${c_white}} ${icon_cal}%{F- T1} $sys_arr[(w)7] $sys_arr[(w)8] $sys_arr[(w)9] $sys_arr[(w)10] %{-u U- A}"
 
       # time
-      time="%{+u U${c_orange} T2 A:/home/daniel/.config/bspwm/startcalendar.zsh: F${c_white}} ${icon_clock} %{F- T1}$sys_arr[(w)11] %{-u U- A}"
+      time="%{+u U${c_orange} T2 A1:/home/daniel/.config/bspwm/startcalendar.zsh: F${c_white}} ${icon_clock} %{F- T1}$sys_arr[(w)11] %{-u U- A}"
       ;;
 
     VOL*)
@@ -98,12 +121,16 @@ while read -r line ; do
          vol_icon="%{F$c_red T3}${icon_vol_off}%{F-}"
       fi
 
-      vol="%{+u U${c_lightred} A:/home/daniel/.config/bspwm/startpavucontrol.zsh:} ${vol_icon}%{T1} $(printf '%+4s' $vol_txt%) %{-u U- A}"
+      vol="%{+u U${c_lightred} A1:/home/daniel/.config/bspwm/startpavucontrol.zsh:} ${vol_icon}%{T1} $(printf '%+4s' $vol_txt%) %{-u U- A}"
       ;;
     
     THR*)
       thermal_arr=(${line#???})
-      thermal="%{+u U${c_orange} T5} %{F$c_white}${icon_thermal}%{F-}%{T1}$thermal_arr %{-u U- F-}"
+      if [[ "$(cat $(dirname $0)/system_monitor)" == "on" ]]; then
+        thermal="%{+u U${c_orange} T5} %{F$c_white}${icon_thermal}%{F-}%{T1}$thermal_arr %{-u U- F-}${stab}"
+      else
+          thermal=""
+      fi
       ;;
 
     BRI*)
@@ -148,7 +175,7 @@ while read -r line ; do
                 ;;
              o*)
                  #icon_string="$(. $(dirname $0)/get_icons.zsh $desktop_list[(w)$[$desktop-1]])"
-                 wsp_output="${wsp_output} %{+u U${c_lightgray} F${c_foreground_light} A:bspc desktop -f ${current_desktop:1:1}:} ${current_desktop:1:1} %{-u F- U- A}"           
+                 wsp_output="${wsp_output} %{+u U${c_lightgray} F${c_foreground_light} A1:bspc desktop -f ${current_desktop:1:1}:} ${current_desktop:1:1} %{-u F- U- A}"           
                 ;;
           esac
       end
@@ -196,5 +223,5 @@ while read -r line ; do
   esac
 
   # And finally, output
-  printf "%s\n" "%{l}${wsp_output}${stab}${title}%{r} ${lock_string}${stab}%{A:zsh /home/daniel/.config/bspwm/startksysguard.zsh:}${cpu}${stab}${thermal}${stab}${mem}${stab}%{A}${net}${stab}${brightness}${bat}${stab}${vol}${stab}${weather}${stab}${date}${stab}${time}${stab}${shutdown}${stab}"
+  printf "%s\n" "%{l}${wsp_output}${stab}${title}%{r} %{A2:zsh /home/daniel/.config/bspwm/toggle_sysmon.zsh:}${lock_string}${stab}%{A1:zsh /home/daniel/.config/bspwm/startksysguard.zsh:}${cpu}${thermal}${mem}%{A}${net}${stab}${brightness}${bat}${stab}${vol}${stab}${weather}${stab}${date}${stab}${time}${stab}${shutdown}${stab}%{A}"
 done
