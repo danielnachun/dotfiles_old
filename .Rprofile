@@ -12,7 +12,6 @@ if(interactive()){
     options(prompt = " ")
 
     library(nvimcom)
-    library(setwidth)
     library(pacman)
 
     # syntax highlighting

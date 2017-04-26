@@ -215,6 +215,7 @@ Plug 'alfredodeza/pytest.vim' "test python code
 Plug 'jalvesaq/Nvim-R' "R plugin
 Plug 'jalvesaq/vimcmdline' "Generic REPL
 Plug 'Shougo/deol.nvim' "Shell plugin
+Plug 'kassio/neoterm' "Term plugin
 "Plug 'jpalardy/vim-slime' "probably redundant with above
 
 "Search - all hail FZF
@@ -281,6 +282,15 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='onedark'
 
+"Cmdline
+let cmdline_app = {}
+let cmdline_app["python"] = "ptipython"
+let cmdline_app["ruby"] = "pry"
+let cmdline_app["sh"] = "zsh"
+let cmdline_follow_colorscheme = 1
+let cmdline_outhl = 1
+let cmdline_in_buffer = 1
+
 "CSV
 let g:csv_autocmd_arrange      = 1
 "let g:csv_autocmd_arrange_size = 1024*1024
@@ -326,6 +336,9 @@ let g:jedi#completions_enabled = 0
 
 "Multiple Cursor
 "let g:multi_cursor_quit_key='<Shift><Esc>'
+
+"Neoterm
+let g:neoterm_repl_python = "ipython"
 
 "Nerd Tree
 map <leader>n :NERDTreeToggle<CR>

@@ -185,7 +185,7 @@ alt + shift + {_, ctrl + } m
 #Spotify
 #bspc node -f $($HOME/.config/bspwm/get_chrome.zsh) && chromix load https://play.spotify.com
 alt + {_, ctrl + } s
-    {google-chrome-stable --profile-directory=Default --app=https://play.spotify.com, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --name "Spotify"))")}
+    {google-chrome-stable --profile-directory=Default --app=https://play.spotify.com, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --classname "play.spotify.com"))")}
 
 #Paperpile
 #bspc node -f $($HOME/.config/bspwm/raise_window.py --className=mendeleydesktop.x86_64)
@@ -200,7 +200,7 @@ alt + shift + {_, ctrl + } v
 #Slack
 #bspc node -f $($HOME/.config/bspwm/get_chrome.zsh) && chromix load https://coppolalab.slack.com
 alt + shift + {_, ctrl + } i    
-    {slack, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --classname slack))")}
+    {scudcloud, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --classname scudcloud))")}
 
 #Ncmpcpp
 alt + {_, ctrl + } n

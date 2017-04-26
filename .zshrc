@@ -61,7 +61,7 @@ alias scu-mask-now="scu-mask --now"
 alias scu-daemon-reload="systemctl --user daemon-reload"
 
 #Variables
-export SSH_ASKPASS=""
+export SSH_ASKPASS="/usr/bin/ksshaskpass"
 export EDITOR="nvim"
 export PATH="$(cope_path):/usr/lib/cw:$PATH"
 export CCACHE_PATH="/usr/bin"
