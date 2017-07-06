@@ -24,6 +24,9 @@ zstyle :compinstall filename '/home/daniel/.zshrc'
 alias lb='ls++'
 alias le='ls++ -A'
 alias sl='noglob sl'
+alias lsi='LS_COLORS=$(python2 $HOME/.local/bin/ls_colors_generator) ls-i --color=auto'
+alias diri='LS_COLORS=$(python2 $HOME/.local/bin/ls_colors_generator) dir-i --color=auto'
+alias vdiri='LS_COLORS=$(python2 $HOME/.local/bin/ls_colors_generator) vdir-i --color=auto'
 
 alias palf='pacaur -Ql'
 alias pacman-disowned-files="comm -23 <(sudo find / \( -path '/dev' -o -path '/sys' -o -path '/run' -o -path '/tmp' -o -path '/mnt' -o -path '/srv' -o -path '/proc' -o -path '/boot' -o -path '/home' -o -path '/root' -o -path '/media' -o -path '/var/lib/pacman' -o -path '/var/cache/pacman' \) -prune -o -type f -print | sort -u) <(pacman -Qlq | sort -u)"
@@ -69,6 +72,12 @@ export TERM=konsole-256color
 export SPROMPT='zsh: correct %F{1}%R%f to %F{2}%r%f [nyae]? '
 export ENHANCD_COMMAND=ecd
 #export PATH="/usr/lib/colorgcc/bin/:$PATH" 
+
+#Base16
+#BASE16_SHELL=$HOME/.config/base16-shell/
+#[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+#source $HOME/.config/bspwm/base16-tomorrow-night.sh
 
 source "$HOME/.zplug/init.zsh"
 
@@ -151,6 +160,7 @@ zplug "plugins/virtualenv", from:oh-my-zsh, lazy:true
 #zplug, from:oh-my-zsh "plugins/virtualenvwrapper"
 
 #Miscellaneous
+zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 zplug "djui/alias-tips"
 zplug "hchbaw/zce.zsh"
 zplug "jimmijj/zsh-syntax-highlighting"
@@ -200,6 +210,7 @@ bindkey '^e' end-of-line
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
 
+
 #Fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -211,11 +222,20 @@ alias pmrm="pm remove"
 alias pml="pm list"
 # end PM
 
+#Powerlevel 
+POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history vcs)
+POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="green"
+POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="black"
+
 #Prezto
 #zstyle ':prezto:module:editor' key-bindings 'vi'
 
 #Powerline
-if [ ! $(pgrep powerline-daemo) ]; then
-    powerline-daemon
-fi
-. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
+#if [ ! $(pgrep powerline-daemo) ]; then
+    #powerline-daemon
+#fi
+#. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
+
+

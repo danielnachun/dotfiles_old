@@ -14,23 +14,23 @@ iconfont4="Icons-${fontsize}"
 #iconfont5="Foundation-${fontsize}"
 #iconfont6="Batch-${fontsize}"
 
-c_dark_background="#5a000000"
+c_dark_background="#33393B"
 c_background="#00000000"
 c_green="#98c379"
-c_red="#e06c75"
+c_red="#c06c75"
 c_blue="#61afef"
 c_blue_foreground="#61afef"
 c_blue_foreground_light="#9061afef"
 #c_foreground_light="#90f3f3f5"
 c_orange="#d19a66"
-c_purple="#542437"
+c_purple="#c678dd"
 c_mediumblue="#c678dd"
 c_lightgreen="#98c379"
-c_lightred="#ff6b6b"
+c_lightred="#c06c75"
 c_lightblue="#c678dd"
 c_graygreen="#56b6c2"
-c_lightgray="#e0e4cc"
-c_white="#f3f3f5"
+c_lightgray="#dedae3"
+c_white="#dedae3"
 c_foreground="#61afef"
 
 color_bgdark="$c_background"
@@ -77,15 +77,15 @@ icon_cpu=$(printf "\u02b0")
 icon_chrome=$(printf "\uf268") #Font Awesome
 icon_hangouts=$(printf "\uf3d4") #Font Icons
 #icon_mendeley=
-icon_filebrowser=$(printf "\uf07c") #Font Awesome 
+icon_filebrowser=$(printf "\uf07c") #Font Awesome
 icon_notes=$(printf "\uf249") #Font Awesome
 #icon_terminal Batch
 
 #Icon
 #icon_tmux
-#icon_libreoffice \uf15c \f22e 
+#icon_libreoffice \uf15c \f22e
 #icon_text \uf0c9
-#icon_music \uf2bc \uf30c 
+#icon_music \uf2bc \uf30c
 
 #Awesome
 #icon_libreoffice \uf15b

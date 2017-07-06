@@ -2,11 +2,12 @@
 filetype plugin indent on
 syntax on
 
+set guicursor=
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set smarttab
-set showcmd 
+set showcmd
 set number
 set showmatch
 set hlsearch
@@ -31,7 +32,7 @@ set foldmethod=syntax
 set foldlevel=99
 set termguicolors
 set omnifunc=syntaxcomplete#Complete
-"set background=dark
+set cursorline
 "set autochdir
 "set winminheight=20
 
@@ -40,19 +41,12 @@ set omnifunc=syntaxcomplete#Complete
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
 
-"Color overrides
-"hi Search ctermfg=0 ctermbg=59
-"hi Visual ctermfg=0 ctermbg=222
-"hi Folded ctermbg=NONE
-"highlight Normal ctermbg=NONE
-"highlight nonText ctermbg=NONE
-"highlight LineNr ctermbg=NONE
-"hi Visual ctermbg=11
-"hi Spellbad ctermbg=1 ctermfg=15
 
 "Set buffer autocmds
-autocmd BufWinEnter,WinEnter term://* startinsert
+autocmd BufWinEnter,WinEnter term://* startinsert 
+autocmd BufWinEnter,WinEnter term://* :set cursorline 
 autocmd BufLeave term://* stopinsert
+autocmd BufLeave term://* :set nocursorline
 autocmd BufEnter,WinEnter * silent! :lcd%:p:h
 autocmd TermOpen * :resize 18
 
@@ -107,14 +101,19 @@ Plug 'zhaocai/goldenview.vim' "split buffers
 "Plug 'vim-scripts/TaskList.vim'
 
 "Colorschemes
+Plug 'dracula/vim'
+Plug 'chriskempson/base16-vim'
 Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
+Plug 'nanotech/jellybeans.vim'
+Plug 'dikiaap/minimalist'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'arcticicestudio/nord-vim'
+Plug 'tomasr/dracula'
 "Plug 'rakr/vim-one'
 "Plug 'altercation/vim-colors-solarized'
 "Plug 'vim-scripts/Color-Sampler-Pack'
 "Plug 'thinca/vim-guicolorscheme'
-"Plug 'tomasr/molokai'
-"Plug 'nanotech/jellybeans.vim'
 
 "Comments
 Plug 'scrooloose/nerdcommenter' "shortcuts to comment out
@@ -146,8 +145,8 @@ Plug 'SevereOverfl0w/deoplete-github' "Github completion
 "Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') } "replace with deoplete
 "Plug 'vim-scripts/OmniCppComplete' "c++ completion
 
-"File Management 
-Plug 'scrooloose/nerdtree' "Open other files 
+"File Management
+Plug 'scrooloose/nerdtree' "Open other files
 Plug 'jistr/vim-nerdtree-tabs' "Keep nerdtree open in all tabs
 Plug 'mhinz/vim-startify' "vim start screen!
 Plug 'justinmk/vim-dirvish' "remote file editing
@@ -169,7 +168,7 @@ Plug 'eagletmt/neco-ghc'
 Plug 'enomsg/vim-HaskellConcealPlus'
 
 "Indent - set up correctly
-Plug 'michaeljsmith/vim-indent-object' 
+Plug 'michaeljsmith/vim-indent-object'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular' "align to specific characters
 Plug 'tommcdo/vim-lion'
@@ -224,10 +223,10 @@ Plug 'junegunn/fzf.vim' "search commands
 Plug 'rking/ag.vim' "keep around
 Plug 'Shougo/denite.nvim' "more interfaces when fzf not available
 Plug 'Shougo/unite.vim' "replace with dark version - replace with FZF
-Plug 'tacahiroy/ctrlp-funky' "navigate to functions - replace with FZF
-Plug 'kien/ctrlp.vim' "Launch recently used files - FZF
+"Plug 'tacahiroy/ctrlp-funky' "navigate to functions - replace with FZF
+"Plug 'kien/ctrlp.vim' "Launch recently used files - FZF
 Plug 'mileszs/ack.vim'
-Plug 'wincent/Command-T'
+"Plug 'wincent/Command-T'
 
 "Snippets
 Plug 'SirVer/ultisnips' "snippets engine - check others
@@ -274,7 +273,7 @@ call plug#end()
 "tpope/dispatch - async - needed?
 "skywind3000/asyncrun.vim - async
 
-"Ag 
+"Ag
 map <leader>a <Esc>:FzfAg!
 
 "Airline
@@ -299,8 +298,8 @@ let g:csv_autocmd_arrange      = 1
 let g:ctrlp_cmd = 'CtrlPMRU'
 "let g:ctrlp_map = '<c-w>'
 " narrow the list down with a word under cursor
-nnoremap <leader>fu :CtrlPFunky<CR>
-nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+"nnoremap <leader>fu :CtrlPFunky<CR>
+"nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 "Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -316,7 +315,7 @@ let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc
 map <leader>vv :Gcommit -a -m "HEAD"<CR> :Gpush -q<CR>
 
 "FZF
-"noremap <C-P> :FzfHistory<CR>
+noremap <C-P> :FzfHistory<CR>
 nnoremap <leader>lu :FzfBLines<CR>
 let g:fzf_command_prefix = 'Fzf'
 let g:fzf_layout = {'down' : '~25%'}
@@ -349,11 +348,12 @@ let R_nvimpager = "vertical" "Split vertical
 let R_help_w = 80 "set help width
 let R_assign = 0 "don't autoinsert <-
 let Rout_more_colors = 1 "use more colors
-let R_esc_term = 0 
+let R_esc_term = 0
+let R_rconsole_width = 0
+"let R_hl_term = 1
 "let R_vsplit = 1
 "let R_tmux_split = 1
 "let R_in_buffer = 1
-let R_rconsole_width = 0
 "let R_notmuxconf = 1
 "let R_nvim_wd = 1
 "let R_wait = 60000
@@ -387,7 +387,7 @@ nmap <silent> <LocalLeader>s :call RAction("str")<CR>
 "let g:syntastic_check_on_wq = 0
 
 "Tagbar
-nmap <F10> :TagbarOpenAutoClose<CR> 
+nmap <F10> :TagbarOpenAutoClose<CR>
 let g:tagbar_type_r = {
     \ 'ctagstype' : 'r',
     \ 'kinds'     : [
@@ -403,7 +403,7 @@ map <leader>td <Plug>TaskList
 "Tmux-navigator
 let g:tmux_navigator_no_mappings = 1
 
-"Tmuxline 
+"Tmuxline
 "if exists('$TMUX')
     "autocmd VimEnter * call tmuxline#set_statusline('airline')
 "endif
@@ -414,35 +414,32 @@ let g:airline#extensions#tmuxline#enabled = 0
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-let g:UltiSnipsEditSplit="vertical" 
+let g:UltiSnipsEditSplit="vertical"
 "let g:UltiSnipsExpandTrigger="<c-/>"
 "let g:UltiSnipsJumpForwardTrigger="<c-x>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "Vimtex
 "let g:vimtex_latexmk_options="-xelatex" "Use XeLaTeX to compile for better font support
-let g:vimtex_compiler_progname='/usr/bin/nvr' "Use NeoVim remote to allow feedback about errors
+"let g:vimtex_compiler_progname='/usr/bin/nvr' "Use NeoVim remote to allow feedback about errors
 let g:vimtex_fold_enabled = 1 "Auto fold (not working!)
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
+let g:vimtex_compiler_latexmk = {
+    \ 'backend' : 'nvim',
+    \}
 
-"Vim-One
-colorscheme onedark
 "set background=dark
+colorscheme onedark
 
-"YCM
-"let g:ycm_autoclose_preview_window_after_completion = 1
-"let g:ycm_semantic_triggers = {'haskell' : ['.'], 'r' : ['re!\^\.\*$']}
-"let g:ycm_confirm_extra_conf = 0
-"let g:ycm_python_binary_path = '/usr/bin/python2'
-"let g:ycm_auto_trigger = 1
-" make YCM compatible with UltiSnips (using supertab)
-"let g:ycm_key_list_select_completion = ['<C-(>', '<Down>']
-"let g:ycm_key_list_previous_completion = ['<C-)>', '<Up>']
-"function! Multiple_cursors_before()
-    "call youcompleteme#DisableCursorMovedAutocommands()
-"endfunction
+"Color overrides
+"hi Visual ctermfg=0 ctermbg=222
+"hi Folded ctermbg=NONE
+"highlight Normal ctermbg=NONE
+"highlight nonText ctermbg=NONE
+"highlight LineNr ctermbg=NONE
+"hi Visual ctermbg=11
+"hi Spellbad ctermbg=1 ctermfg=15
+"hi Search ctermfg=0 ctermbg=59
 
-"function! Multiple_cursors_after()
-    "call youcompleteme#EnableCursorMovedAutocommands()
-"endfunction
-"nmap <F7> :call youcompleteme#DisableCursorMovedAutocommands()<CR>
-"nmap <F8> :call youcompleteme#EnableCursorMovedAutocommands()<CR>

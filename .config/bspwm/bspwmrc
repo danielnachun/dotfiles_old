@@ -9,9 +9,11 @@ if [ -e $BSPWM_STATE ]; then
     pkill lemonbar
     pkill sxhkd
     killall compton
+    killall xfce4-panel
+    killall nm-applet
     killall cairo-dock
-    #killall xdotool
-    #killall krunner
+    killall xdotool
+    killall caffeine
     rm "$BSPWM_STATE"
 fi
 
@@ -19,19 +21,21 @@ kdeinit5
 sxhkd &
 
 compton -bC
-cairo-dock &
+#cairo-dock &
+caffeine &
 
 xsetroot -solid black -cursor_name left_ptr
 nitrogen --restore
-#env KDE_FULL_SESSION=true /usr/bin/krunner &
+killall krunner
+env KDE_FULL_SESSION=true /usr/bin/krunner &
 
 #Manage hooks
 #Track windows for "tagging"
 bspc subscribe node_manage > /tmp/managed &
 
 #Cairo dock
-bspc subscribe node_manage | while read line; do xdotool set_window --name "$(xdotool getwindowname $(bspc query -N -n))" $(bspc query -N -n); done & #Set window titles to make cairo dock work correctly
-bspc subscribe node_manage | while read line; sleep 1; do wid=$(xdo id -a "cairo-dock" | sort | sed '2q;d'); xdo raise "$wid"; done & #Keep Cairo dock above other windows
+#bspc subscribe node_manage | while read line; do xdotool set_window --name "$(xdotool getwindowname $(bspc query -N -n))" $(bspc query -N -n); done & #Set window titles to make cairo dock work correctly
+#bspc subscribe node_manage | while read line; sleep 1; do wid=$(xdo id -a "cairo-dock" | sort | sed '2q;d'); xdo raise "$wid"; done & #Keep Cairo dock above other windows
 #xdotool behave_screen_edge bottom exec /usr/bin/bspc config bottom_padding 40 & #Raise Cairo dock
 #xdotool search --onlyvisible --classname cairo-dock behave %@ mouse-leave sleep 1 exec /usr/bin/bspc config bottom_padding 0 & #Hide Cairo dock
 
@@ -42,11 +46,11 @@ bspc subscribe node_manage | while read line; sleep 1; do wid=$(xdo id -a "cairo
 #Borders
 bspc config border_width 2
 bspc config normal_border_color '#000000'
-bspc config focused_border_color '#5294e2'
+bspc config focused_border_color '#4A90D9'
 
 #Padding
 bspc config window_gap 20
-bspc config bottom_padding 40
+bspc config bottom_padding 0
 
 #Mouse
 bspc config focus_follows_pointer true
@@ -66,8 +70,9 @@ bspc config merge_overlapping_monitors true
 bspc rule -a Kcalc state=floating
 bspc rule -a kde5-nm-connection-editor state=floating
 bspc rule -a krunner manage=on state=floating border=off layer=above
+#bspc rule -a Xfce4-panel manage=on state=floating border=off layer=above
 bspc rule -a albert manage=on state=floating border=off layer=above
-bspc rule -a Cairo-dock state=floating border=off layer=above
+bspc rule -a Cairo-dock manage=off state=floating border=off layer=above
 bspc rule -a Oblogout state=fullscreen
 bspc rule -a Org.gnome.Weather.Application state=floating
 bspc rule -a Pavucontrol state=floating
@@ -83,4 +88,9 @@ bspc config external_rules_command "/home/daniel/.config/bspwm/external_rules"
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 
-zsh ~/.config/bspwm/lemonbar.zsh &
+xfce4-panel -d &
+nm-applet &
+sleep 1
+panel_id=$(xdo id -a "xfce4-panel" | sort | sed '2q;d')
+xdo above -t "$(xdo id -N Bspwm -n root)" "$panel_id"
+#zsh ~/.config/bspwm/lemonbar.zsh &

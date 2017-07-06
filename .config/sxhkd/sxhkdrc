@@ -9,10 +9,12 @@ alt + shift + q
     bspc quit 1
 
 #Launch terminal
+#alacritty
 alt + shift + Return
     konsole 
 
 #Open tmuxinator in terminal
+#alacritty -t tmuxinator -e tmuxinator start general
 ctrl + alt + Return
     konsole -p tabtitle=tmuxinator -e 'sh -c "TERM=konsole-256color tmuxinator start general"'
 
@@ -184,8 +186,9 @@ alt + shift + {_, ctrl + } m
 
 #Spotify
 #bspc node -f $($HOME/.config/bspwm/get_chrome.zsh) && chromix load https://play.spotify.com
+#{google-chrome-stable --profile-directory=Default --app=https://play.spotify.com, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --classname "play.spotify.com"))")}
 alt + {_, ctrl + } s
-    {google-chrome-stable --profile-directory=Default --app=https://play.spotify.com, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --classname "play.spotify.com"))")}
+    {spotify, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --classname "spotify"))")}
 
 #Paperpile
 #bspc node -f $($HOME/.config/bspwm/raise_window.py --className=mendeleydesktop.x86_64)
@@ -195,22 +198,23 @@ alt + shift + {_, ctrl + } s
 
 #Google Drive
 alt + shift + {_, ctrl + } v
-    {google-chrome-stable --profile-directory='Profile 4' --proxy-pac-url=proxy.ucla.edu/cgi/proxy --new-window https://drive.google.com; sleep 1; tail -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/chrome_ucla, bspc node -f $(cat /tmp/chrome_ucla)}
+    {google-chrome-stable --profile-directory='Profile 4' --proxy-pac-url=proxy.ucla.edu/cgi/proxy --app=https://docs.google.com; sleep 1; tail -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/chrome_ucla, bspc node -f $(cat /tmp/chrome_ucla)}
 
 #Slack
 #bspc node -f $($HOME/.config/bspwm/get_chrome.zsh) && chromix load https://coppolalab.slack.com
 alt + shift + {_, ctrl + } i    
     {scudcloud, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --classname scudcloud))")}
 
+#{alacritty -t ncmpcpp -e ncmpcpp, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --name ncmpcpp))")}
 #Ncmpcpp
 alt + {_, ctrl + } n
     {konsole -p tabtitle=ncmpcpp -e ncmpcpp, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --name ncmpcpp))")}
-
 #Launch Clementine
 alt + shift + {_, ctrl + } n
     {clementine, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --classname clementine))")}
 
 #bspc node -f $($HOME/.config/bspwm/raise_window.py --title=ranger
+#{alacritty -t ranger -e env EDITOR=nvim ranger, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --name ranger))")}
 #Open ranger in terminal
 alt + {_, ctrl + } r
     {konsole -p tabtitle=ranger -e env EDITOR=nvim ranger, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --name ranger))")}
