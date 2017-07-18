@@ -200,6 +200,9 @@ alt + shift + {_, ctrl + } s
 alt + shift + {_, ctrl + } v
     {google-chrome-stable --profile-directory='Profile 4' --proxy-pac-url=proxy.ucla.edu/cgi/proxy --app=https://docs.google.com; sleep 1; tail -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/chrome_ucla, bspc node -f $(cat /tmp/chrome_ucla)}
 
+super + {_, ctrl + } f
+    {google-chrome-stable --profile-directory='Profile 4' --proxy-pac-url=proxy.ucla.edu/cgi/proxy --app=https://drive.google.com; sleep 1; tail -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/chrome_ucla_drive, bspc node -f $(cat /tmp/chrome_ucla_drive)}
+
 #Slack
 #bspc node -f $($HOME/.config/bspwm/get_chrome.zsh) && chromix load https://coppolalab.slack.com
 alt + shift + {_, ctrl + } i    

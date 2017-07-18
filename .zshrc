@@ -160,7 +160,7 @@ zplug "plugins/virtualenv", from:oh-my-zsh, lazy:true
 #zplug, from:oh-my-zsh "plugins/virtualenvwrapper"
 
 #Miscellaneous
-zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+#zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 zplug "djui/alias-tips"
 zplug "hchbaw/zce.zsh"
 zplug "jimmijj/zsh-syntax-highlighting"
@@ -223,19 +223,30 @@ alias pml="pm list"
 # end PM
 
 #Powerlevel 
-POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history vcs)
-POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="green"
-POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="black"
+#POWERLEVEL9K_MODE='nerdfont-complete'
+#POWERLEVEL9K_CONTEXT_BOLD=true
+#POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="black"
+#POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="green"
+#POWERLEVEL9K_DIR_BOLD=true
+#POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+#POWERLEVEL9K_SHORTEN_DELIMITER=""
+#POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+#POWERLEVEL9K_BACKGROUND_JOBS_BOLD=true
+#POWERLEVEL9K_ROOT_INDICATOR_BOLD=true
+#POWERLEVEL9K_HISTORY_BOLD=true
+#POWERLEVEL9K_VCS_BOLD=true
+
+#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
+#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history vcs)
+
 
 #Prezto
 #zstyle ':prezto:module:editor' key-bindings 'vi'
 
 #Powerline
-#if [ ! $(pgrep powerline-daemo) ]; then
-    #powerline-daemon
-#fi
-#. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
+if [ ! $(pgrep powerline-daemo) ]; then
+    powerline-daemon
+fi
+. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 
 
