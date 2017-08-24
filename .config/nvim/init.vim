@@ -92,6 +92,7 @@ Plug 'tpope/vim-unimpaired' "miscellaneous paired mappings
 Plug 'tpope/vim-abolish' "act on word variants
 Plug 'christoomey/vim-system-copy' "use system clipboard
 Plug 'zhaocai/goldenview.vim' "split buffers
+"Plug 'nhooyr/neoman.vim' "use neovim to read man pages
 
 "Plug 'vim-scripts/a.vim'
 "Plug 'vim-jp/vital.vim'
@@ -101,7 +102,7 @@ Plug 'zhaocai/goldenview.vim' "split buffers
 "Plug 'vim-scripts/TaskList.vim'
 
 "Colorschemes
-Plug 'dracula/vim'
+"Plug 'dracula/vim'
 Plug 'chriskempson/base16-vim'
 Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
@@ -109,7 +110,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'dikiaap/minimalist'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'arcticicestudio/nord-vim'
-Plug 'tomasr/dracula'
+"Plug 'tomasr/dracula'
 "Plug 'rakr/vim-one'
 "Plug 'altercation/vim-colors-solarized'
 "Plug 'vim-scripts/Color-Sampler-Pack'

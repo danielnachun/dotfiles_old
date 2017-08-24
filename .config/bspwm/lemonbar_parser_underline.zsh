@@ -2,7 +2,7 @@
 
 . $(dirname $0)/lemonbar_config.sh
 
-shutdown="%{+u U${c_graygreen} T2 A1:oblogout: F${c_white}} ${icon_shutdown} %{-u A F-}"
+shutdown="%{+u U${c_blue} T2 A1:oblogout: F${c_white}} ${icon_shutdown} %{-u A F-}"
 sysmon_toggle="%{+u U${c_red} F${c_white} T2} ${icon_circle} %{T- U- -u}"
 
 #if [[ "$(cat $(dirname $0)/system_monitor)" == "on" ]]; then
@@ -27,14 +27,14 @@ while read -r line ; do
       fi
       
       if [[ "$(cat $(dirname $0)/system_monitor)" == "on" ]]; then
-        cpu="%{+u U${c_lightgray} T4 F${c_white}} ${icon_cpu}%{F-} %{F${cpu_color} T1}$(printf '%+3s' $sys_arr[(w)1]% {F-}%) %{-u U-}${stab}"
+        cpu="%{+u U${c_graygreen} T4 F${c_white}} ${icon_cpu}%{F-} %{F${cpu_color} T1}$(printf '%+3s' $sys_arr[(w)1]% {F-}%) %{-u U-}${stab}"
       else
         cpu=""
       fi
 
       # mem
       if [[ "$(cat $(dirname $0)/system_monitor)" == "on" ]]; then
-        mem="%{+u U${c_graygreen} T4 F${c_white}} ${icon_memory}%{F-} %{T1}$(printf '%+5s' $sys_arr[(w)2]) %{-u U-}${stab}"
+        mem="%{+u U${c_orange} T4 F${c_white}} ${icon_memory}%{F-} %{T1}$(printf '%+5s' $sys_arr[(w)2]) %{-u U-}${stab}"
       else
         mem=""
       fi
@@ -42,14 +42,14 @@ while read -r line ; do
       #bat
       if [[ "$sys_arr[(w)12]" == "charged" ]]; then
           bat_icon="%{F${c_green}}%{T2}${icon_acon}%{F-}"
-          bat="%{+u U${c_lightblue}} ${bat_icon}%{T1} %{-u U-}"
+          bat="%{+u U${c_purple}} ${bat_icon}%{T1} %{-u U-}"
       else
           if [[ "$sys_arr[(w)12]" == "charging" ]]; then
               bat_icon="%{F${c_red}}%{T2}${icon_acon}%{F-}"
-              bat="%{+u U${c_lightblue}} ${bat_icon}%{T1} $(printf '%+3s' $sys_arr[(w)3])% %{-u U-}"
+              bat="%{+u U${c_purple}} ${bat_icon}%{T1} $(printf '%+3s' $sys_arr[(w)3])% %{-u U-}"
           else
               bat_icon="%{F${c_red}}%{T2}${icon_acoff}%{F-}"
-              bat="%{+u U${c_lightblue}} ${bat_icon}%{T1} $(printf '%+3s' $sys_arr[(w)3])% %{-u U-}"
+              bat="%{+u U${c_purple}} ${bat_icon}%{T1} $(printf '%+3s' $sys_arr[(w)3])% %{-u U-}"
           fi
       fi
 
@@ -79,7 +79,7 @@ while read -r line ; do
       fi
 
       net_up_icon="%{F${c_white}}${icon_ul}%{F-}"
-      net="%{+u U${c_lightgreen} A1:'/home/daniel/.config/bspwm/startnm.sh':} ${net_icon}${stab}"
+      net="%{+u U${c_green} A1:'/home/daniel/.config/bspwm/startnm.sh':} ${net_icon}${stab}"
       if [[ "$(cat $(dirname $0)/system_monitor)" == "on" ]]; then
         net="${net}%{T2}${net_down_icon} %{T1}$(printf '%5s' $wland)  %{T2}${net_up_icon} %{T1}$(printf '%5s' $wlanu) %{-u U- A}"
       else
@@ -90,7 +90,7 @@ while read -r line ; do
       #weather
       weather_temp=$sys_arr[(w)6]
       if [[ "${weather_temp}" -lt 60 ]]; then
-         temp_col=${c_blue}
+          temp_col=${c_blue}
       else
          if [[ "${weather_temp}" -gt 79 ]]; then
              temp_col=${c_red}
@@ -99,7 +99,7 @@ while read -r line ; do
          fi
       fi
 
-      weather="%{+u U${c_mediumblue} F${temp_col} T1 A1:/home/daniel/.config/bspwm/startweather.zsh:} $weather_temp%{F${c_white}}F %{F- -u U- A}"
+      weather="%{+u U${c_graygreen} F${temp_col} T1 A1:/home/daniel/.config/bspwm/startweather.zsh:} $weather_temp%{F${c_white}}F %{F- -u U- A}"
 
       # date
       date="%{+u U${c_lightgray} T2 A1:/home/daniel/.config/bspwm/startcalendar.zsh: F${c_white}} ${icon_cal}%{F- T1} $sys_arr[(w)7] $sys_arr[(w)8] $sys_arr[(w)9] $sys_arr[(w)10] %{-u U- A}"
@@ -127,7 +127,7 @@ while read -r line ; do
     THR*)
       thermal_arr=(${line#???})
       if [[ "$(cat $(dirname $0)/system_monitor)" == "on" ]]; then
-        thermal="%{+u U${c_orange} T5} %{F$c_white}${icon_thermal}%{F-}%{T1}$thermal_arr %{-u U- F-}${stab}"
+        thermal="%{+u U${c_white} T5} %{F$c_white}${icon_thermal}%{F-}%{T1}$thermal_arr %{-u U- F-}${stab}"
       else
           thermal=""
       fi
@@ -203,7 +203,7 @@ while read -r line ; do
      
       
     TITLE*)
-      title="%{F${c_green}}${line#?????}"
+      title="%{F${c_green}}${line#?????}%{F-}"
       ;;
 
     LOCKS*)
@@ -219,9 +219,19 @@ while read -r line ; do
           lock_string="${lock_string}${stab}%{U${c_lightred} +u} SCROLL %{-u U-}"
       fi
       ;;
+
+    PLAYER*)
+      player_status=${line#??????}
+      if [[ ${player_status} == "Playing" ]]; then
+          status_string="%{A1:playerctl play-pause && echo 'PLAYERPaused' > '${panel_fifo}' && notify-send 'Playback paused':}${icon_pause}%{A}"
+      else
+          status_string="%{A1:playerctl play-pause && echo 'PLAYERPlaying' > '${panel_fifo}' && notify-send 'Playback resumed':}${icon_play}%{A}"
+      fi
+
+      player_string="%{U${c_blue} +u T2 F${c_white}} %{A1:playerctl previous && notify-send:}${icon_previous}%{A}  ${status_string}  %{A1:playerctl next && notify-send:}${icon_next}%{A} %{-u U-}"
       
   esac
 
   # And finally, output
-  printf "%s\n" "%{l}${wsp_output}${stab}${title}%{r} %{A2:zsh /home/daniel/.config/bspwm/toggle_sysmon.zsh:}${lock_string}${stab}%{A1:zsh /home/daniel/.config/bspwm/startksysguard.zsh:}${cpu}${thermal}${mem}%{A}${net}${stab}${brightness}${bat}${stab}${vol}${stab}${weather}${stab}${date}${stab}${time}${stab}${shutdown}${stab}%{A}"
+  printf "%s\n" "%{l}${wsp_output}${stab}${title}%{r} %{A2:zsh /home/daniel/.config/bspwm/toggle_sysmon.zsh:}${lock_string}${stab}%{A1:zsh /home/daniel/.config/bspwm/startksysguard.zsh:}${cpu}${thermal}${mem}%{A}${net}${stab}${brightness}${bat}${stab}${player_string}${stab}${vol}${stab}${weather}${stab}${date}${stab}${time}${stab}${shutdown}${stab}%{A}"
 done

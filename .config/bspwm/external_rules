@@ -2,6 +2,8 @@
 
 fwid=$(bspc query -N -n focused.automatic)
 
+#echo $2 >> /tmp/wm_class
+
 if [ -n "$fwid" ] ; then
     wattr wh $fwid | {
         read width height

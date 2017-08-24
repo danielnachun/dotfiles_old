@@ -1,35 +1,48 @@
 #! /usr/bin/bash
 
+#Kill comp
 if [ -e $BSPWM_STATE ]; then
     bspc wm -l "$BSPWM_STATE"
-    pkill -f "sh.*lemonbar.zsh"
-    pkill -f "sh.*lemonbar.sh"
-    pkill -f "sh.*lemonbar_parser.zsh"
-    pkill -f "conky.*lemonbar_conky"
-    pkill lemonbar
     pkill sxhkd
-    killall compton
-    killall xfce4-panel
-    killall xfce4-notifyd
-    killall nm-applet
-    killall blueman-applet
-    killall latte-dock
-    killall xdotool
-    killall caffeine
-    killall krunner
+    sxhkd &
     rm "$BSPWM_STATE"
+
+    #killall xdotool
+    #killall caffeine
+    #killall nm-applet
+    #killall blueman-applet
+    #killall krunner
+    #killall conky
+    #killall xfce4-notifyd
+    #killall latte-dock
+    #killall compton
+    #killall xfce4-panel
+
+    #pkill -f "sh.*lemonbar.zsh"
+    #pkill -f "sh.*lemonbar.sh"
+    #pkill -f "sh.*lemonbar_parser.zsh"
+    #pkill -f "conky.*lemonbar_conky"
+    #pkill lemonbar
+else
+    sxhkd &
+    xfce4-panel -d &
+    sleep 1
+    panel_id=$(xdo id -a "xfce4-panel" | sort | sed '2q;d')
+    xdo above -t "$(xdo id -N Bspwm -n root)" "$panel_id"
+    sleep 2
+    bspc config top_padding 28
+
+    #kdeinit5
+    #compton -bC
+    #xsetroot -solid black -cursor_name left_ptr
+    #nitrogen --restore
+    #latte-dock &
+
+    #conky -c /home/daniel/.config/bspwm/cpu_conky > /tmp/cpu &
+    #conky -c /home/daniel/.config/bspwm/mem_conky > /tmp/mem &
+    #bspc config bottom_padding 50
+    #zsh ~/.config/bspwm/lemonbar.zsh &
 fi
-
-kdeinit5
-sxhkd &
-
-compton -bC
-/usr/lib/xfce4/notifyd/xfce4-notifyd &
-latte-dock &
-
-xsetroot -solid black -cursor_name left_ptr
-nitrogen --restore
-env KDE_FULL_SESSION=true /usr/bin/krunner &
 
 #Manage hooks
 #Track windows for "tagging"
@@ -52,7 +65,6 @@ bspc config focused_border_color '#4A90D9'
 
 #Padding
 bspc config window_gap 20
-#bspc config bottom_padding 40
 
 #Mouse
 bspc config focus_follows_pointer true
@@ -72,7 +84,6 @@ bspc config merge_overlapping_monitors true
 bspc rule -a Kcalc state=floating
 bspc rule -a kde5-nm-connection-editor state=floating
 bspc rule -a krunner manage=on state=floating border=off layer=above
-#bspc rule -a Xfce4-panel manage=on state=floating border=off layer=above
 bspc rule -a albert manage=on state=floating border=off layer=above
 bspc rule -a Cairo-dock manage=off state=floating border=off layer=above
 bspc rule -a Oblogout state=fullscreen
@@ -80,21 +91,17 @@ bspc rule -a Org.gnome.Weather.Application state=floating
 bspc rule -a Pavucontrol state=floating
 bspc rule -a R_x11 state=floating
 bspc rule -a Synapse border=off
-#bspc rule -a ksysguard state=floating
+bspc rule -a Xfce4-panel state=floating 
+bspc rule -a ksysguard state=floating
 
 #Tiled rules
-bspc rule -a *:libreoffice state=tiled
+bspc rule -a Soffice state=tiled
+bspc rule -a libreoffice-writer state=tiled
+bspc rule -a libreoffice-calc state=tiled
+bspc rule -a libreoffice-impress state=tiled
 bspc rule -a *:zathura state=tiled
 
 bspc config external_rules_command "/home/daniel/.config/bspwm/external_rules"
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 
-xfce4-panel -d &
-nm-applet &
-caffeine &
-blueman-applet &
-sleep 1
-panel_id=$(xdo id -a "xfce4-panel" | sort | sed '2q;d')
-xdo above -t "$(xdo id -N Bspwm -n root)" "$panel_id"
-#zsh ~/.config/bspwm/lemonbar.zsh &

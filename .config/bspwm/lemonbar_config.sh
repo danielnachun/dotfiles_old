@@ -4,7 +4,7 @@ stab=' '
 geometry="x26"
 fontsize="10"
 panel_fifo="/tmp/lemonbar_${USER}"
-monofont="monospace-${fontsize}"
+monofont="MesloLGM Nerd Font-${fontsize}"
 sansfont="Noto Sans-${fontsize}"
 iconfont="FontAwesome-${fontsize}"
 iconfont2="EightyShades-${fontsize}"
@@ -58,6 +58,10 @@ icon_plus=$(printf "\uf067")
 icon_minus=$(printf "\uf068")
 icon_circle=$(printf "\uf10c")
 icon_dot=$(printf "\uf111")
+icon_previous=$(printf "\uf049")
+icon_next=$(printf "\uf050")
+icon_play=$(printf "\uf04b")
+icon_pause=$(printf "\uf04c")
 
 #Icons
 icon_thermal=$(printf "\uf3b6")

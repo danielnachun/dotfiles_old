@@ -126,7 +126,7 @@ alt + shift + d
 
 #Launch krunner
 alt + p
-    krunner
+    krunner && /home/daniel/.config/bspwm/blank_title.sh
 
 #Create rofi menu with windows listed to go to
     #rofi -show window
@@ -198,8 +198,8 @@ alt + shift + {_, ctrl + } s
     {google-chrome-stable --profile-directory='Profile 4' --proxy-pac-url=proxy.ucla.edu/cgi/proxy --new-window https://paperpile.com/app; sleep 1; tail -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/paperpile, bspc node -f $(cat /tmp/paperpile)}
 
 #Google Drive
-#alt + shift + {_, ctrl + } v
-    #{google-chrome-stable --profile-directory='Profile 4' --proxy-pac-url=proxy.ucla.edu/cgi/proxy --app=https://docs.google.com; sleep 1; tail -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/chrome_ucla, bspc node -f $(cat /tmp/chrome_ucla)}
+alt + shift + {_, ctrl + } v
+    {google-chrome-stable --profile-directory='Profile 4' --proxy-pac-url=proxy.ucla.edu/cgi/proxy --app=https://docs.google.com; sleep 1; tail -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/chrome_ucla, bspc node -f $(cat /tmp/chrome_ucla)}
 
 alt + shift + ctrl +  v
     bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --name "Google Docs"))")
@@ -266,6 +266,10 @@ alt + backslash
 #Disable lwin compose key
 alt + shift + backslash
     setxkbmap -option
+
+#/home/daniel/.config/bspwm/notify_player_change.zsh && playerctl play-pause && echo $(playerctl status) > /tmp/lemonbar_daniel
+XF86AudioPlay
+    /home/daniel/.config/bspwm/player_change.zsh
 
 XF86AudioRaiseVolume
     amixer set Master 5%+ && /home/daniel/.config/bspwm/get_vol.sh

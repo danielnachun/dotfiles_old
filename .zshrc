@@ -71,6 +71,7 @@ export CCACHE_PATH="/usr/bin"
 export TERM=konsole-256color
 export SPROMPT='zsh: correct %F{1}%R%f to %F{2}%r%f [nyae]? '
 export ENHANCD_COMMAND=ecd
+#export MANPAGER="nvim -c 'set ft=man' -"
 #export PATH="/usr/lib/colorgcc/bin/:$PATH" 
 
 #Base16
@@ -249,4 +250,5 @@ if [ ! $(pgrep powerline-daemo) ]; then
 fi
 . /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 
-
+#SSH
+eval $(keychain --eval --quiet ~/.ssh/id_hoffman2 ~/.ssh/id_orion ~/.ssh/id_rsa_icnn ~/.ssh/coppolab ~/.ssh/mistachie777)
