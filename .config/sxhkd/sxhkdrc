@@ -156,7 +156,7 @@ super + {_, alt + } b
     #{google-chrome-stable --profile-directory=Default --app=https://inbox.google.com, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --name "Inbox"))")}
 #Inbox by Gmail
 alt + {_, ctrl + } e
-    {wavebox, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --limit 1 --classname wavebox))")}
+    {wavebox, bspc node -f $(echo "0x$(printf '%08x\n' $(xdotool search --classname wavebox | head -n 5 | tail -n 1))")}
 
 #Open Hangouts
     #google-chrome-stable '--profile-directory=Profile 4' --app-id=knipolnnllmklapflnccelgolnpehhpl

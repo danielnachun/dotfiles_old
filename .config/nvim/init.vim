@@ -102,17 +102,18 @@ Plug 'zhaocai/goldenview.vim' "split buffers
 "Plug 'vim-scripts/TaskList.vim'
 
 "Colorschemes
+Plug 'liuchengxu/space-vim-dark'
+Plug 'lifepillar/vim-solarized8'
+"Plug 'joshdick/onedark.vim'
 "Plug 'dracula/vim'
-Plug 'chriskempson/base16-vim'
-Plug 'joshdick/onedark.vim'
-Plug 'morhetz/gruvbox'
-Plug 'nanotech/jellybeans.vim'
-Plug 'dikiaap/minimalist'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'arcticicestudio/nord-vim'
+"Plug 'chriskempson/base16-vim'
+"Plug 'morhetz/gruvbox'
+"Plug 'nanotech/jellybeans.vim'
+"Plug 'dikiaap/minimalist'
+"Plug 'NLKNguyen/papercolor-theme'
+"Plug 'arcticicestudio/nord-vim'
 "Plug 'tomasr/dracula'
 "Plug 'rakr/vim-one'
-"Plug 'altercation/vim-colors-solarized'
 "Plug 'vim-scripts/Color-Sampler-Pack'
 "Plug 'thinca/vim-guicolorscheme'
 
@@ -280,7 +281,8 @@ map <leader>a <Esc>:FzfAg!
 "Airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='onedark'
+"let g:arline_solarized_bg='dark'
+let g:airline_theme='violet'
 
 "Cmdline
 let cmdline_app = {}
@@ -432,7 +434,7 @@ let g:vimtex_compiler_latexmk = {
     \}
 
 "set background=dark
-colorscheme onedark
+colorscheme space-vim-dark
 
 "Color overrides
 "hi Visual ctermfg=0 ctermbg=222

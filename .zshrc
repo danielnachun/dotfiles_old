@@ -71,7 +71,8 @@ export CCACHE_PATH="/usr/bin"
 export TERM=konsole-256color
 export SPROMPT='zsh: correct %F{1}%R%f to %F{2}%r%f [nyae]? '
 export ENHANCD_COMMAND=ecd
-#export MANPAGER="nvim -c 'set ft=man' -"
+export R_MAX_NUM_DLLS=500
+export MANPAGER="nvim -c 'set ft=man' -"
 #export PATH="/usr/lib/colorgcc/bin/:$PATH" 
 
 #Base16
@@ -161,7 +162,7 @@ zplug "plugins/virtualenv", from:oh-my-zsh, lazy:true
 #zplug, from:oh-my-zsh "plugins/virtualenvwrapper"
 
 #Miscellaneous
-#zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+zplug "bhilburn/powerlevel9k"
 zplug "djui/alias-tips"
 zplug "hchbaw/zce.zsh"
 zplug "jimmijj/zsh-syntax-highlighting"
@@ -171,7 +172,7 @@ zplug "plugins/catimg", from:oh-my-zsh, lazy:true
 zplug "plugins/taskwarrior", from:oh-my-zsh, lazy:true
 zplug "plugins/themes", from:oh-my-zsh, lazy:true
 zplug "plugins/kate", from:oh-my-zsh 
-zplug "plugins/vi-mode", from:oh-my-zsh 
+#zplug "plugins/vi-mode", from:oh-my-zsh 
 zplug "plugins/zsh_reload", from:oh-my-zsh 
 zplug "psprint/zsnapshot"
 zplug "psprint/ztrace"
@@ -206,11 +207,12 @@ fi
 zplug load 
 
 #Autosuggest
-bindkey '^f' vi-forward-word
+bindkey '^f' forward-word
+bindkey '^b' backward-word
 bindkey '^e' end-of-line
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
-
+ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 #Fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -224,31 +226,34 @@ alias pml="pm list"
 # end PM
 
 #Powerlevel 
-#POWERLEVEL9K_MODE='nerdfont-complete'
-#POWERLEVEL9K_CONTEXT_BOLD=true
-#POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="black"
-#POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="green"
-#POWERLEVEL9K_DIR_BOLD=true
-#POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-#POWERLEVEL9K_SHORTEN_DELIMITER=""
-#POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-#POWERLEVEL9K_BACKGROUND_JOBS_BOLD=true
-#POWERLEVEL9K_ROOT_INDICATOR_BOLD=true
-#POWERLEVEL9K_HISTORY_BOLD=true
-#POWERLEVEL9K_VCS_BOLD=true
+POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL9K_CONTEXT_BOLD=true
+POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="black"
+POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="035"
+POWERLEVEL9K_DIR_BOLD=true
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DELIMITER=""
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+POWERLEVEL9K_BACKGROUND_JOBS_BOLD=true
+POWERLEVEL9K_ROOT_INDICATOR_BOLD=true
+POWERLEVEL9K_HISTORY_BOLD=true
+POWERLEVEL9K_VCS_BOLD=true
 
-#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
-#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs vcs)
 
 
 #Prezto
 #zstyle ':prezto:module:editor' key-bindings 'vi'
 
+#Powerlevel
+source ".zplug/repos/bhilburn/powerlevel9k/powerlevel9k.zsh-theme"
+
 #Powerline
-if [ ! $(pgrep powerline-daemo) ]; then
-    powerline-daemon
-fi
-. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
+#if [ ! $(pgrep powerline-daemo) ]; then
+    #powerline-daemon
+#fi
+#. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 
 #SSH
 eval $(keychain --eval --quiet ~/.ssh/id_hoffman2 ~/.ssh/id_orion ~/.ssh/id_rsa_icnn ~/.ssh/coppolab ~/.ssh/mistachie777)

@@ -25,12 +25,7 @@ if [ -e $BSPWM_STATE ]; then
     #pkill lemonbar
 else
     sxhkd &
-    xfce4-panel -d &
-    sleep 1
-    panel_id=$(xdo id -a "xfce4-panel" | sort | sed '2q;d')
-    xdo above -t "$(xdo id -N Bspwm -n root)" "$panel_id"
-    sleep 2
-    bspc config top_padding 28
+    /home/daniel/.config/bspwm/start_xfce_panel.zsh
 
     #kdeinit5
     #compton -bC
