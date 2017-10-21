@@ -102,7 +102,7 @@ Plug 'zhaocai/goldenview.vim' "split buffers
 "Plug 'vim-scripts/TaskList.vim'
 
 "Colorschemes
-Plug 'liuchengxu/space-vim-dark'
+"Plug 'liuchengxu/space-vim-dark'
 Plug 'lifepillar/vim-solarized8'
 "Plug 'joshdick/onedark.vim'
 "Plug 'dracula/vim'
@@ -282,7 +282,7 @@ map <leader>a <Esc>:FzfAg!
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 "let g:arline_solarized_bg='dark'
-let g:airline_theme='violet'
+let g:airline_theme='solarized'
 
 "Cmdline
 let cmdline_app = {}
@@ -434,7 +434,7 @@ let g:vimtex_compiler_latexmk = {
     \}
 
 "set background=dark
-colorscheme space-vim-dark
+colorscheme solarized8_light
 
 "Color overrides
 "hi Visual ctermfg=0 ctermbg=222
