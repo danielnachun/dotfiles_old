@@ -102,15 +102,16 @@ Plug 'zhaocai/goldenview.vim' "split buffers
 "Plug 'vim-scripts/TaskList.vim'
 
 "Colorschemes
-"Plug 'liuchengxu/space-vim-dark'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'lifepillar/vim-solarized8'
+Plug 'nightsense/seabird'
+"Plug 'liuchengxu/space-vim-dark'
 "Plug 'joshdick/onedark.vim'
 "Plug 'dracula/vim'
 "Plug 'chriskempson/base16-vim'
 "Plug 'morhetz/gruvbox'
 "Plug 'nanotech/jellybeans.vim'
 "Plug 'dikiaap/minimalist'
-"Plug 'NLKNguyen/papercolor-theme'
 "Plug 'arcticicestudio/nord-vim'
 "Plug 'tomasr/dracula'
 "Plug 'rakr/vim-one'
@@ -433,8 +434,8 @@ let g:vimtex_compiler_latexmk = {
     \ 'backend' : 'nvim',
     \}
 
-"set background=dark
-colorscheme solarized8_light
+set background=light
+colorscheme solarized8_light_high
 
 "Color overrides
 "hi Visual ctermfg=0 ctermbg=222

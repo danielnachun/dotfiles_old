@@ -15,8 +15,8 @@ if [ -e $BSPWM_STATE ]; then
     #killall conky
     #killall xfce4-notifyd
     #killall compton
-    killall latte-dock
-    killall xfce4-panel
+    #killall latte-dock
+    #killall xfce4-panel
 
     #pkill -f "sh.*lemonbar.zsh"
     #pkill -f "sh.*lemonbar.sh"
@@ -55,8 +55,8 @@ bspc subscribe node_manage > /tmp/managed &
 
 #Borders
 bspc config border_width 2
-bspc config normal_border_color '#000000'
-bspc config focused_border_color '#4A90D9'
+bspc config normal_border_color '#31363b'
+bspc config focused_border_color '#3daee9'
 
 #Padding
 bspc config window_gap 20
