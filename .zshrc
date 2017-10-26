@@ -180,6 +180,7 @@ zplug "Tarrasch/zsh-functional"
 zplug "vifon/deer", lazy:true
 zplug "willghatch/zsh-snippets"
 zplug "zsh-users/zaw"
+zplug "joel-porquet/zsh-dircolors-solarized"
 #zplug "Valiev/almostontop"
 #zplug, from:oh-my-zsh "plugins/safe-paste"
 #zplug oh-my-zsh "plugins/web-search"
@@ -213,6 +214,9 @@ bindkey '^e' end-of-line
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
 ZSH_AUTOSUGGEST_USE_ASYNC=true
+
+#Dircolors
+setupsolarized dircolors.ansi-light
 
 #Fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
