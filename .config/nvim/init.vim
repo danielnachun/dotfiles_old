@@ -106,7 +106,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'lifepillar/vim-solarized8'
 Plug 'nightsense/seabird'
 "Plug 'liuchengxu/space-vim-dark'
-"Plug 'joshdick/onedark.vim'
+Plug 'joshdick/onedark.vim'
 "Plug 'dracula/vim'
 "Plug 'chriskempson/base16-vim'
 "Plug 'morhetz/gruvbox'
@@ -283,7 +283,7 @@ map <leader>a <Esc>:FzfAg!
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 "let g:arline_solarized_bg='dark'
-let g:airline_theme='solarized'
+let g:airline_theme='onedark'
 
 "Cmdline
 let cmdline_app = {}
@@ -434,8 +434,8 @@ let g:vimtex_compiler_latexmk = {
     \ 'backend' : 'nvim',
     \}
 
-set background=light
-colorscheme solarized8_light_high
+"set background=dark
+colorscheme onedark
 
 "Color overrides
 "hi Visual ctermfg=0 ctermbg=222
