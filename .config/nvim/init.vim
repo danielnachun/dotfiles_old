@@ -102,10 +102,10 @@ Plug 'zhaocai/goldenview.vim' "split buffers
 "Plug 'vim-scripts/TaskList.vim'
 
 "Colorschemes
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'lifepillar/vim-solarized8'
-Plug 'nightsense/seabird'
-"Plug 'liuchengxu/space-vim-dark'
+"Plug 'NLKNguyen/papercolor-theme'
+"Plug 'lifepillar/vim-solarized8'
+"Plug 'nightsense/seabird'
+Plug 'liuchengxu/space-vim-dark'
 Plug 'joshdick/onedark.vim'
 "Plug 'dracula/vim'
 "Plug 'chriskempson/base16-vim'
