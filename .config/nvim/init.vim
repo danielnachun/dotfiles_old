@@ -284,7 +284,7 @@ map <leader>a <Esc>:FzfAg!
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 "let g:arline_solarized_bg='dark'
-let g:airline_theme='violet'
+let g:airline_theme='onedark'
 
 "Cmdline
 let cmdline_app = {}
@@ -442,7 +442,7 @@ let g:vimtex_compiler_latexmk = {
     \}
 
 "set background=dark
-colorscheme space-vim-dark
+colorscheme onedark 
 
 "Color overrides
 "hi Visual ctermfg=0 ctermbg=222
