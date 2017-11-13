@@ -107,6 +107,7 @@ Plug 'zhaocai/goldenview.vim' "split buffers
 "Plug 'nightsense/seabird'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'joshdick/onedark.vim'
+"Plug 'fneu/breezy'
 "Plug 'dracula/vim'
 "Plug 'chriskempson/base16-vim'
 "Plug 'morhetz/gruvbox'
@@ -283,7 +284,7 @@ map <leader>a <Esc>:FzfAg!
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 "let g:arline_solarized_bg='dark'
-let g:airline_theme='onedark'
+let g:airline_theme='violet'
 
 "Cmdline
 let cmdline_app = {}
@@ -339,6 +340,12 @@ let g:jedi#completions_enabled = 0
 
 "Multiple Cursor
 "let g:multi_cursor_quit_key='<Shift><Esc>'
+function Multiple_cursors_before()
+  let g:deoplete#disable_auto_complete = 1
+endfunction
+function Multiple_cursors_after()
+  let g:deoplete#disable_auto_complete = 0
+endfunction
 
 "Neoterm
 let g:neoterm_repl_python = "ipython"
@@ -435,7 +442,7 @@ let g:vimtex_compiler_latexmk = {
     \}
 
 "set background=dark
-colorscheme onedark
+colorscheme space-vim-dark
 
 "Color overrides
 "hi Visual ctermfg=0 ctermbg=222
