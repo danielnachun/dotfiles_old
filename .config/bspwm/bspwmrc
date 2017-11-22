@@ -3,9 +3,11 @@
 #Kill comp
 if [ -e $BSPWM_STATE ]; then
     bspc wm -l "$BSPWM_STATE"
+    rm "$BSPWM_STATE"
     pkill sxhkd
     sxhkd &
-    rm "$BSPWM_STATE"
+    kquitapp5 plasmashell
+    plasmashell &
 
     #killall xdotool
     #killall caffeine
@@ -14,7 +16,8 @@ if [ -e $BSPWM_STATE ]; then
     #killall krunner
     #killall conky
     #killall xfce4-notifyd
-    #killall compton
+    killall compton
+    compton -b
     #killall latte-dock
     #killall xfce4-panel
 
@@ -25,11 +28,12 @@ if [ -e $BSPWM_STATE ]; then
     #pkill lemonbar
 else
     sxhkd &
-    /home/daniel/.config/bspwm/start_xfce_panel.zsh
+    compton -b
+    #/home/daniel/.config/bspwm/start_xfce_panel.zsh
     #latte-dock &
 
     #kdeinit5
-    #compton -bC
+    #if [ pgrep -c plasmashell ]; then plasmashell &
     #xsetroot -solid black -cursor_name left_ptr
     #nitrogen --restore
 
@@ -61,6 +65,7 @@ bspc config focused_border_color '#3daee9'
 #Padding
 bspc config window_gap 20
 #bspc config bottom_padding 54
+bspc config top_padding 35
 
 #Mouse
 bspc config focus_follows_pointer true
@@ -79,7 +84,8 @@ bspc config merge_overlapping_monitors true
 #Floating rules
 bspc rule -a Kcalc state=floating
 bspc rule -a kde5-nm-connection-editor state=floating
-bspc rule -a krunner manage=on state=floating border=off layer=above
+bspc rule -a krunner manage=on state=floating border=off layer=above 
+#bspc rule -a krunner manage=off
 bspc rule -a albert manage=on state=floating border=off layer=above
 bspc rule -a Cairo-dock manage=off state=floating border=off layer=above
 bspc rule -a Oblogout state=fullscreen
@@ -89,6 +95,7 @@ bspc rule -a R_x11 state=floating
 bspc rule -a Synapse border=off
 bspc rule -a Xfce4-panel state=floating 
 bspc rule -a ksysguard state=floating
+bspc rule -a plasmashell state=floating border=off layer=normal 
 
 #Tiled rules
 bspc rule -a Soffice state=tiled

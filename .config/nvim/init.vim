@@ -45,10 +45,13 @@ set cursorline
 "Set buffer autocmds
 autocmd BufWinEnter,WinEnter term://* startinsert 
 autocmd BufWinEnter,WinEnter term://* :set cursorline 
+autocmd BufWinEnter,WinEnter term://* :set nonumber 
 autocmd BufLeave term://* stopinsert
 autocmd BufLeave term://* :set nocursorline
+"autocmd BufLeave term://* :set number
 autocmd BufEnter,WinEnter * silent! :lcd%:p:h
 autocmd TermOpen * :resize 18
+autocmd TermOpen * :set nonumber
 
 "Navigate buffers
 noremap <C-J> <C-W>j

@@ -109,12 +109,13 @@ alt + ctrl + k
     if [[ -n $(bspc query -N -n north) ]]; then bspc node -z top 0 -20; else bspc node -z bottom 0 -20; fi
 
 #Lock screen
-super + l
-    xautolock -locknow
+#super + l
+    #xautolock -locknow
 
 #Log out window
-alt + x 
-    oblogout
+    #oblogout
+#alt + x 
+    #/usr/lib/ksmserver-logout-greeter --shutdown-allowed
 
 #Connect to external display
 alt + d
@@ -271,20 +272,20 @@ alt + shift + backslash
 XF86AudioPlay
     /home/daniel/.config/bspwm/player_change.zsh
 
-XF86AudioRaiseVolume
-    amixer set Master 5%+ && /home/daniel/.config/bspwm/get_vol.sh
+#XF86AudioRaiseVolume
+    #amixer set Master 5%+ && /home/daniel/.config/bspwm/get_vol.sh
     
-XF86AudioLowerVolume
-    amixer set Master 5%- && /home/daniel/.config/bspwm/get_vol.sh
+#XF86AudioLowerVolume
+    #amixer set Master 5%- && /home/daniel/.config/bspwm/get_vol.sh
 
-XF86AudioMute
-    amixer set Master toggle && /home/daniel/.config/bspwm/get_vol.sh
+#XF86AudioMute
+    #amixer set Master toggle && /home/daniel/.config/bspwm/get_vol.sh
 
-XF86MonBrightnessUp
-    light -A 5 && printf "BRI%.0f\n" $(light -G) > /tmp/lemonbar_daniel &
+#XF86MonBrightnessUp
+    #light -A 5 && printf "BRI%.0f\n" $(light -G) > /tmp/lemonbar_daniel &
 
-XF86MonBrightnessDown
-    light -U 5 && printf "BRI%.0f\n" $(light -G) > /tmp/lemonbar_daniel &
+#XF86MonBrightnessDown
+    #light -U 5 && printf "BRI%.0f\n" $(light -G) > /tmp/lemonbar_daniel &
 
 alt + {_,shift + }y
     {/home/daniel/.config/bspwm/wifion.sh,/home/daniel/.config/bspwm/wifioff.sh}
