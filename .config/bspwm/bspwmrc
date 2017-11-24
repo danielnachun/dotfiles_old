@@ -108,3 +108,5 @@ bspc config external_rules_command "/home/daniel/.config/bspwm/external_rules"
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 
+sleep 1
+xdo above -t "$(xdo id -N Bspwm -n root)" "$(xdo id -N plasmashell | head -n 3 | tail -n 1)"

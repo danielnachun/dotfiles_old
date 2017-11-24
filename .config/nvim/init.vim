@@ -105,8 +105,8 @@ Plug 'zhaocai/goldenview.vim' "split buffers
 "Plug 'vim-scripts/TaskList.vim'
 
 "Colorschemes
-"Plug 'NLKNguyen/papercolor-theme'
-"Plug 'lifepillar/vim-solarized8'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'lifepillar/vim-solarized8'
 "Plug 'nightsense/seabird'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'joshdick/onedark.vim'
@@ -445,7 +445,7 @@ let g:vimtex_compiler_latexmk = {
     \}
 
 "set background=dark
-colorscheme onedark 
+colorscheme onedark
 
 "Color overrides
 "hi Visual ctermfg=0 ctermbg=222

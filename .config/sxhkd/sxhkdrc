@@ -149,7 +149,7 @@ alt + shift + g
 #Launch apps
 #Open Chrome
 alt + {_, ctrl + } b
-    {google-chrome-stable --profile-directory=Default --proxy-pac-url=http://proxy.ucla.edu/cgi/proxy; sleep 1; tail -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/chrome_daniel, bspc node -f $(cat /tmp/chrome_daniel)}
+    {google-chrome-stable --profile-directory=Default; sleep 1; tail -n 1 /tmp/managed | cut -d ' ' -f 4 > /tmp/chrome_daniel, bspc node -f $(cat /tmp/chrome_daniel)}
 
 super + {_, alt + } b
     {chromix-too focus $(cut -d ' ' -f 1 <<< $(rofi -dmenu <<< $(chromix-too ls | cut -d ' ' -f 2-))); bspc node -f $(cat /tmp/chrome_daniel), chromix-too open $(rofi -dmenu <<< $(chromix-too raw chrome.bookmarks.getTree | jq -r '.. | .url?' | ag -v null)); bspc node -f $(cat /tmp/chrome_daniel)}
