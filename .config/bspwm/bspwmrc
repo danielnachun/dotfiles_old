@@ -95,7 +95,9 @@ bspc rule -a R_x11 state=floating
 bspc rule -a Synapse border=off
 bspc rule -a Xfce4-panel state=floating 
 bspc rule -a ksysguard state=floating
-bspc rule -a plasmashell state=floating border=off layer=normal 
+#bspc rule -a plasmashell state=floating border=off layer=normal 
+bspc rule -a plasmashell state=floating border=off layer=normal focus=off
+#bspc rule -a plasmashell manage=off
 
 #Tiled rules
 bspc rule -a Soffice state=tiled
