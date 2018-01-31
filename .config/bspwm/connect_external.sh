@@ -1,5 +1,4 @@
 #!/usr/bin/zsh
-export GTK2_RC_FILES="$HOME/gtkrc-2.0"
 
 IN="eDP-1"
 EXT="HDMI-2"
@@ -27,4 +26,4 @@ else
     fi
 fi
 
-bspc wm -d > "$BSPWM_STATE" && bspc quit
+#bspc wm -d > "$BSPWM_STATE" && bspc quit

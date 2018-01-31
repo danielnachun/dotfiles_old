@@ -127,30 +127,35 @@ Plug 'scrooloose/nerdcommenter' "shortcuts to comment out
 "Plug 'tpope/vim-commentary'
 
 "Completion
-Plug 'Shougo/deoplete.nvim' "completion engine
+"Plug 'Shougo/deoplete.nvim' "completion engine
 Plug 'Shougo/neoinclude.vim' "completion engine
 Plug 'Shougo/neco-syntax' "vimscript completion
 Plug 'Shougo/neco-vim' "vimscript completion
 
-Plug 'zchee/deoplete-clang' "C/C++/ObjC completion
-Plug 'zchee/deoplete-go' "Go completion
-Plug 'zchee/deoplete-jedi' "Python completion
-Plug 'zchee/deoplete-zsh' "zsh completion
+"Plug 'zchee/deoplete-clang' "C/C++/ObjC completion
+"Plug 'zchee/deoplete-go' "Go completion
+"Plug 'zchee/deoplete-jedi' "Python completion
+"Plug 'zchee/deoplete-zsh' "zsh completion
 
 Plug 'davidhalter/jedi-vim' "python completion
 
-Plug 'landaire/deoplete-d' "D completion
+"Plug 'landaire/deoplete-d' "D completion
 "Plug 'landaire/deoplete-swift' "Swift completion
 
-Plug 'sebastianmarkow/deoplete-rust' "Rust completion
+"Plug 'sebastianmarkow/deoplete-rust' "Rust completion
 
 "Plug 'carlitux/deoplete-ternjs' "Javascript completion
 "Plug 'clojure-vim/async-clj-omni' "Clojure completion
 
-Plug 'SevereOverfl0w/deoplete-github' "Github completion
+"Plug 'SevereOverfl0w/deoplete-github' "Github completion
 
 "Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') } "replace with deoplete
 "Plug 'vim-scripts/OmniCppComplete' "c++ completion
+
+Plug 'roxma/nvim-completion-manager' "completion engine
+Plug 'gaalcaras/ncm-R' "r completion
+Plug 'roxma/ncm-clang'
+Plug 'roxma/nvim-cm-racer'
 
 "File Management
 Plug 'scrooloose/nerdtree' "Open other files
@@ -287,7 +292,7 @@ map <leader>a <Esc>:FzfAg!
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 "let g:arline_solarized_bg='dark'
-let g:airline_theme='onedark'
+let g:airline_theme='solarized'
 
 "Cmdline
 let cmdline_app = {}
@@ -445,7 +450,7 @@ let g:vimtex_compiler_latexmk = {
     \}
 
 "set background=dark
-colorscheme onedark
+colorscheme solarized8_high
 
 "Color overrides
 "hi Visual ctermfg=0 ctermbg=222

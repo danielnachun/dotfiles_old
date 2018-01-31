@@ -28,26 +28,43 @@ alias lsi='LS_COLORS=$(python2 $HOME/.local/bin/ls_colors_generator) ls-i --colo
 alias diri='LS_COLORS=$(python2 $HOME/.local/bin/ls_colors_generator) dir-i --color=auto'
 alias vdiri='LS_COLORS=$(python2 $HOME/.local/bin/ls_colors_generator) vdir-i --color=auto'
 
-alias palf='pacaur -Ql'
+#alias palf='pacaur -Ql'
+alias paclf='pacman -Ql'
 alias pacman-disowned-files="comm -23 <(sudo find / \( -path '/dev' -o -path '/sys' -o -path '/run' -o -path '/tmp' -o -path '/mnt' -o -path '/srv' -o -path '/proc' -o -path '/boot' -o -path '/home' -o -path '/root' -o -path '/media' -o -path '/var/lib/pacman' -o -path '/var/cache/pacman' \) -prune -o -type f -print | sort -u) <(pacman -Qlq | sort -u)"
 alias pacman-disowned-dirs="comm -23 <(sudo find / \( -path '/dev' -o -path '/sys' -o -path '/run' -o -path '/tmp' -o -path '/mnt' -o -path '/srv' -o -path '/proc' -o -path '/boot' -o -path '/home' -o -path '/root' -o -path '/media' -o -path '/var/lib/pacman' -o -path '/var/cache/pacman' \) -prune -o -type d -print | sed 's/\([^/]\)$/\1\//' | sort -u) <(pacman -Qlq | sort -u)"
 
 alias svim='sudo -E nvim'
 alias vim="nvim"
 
-alias prconf='pacaur -C'        # Fix all configuration files with vimdiff
-# Pacman - https://wiki.archlinux.org/index.php/Pacman_Tips
-alias prupg='pacaur -Syu'        # Synchronize with repositories before upgrading packages (AUR packages too) that are out of date on the local system.
-alias prin='pacaur -S'           # Install specific package(s) from the repositories
-alias prins='pacaur -U'          # Install specific package not from the repositories but from a file
-alias prre='pacaur -R'           # Remove the specified package(s), retaining its configuration(s) and required dependencies
-alias prrem='pacaur -Rns'        # Remove the specified package(s), its configuration(s) and unneeded dependencies
-alias prrep='pacaur -Si'         # Display information about a given package in the repositories
-alias prreps='pacaur -Ss'        # Search for package(s) in the repositories
-alias prloc='pacaur -Qi'         # Display information about a given package in the local database
-alias prlocs='pacaur -Qs'        # Search for package(s) in the local database
-alias prlst='pacaur -Qe'         # List installed packages, even those installed from AUR (they're tagged as "local")
-alias prorph='pacaur -Qtd'       # Remove orphans using yaourt
+alias pacconf='pacman -C'        # Fix all configuration files with vimdiff
+alias pacupg='pacman -Syu'        # Synchronize with repositories before upgrading packages (AUR packages too) that are out of date on the local system.
+alias pacin='pacman -S'           # Install specific package(s) from the repositories
+alias pacins='pacman -U'          # Install specific package not from the repositories but from a file
+alias pacre='pacman -R'           # Remove the specified package(s), retaining its configuration(s) and required dependencies
+alias pacrem='pacman -Rns'        # Remove the specified package(s), its configuration(s) and unneeded dependencies
+alias pacrep='pacman -Si'         # Display information about a given package in the repositories
+alias pacreps='pacman -Ss'        # Search for package(s) in the repositories
+alias pacloc='pacman -Qi'         # Display information about a given package in the local database
+alias paclocs='pacman -Qs'        # Search for package(s) in the local database
+alias paclst='pacman -Qe'         # List installed packages, even those installed from AUR (they're tagged as "local")
+alias pacorph='pacman -Qtd'       # Remove orphans using trourt
+
+alias aurin='aursync --no-view'
+alias aurreps='aursearch'
+alias aurpkg='aurbuild -u custom'
+
+#alias trconf='trizen -C'        # Fix all configuration files with vimdiff
+#alias trupg='trizen -Syu'        # Synchronize with repositories before upgrading packages (AUR packages too) that are out of date on the local system.
+#alias trin='trizen -S'           # Install specific package(s) from the repositories
+#alias trins='trizen -U'          # Install specific package not from the repositories but from a file
+#alias trre='trizen -R'           # Remove the specified package(s), retaining its configuration(s) and required dependencies
+#alias trrem='trizen -Rns'        # Remove the specified package(s), its configuration(s) and unneeded dependencies
+#alias trrep='trizen -Si'         # Display information about a given package in the repositories
+#alias trreps='trizen -Ss'        # Search for package(s) in the repositories
+#alias trloc='trizen -Qi'         # Display information about a given package in the local database
+#alias trlocs='trizen -Qs'        # Search for package(s) in the local database
+#alias trlst='trizen -Qe'         # List installed packages, even those installed from AUR (they're tagged as "local")
+#alias trorph='trizen -Qtd'       # Remove orphans using yaourt
 
 user_commands=(
   list-units is-active status show help list-unit-files
@@ -66,7 +83,7 @@ alias scu-daemon-reload="systemctl --user daemon-reload"
 #Variables
 export SSH_ASKPASS="/usr/bin/ksshaskpass"
 export EDITOR="nvim"
-export PATH="$(cope_path):/usr/lib/cw:$PATH"
+export PATH="$(cope_path):/usr/lib/cw:$PATH:/opt/anaconda/bin"
 export CCACHE_PATH="/usr/bin"
 export TERM=konsole-256color
 export SPROMPT='zsh: correct %F{1}%R%f to %F{2}%r%f [nyae]? '
@@ -180,7 +197,7 @@ zplug "Tarrasch/zsh-functional"
 zplug "vifon/deer", lazy:true
 zplug "willghatch/zsh-snippets"
 zplug "zsh-users/zaw"
-#zplug "joel-porquet/zsh-dircolors-solarized"
+zplug "joel-porquet/zsh-dircolors-solarized"
 #zplug "Valiev/almostontop"
 #zplug, from:oh-my-zsh "plugins/safe-paste"
 #zplug oh-my-zsh "plugins/web-search"
@@ -189,7 +206,7 @@ zplug "zsh-users/zaw"
 #zplug load" marzocchi/zsh-notify"
 
 #System
-zplug "plugins/archlinux", from:oh-my-zsh 
+#zplug "plugins/archlinux", from:oh-my-zsh 
 zplug "plugins/systemadmin", from:oh-my-zsh 
 zplug "plugins/systemd", from:oh-my-zsh 
 zplug "plugins/sudo", from:oh-my-zsh 
@@ -216,7 +233,7 @@ bindkey '^N' history-substring-search-down
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 #Dircolors
-#setupsolarized dircolors.ansi-light
+setupsolarized dircolors.ansi-light
 
 #Fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -231,9 +248,9 @@ alias pml="pm list"
 
 #Powerlevel 
 POWERLEVEL9K_MODE='nerdfont-complete'
-#POWERLEVEL9K_COLOR_SCHEME="light"
-POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="000"
-POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="002"
+POWERLEVEL9K_COLOR_SCHEME="light"
+#POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="000"
+#POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="002"
 #POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="011"
 #POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="007"
 #POWERLEVEL9K_DIR_HOME_FOREGROUND="011"
