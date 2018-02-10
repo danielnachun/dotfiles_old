@@ -37,11 +37,11 @@ alias svim='sudo -E nvim'
 alias vim="nvim"
 
 alias pacconf='pacman -C'        # Fix all configuration files with vimdiff
-alias pacupg='pacman -Syu'        # Synchronize with repositories before upgrading packages (AUR packages too) that are out of date on the local system.
-alias pacin='pacman -S'           # Install specific package(s) from the repositories
-alias pacins='pacman -U'          # Install specific package not from the repositories but from a file
-alias pacre='pacman -R'           # Remove the specified package(s), retaining its configuration(s) and required dependencies
-alias pacrem='pacman -Rns'        # Remove the specified package(s), its configuration(s) and unneeded dependencies
+alias pacupg='sudo pacman -Syu'        # Synchronize with repositories before upgrading packages (AUR packages too) that are out of date on the local system.
+alias pacin='sudo pacman -S'           # Install specific package(s) from the repositories
+alias pacins='sudo pacman -U'          # Install specific package not from the repositories but from a file
+alias pacre='sudo pacman -R'           # Remove the specified package(s), retaining its configuration(s) and required dependencies
+alias pacrem='sudo pacman -Rns'        # Remove the specified package(s), its configuration(s) and unneeded dependencies
 alias pacrep='pacman -Si'         # Display information about a given package in the repositories
 alias pacreps='pacman -Ss'        # Search for package(s) in the repositories
 alias pacloc='pacman -Qi'         # Display information about a given package in the local database
@@ -49,9 +49,11 @@ alias paclocs='pacman -Qs'        # Search for package(s) in the local database
 alias paclst='pacman -Qe'         # List installed packages, even those installed from AUR (they're tagged as "local")
 alias pacorph='pacman -Qtd'       # Remove orphans using trourt
 
-alias aurin='aursync --no-view'
-alias aurreps='aursearch'
-alias aurpkg='aurbuild -u custom'
+alias aurin='aur sync --no-view'
+alias aurupg='aur sync --no-view -u'
+alias aurreps='aur search'
+alias aurpkg='aur build -u custom'
+alias aurrem='repo-remove /var/cache/pacman/custom/custom.db.tar'
 
 #alias trconf='trizen -C'        # Fix all configuration files with vimdiff
 #alias trupg='trizen -Syu'        # Synchronize with repositories before upgrading packages (AUR packages too) that are out of date on the local system.
@@ -233,7 +235,7 @@ bindkey '^N' history-substring-search-down
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 #Dircolors
-setupsolarized dircolors.ansi-light
+#setupsolarized dircolors.ansi-light
 
 #Fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -248,9 +250,9 @@ alias pml="pm list"
 
 #Powerlevel 
 POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_COLOR_SCHEME="light"
-#POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="000"
-#POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="002"
+#POWERLEVEL9K_COLOR_SCHEME="light"
+POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="000"
+POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="002"
 #POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="011"
 #POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="007"
 #POWERLEVEL9K_DIR_HOME_FOREGROUND="011"

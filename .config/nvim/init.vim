@@ -107,7 +107,7 @@ Plug 'zhaocai/goldenview.vim' "split buffers
 "Colorschemes
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'lifepillar/vim-solarized8'
-"Plug 'nightsense/seabird'
+Plug 'nightsense/seabird'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'joshdick/onedark.vim'
 "Plug 'fneu/breezy'
@@ -292,7 +292,7 @@ map <leader>a <Esc>:FzfAg!
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 "let g:arline_solarized_bg='dark'
-let g:airline_theme='solarized'
+let g:airline_theme='onedark'
 
 "Cmdline
 let cmdline_app = {}
@@ -318,10 +318,10 @@ let g:ctrlp_cmd = 'CtrlPMRU'
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#file#enable_buffer_path = 0
 let g:deoplete#sources#go#gocode_binary = '/usr/bin/gocode'
-let g:SuperTabDefaultCompletionType = 'context'
-let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
+"let g:SuperTabDefaultCompletionType = 'context'
+"let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+"let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+"let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
 
 "Fugitive
 "Command to automatically commit and push changes
@@ -450,7 +450,7 @@ let g:vimtex_compiler_latexmk = {
     \}
 
 "set background=dark
-colorscheme solarized8_high
+colorscheme onedark
 
 "Color overrides
 "hi Visual ctermfg=0 ctermbg=222
