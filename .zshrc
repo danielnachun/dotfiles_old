@@ -53,7 +53,7 @@ alias aurin='aur sync --no-view'
 alias aurupg='aur sync --no-view -u'
 alias aurreps='aur search'
 alias aurpkg='aur build -u custom'
-alias aurrem='repo-remove /var/cache/pacman/custom/custom.db.tar'
+alias aurrem='repoctl remove'
 
 #alias trconf='trizen -C'        # Fix all configuration files with vimdiff
 #alias trupg='trizen -Syu'        # Synchronize with repositories before upgrading packages (AUR packages too) that are out of date on the local system.
@@ -92,6 +92,7 @@ export SPROMPT='zsh: correct %F{1}%R%f to %F{2}%r%f [nyae]? '
 export ENHANCD_COMMAND=ecd
 export R_MAX_NUM_DLLS=500
 export MANPAGER="nvim -c 'set ft=man' -"
+export XDG_CACHE_HOME="$HOME/.cache"
 #export PATH="/usr/lib/colorgcc/bin/:$PATH" 
 
 #Base16
