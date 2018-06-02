@@ -1,5 +1,8 @@
 #! /usr/bin/bash
 
+#hsetroot -center ~/Pictures/Wallpapers/wallhaven-627114.jpg
+#nitrogen --restore
+
 #Kill comp
 if [ -e $BSPWM_STATE ]; then
     bspc wm -l "$BSPWM_STATE"
@@ -11,14 +14,13 @@ if [ -e $BSPWM_STATE ]; then
 
     #killall xdotool
     #killall caffeine
-    #killall nm-applet
-    #killall blueman-applet
     #killall krunner
     #killall conky
     #killall xfce4-notifyd
     killall compton
-    compton -b
-    #killall latte-dock
+    compton -bC
+    killall latte-dock
+    latte-dock &
     #killall xfce4-panel
 
     #pkill -f "sh.*lemonbar.zsh"
@@ -28,9 +30,9 @@ if [ -e $BSPWM_STATE ]; then
     #pkill lemonbar
 else
     sxhkd &
-    compton -b
+    compton -bC
     #/home/daniel/.config/bspwm/start_xfce_panel.zsh
-    #latte-dock &
+    latte-dock &
 
     #kdeinit5
     #if [ pgrep -c plasmashell ]; then plasmashell &
@@ -59,13 +61,15 @@ bspc subscribe node_add > /tmp/managed &
 
 #Borders
 bspc config border_width 2
-bspc config normal_border_color '#31363b'
-bspc config focused_border_color '#3daee9'
+bspc config normal_border_color '#33393b'
+
+#bspc config focused_border_color '#3daee9'
+bspc config focused_border_color '#176ebf'
 
 #Padding
 bspc config window_gap 20
 #bspc config bottom_padding 54
-bspc config top_padding 35
+bspc config top_padding 33
 
 #Mouse
 bspc config focus_follows_pointer true
@@ -83,27 +87,28 @@ bspc config merge_overlapping_monitors true
 
 #Floating rules
 bspc rule -a Kcalc state=floating
-bspc rule -a kde5-nm-connection-editor state=floating
+#bspc rule -a kde5-nm-connection-editor state=floating
 bspc rule -a krunner manage=on state=floating border=off layer=above 
 #bspc rule -a krunner manage=off
-bspc rule -a albert manage=on state=floating border=off layer=above
-bspc rule -a Cairo-dock manage=off state=floating border=off layer=above
-bspc rule -a Oblogout state=fullscreen
-bspc rule -a Org.gnome.Weather.Application state=floating
-bspc rule -a Pavucontrol state=floating
-bspc rule -a R_x11 state=floating
-bspc rule -a Synapse border=off
-bspc rule -a Xfce4-panel state=floating 
+#bspc rule -a albert manage=on state=floating border=off layer=above
+#bspc rule -a Cairo-dock manage=off state=floating border=off layer=above
+#bspc rule -a Oblogout state=fullscreen
+#bspc rule -a Org.gnome.Weather.Application state=floating
+#bspc rule -a Pavucontrol state=floating
+#bspc rule -a R_x11 state=floating
+#bspc rule -a Synapse border=off
+#bspc rule -a Xfce4-panel state=floating 
 bspc rule -a ksysguard state=floating
-bspc rule -a plasmashell state=floating border=off layer=normal 
-#bspc rule -a plasmashell state=floating border=off layer=normal focus=off
+#bspc rule -a plasmashell state=floating border=off layer=normal 
+bspc rule -a lattedock state=floating border=off layer=normal 
+bspc rule -a plasmashell state=floating border=off layer=normal focus=off
 #bspc rule -a plasmashell manage=off
 
 #Tiled rules
 bspc rule -a Soffice state=tiled
-bspc rule -a libreoffice-writer state=tiled
-bspc rule -a libreoffice-calc state=tiled
-bspc rule -a libreoffice-impress state=tiled
+#bspc rule -a libreoffice-writer state=tiled
+#bspc rule -a libreoffice-calc state=tiled
+#bspc rule -a libreoffice-impress state=tiled
 bspc rule -a *:zathura state=tiled
 
 bspc config external_rules_command "/home/daniel/.config/bspwm/external_rules"
@@ -112,3 +117,6 @@ bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 
 sleep 1
 xdo above -t "$(xdo id -N Bspwm -n root)" "$(xdo id -N plasmashell | head -n 3 | tail -n 1)"
+xdo above -t "$(xdo id -N Bspwm -n root)" "$(xdo id -a 'Latte Shell')"
+
+#xdotool search --name "Desktop" windowclose

@@ -2,7 +2,7 @@
 
 fwid=$(bspc query -N -n focused.automatic)
 
-#echo $2 >> /tmp/wm_class
+echo $(xtitle $1) >> /tmp/wm_id
 
 if [ -n "$fwid" ] ; then
     wattr wh $fwid | {

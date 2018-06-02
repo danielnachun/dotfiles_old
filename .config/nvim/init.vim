@@ -112,7 +112,7 @@ Plug 'liuchengxu/space-vim-dark'
 Plug 'joshdick/onedark.vim'
 "Plug 'fneu/breezy'
 "Plug 'dracula/vim'
-"Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 "Plug 'morhetz/gruvbox'
 "Plug 'nanotech/jellybeans.vim'
 "Plug 'dikiaap/minimalist'
@@ -241,7 +241,7 @@ Plug 'mileszs/ack.vim'
 "Plug 'wincent/Command-T'
 
 "Snippets
-Plug 'SirVer/ultisnips' "snippets engine - check others
+"Plug 'SirVer/ultisnips' "snippets engine - check others
 Plug 'honza/vim-snippets' "snippets definition
 
 "Surround
@@ -291,8 +291,8 @@ map <leader>a <Esc>:FzfAg!
 "Airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-"let g:arline_solarized_bg='dark'
-let g:airline_theme='onedark'
+"let g:airline_solarized_bg='dark'
+let g:airline_theme='base16'
 
 "Cmdline
 let cmdline_app = {}
@@ -430,7 +430,7 @@ let g:airline#extensions#tmuxline#enabled = 0
 
 "UltiSnips
 "better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
+"let g:UltiSnipsExpandTrigger="<C-o>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
@@ -450,7 +450,8 @@ let g:vimtex_compiler_latexmk = {
     \}
 
 "set background=dark
-colorscheme onedark
+colorscheme base16-material-darker
+
 
 "Color overrides
 "hi Visual ctermfg=0 ctermbg=222

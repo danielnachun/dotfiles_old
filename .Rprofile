@@ -1,4 +1,4 @@
-options(repos=structure(c(CRAN="http://cran.stat.ucla.edu/")))
+options(repos=structure(c(CRAN="http://cran.rstudio.com/")))
 # Lines added by the Vim-R-plugin command :RpluginConfig (2014-Oct-14 16:27):
 if(interactive()){
     options(setwidth.verbose = 1,
@@ -14,7 +14,7 @@ if(interactive()){
     library(nvimcom)
     library(pacman)
 
-    # syntax highlighting
+     #syntax highlighting
     library(colorout)
     if (!Sys.getenv('TERM') %in% c('', 'linux'))
         setOutputColors256(
