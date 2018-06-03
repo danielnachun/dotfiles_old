@@ -64,7 +64,7 @@ bspc config border_width 2
 bspc config normal_border_color '#33393b'
 
 #bspc config focused_border_color '#3daee9'
-bspc config focused_border_color '#176ebf'
+bspc config focused_border_color '#338dd6'
 
 #Padding
 bspc config window_gap 20
