@@ -28,8 +28,8 @@ alias lsi='LS_COLORS=$(python2 $HOME/.local/bin/ls_colors_generator) ls-i --colo
 alias diri='LS_COLORS=$(python2 $HOME/.local/bin/ls_colors_generator) dir-i --color=auto'
 alias vdiri='LS_COLORS=$(python2 $HOME/.local/bin/ls_colors_generator) vdir-i --color=auto'
 
-#alias palf='pacaur -Ql'
-alias paclf='pacman -Ql'
+alias palf='pikaur -Ql'
+#alias paclf='pacman -Ql'
 alias pacman-disowned-files="comm -23 <(sudo find / \( -path '/dev' -o -path '/sys' -o -path '/run' -o -path '/tmp' -o -path '/mnt' -o -path '/srv' -o -path '/proc' -o -path '/boot' -o -path '/home' -o -path '/root' -o -path '/media' -o -path '/var/lib/pacman' -o -path '/var/cache/pacman' \) -prune -o -type f -print | sort -u) <(pacman -Qlq | sort -u)"
 alias pacman-disowned-dirs="comm -23 <(sudo find / \( -path '/dev' -o -path '/sys' -o -path '/run' -o -path '/tmp' -o -path '/mnt' -o -path '/srv' -o -path '/proc' -o -path '/boot' -o -path '/home' -o -path '/root' -o -path '/media' -o -path '/var/lib/pacman' -o -path '/var/cache/pacman' \) -prune -o -type d -print | sed 's/\([^/]\)$/\1\//' | sort -u) <(pacman -Qlq | sort -u)"
 
@@ -49,24 +49,24 @@ alias paclocs='pacman -Qs'        # Search for package(s) in the local database
 alias paclst='pacman -Qe'         # List installed packages, even those installed from AUR (they're tagged as "local")
 alias pacorph='pacman -Qtd'       # Remove orphans using trourt
 
-alias aurin='aur sync --no-view'
-alias aurupg='aur sync --no-view -u'
-alias aurreps='aur search'
-alias aurpkg='aur build -u custom'
-alias aurrem='repoctl remove'
+#alias aurin='aur sync --no-view'
+#alias aurupg='aur sync --no-view -u'
+#alias aurreps='aur search'
+#alias aurpkg='aur build -u custom'
+#alias aurrem='repoctl remove'
 
-#alias trconf='trizen -C'        # Fix all configuration files with vimdiff
-#alias trupg='trizen -Syu'        # Synchronize with repositories before upgrading packages (AUR packages too) that are out of date on the local system.
-#alias trin='trizen -S'           # Install specific package(s) from the repositories
-#alias trins='trizen -U'          # Install specific package not from the repositories but from a file
-#alias trre='trizen -R'           # Remove the specified package(s), retaining its configuration(s) and required dependencies
-#alias trrem='trizen -Rns'        # Remove the specified package(s), its configuration(s) and unneeded dependencies
-#alias trrep='trizen -Si'         # Display information about a given package in the repositories
-#alias trreps='trizen -Ss'        # Search for package(s) in the repositories
-#alias trloc='trizen -Qi'         # Display information about a given package in the local database
-#alias trlocs='trizen -Qs'        # Search for package(s) in the local database
-#alias trlst='trizen -Qe'         # List installed packages, even those installed from AUR (they're tagged as "local")
-#alias trorph='trizen -Qtd'       # Remove orphans using yaourt
+alias paconf='pikaur -C'        # Fix all configuration files with vimdiff
+alias paupg='pikaur -Syu'        # Synchronize with repositories before upgrading packages (AUR packages too) that are out of date on the local system.
+alias pain='pikaur -S'           # Install specific package(s) from the repositories
+alias pains='pikaur -U'          # Install specific package not from the repositories but from a file
+alias pare='pikaur -R'           # Remove the specified package(s), retaining its configuration(s) and required dependencies
+alias parem='pikaur -Rns'        # Remove the specified package(s), its configuration(s) and unneeded dependencies
+alias parep='pikaur -Si'         # Display information about a given package in the repositories
+alias pareps='pikaur -Ss'        # Search for package(s) in the repositories
+alias paloc='pikaur -Qi'         # Display information about a given package in the local database
+alias palocs='pikaur -Qs'        # Search for package(s) in the local database
+alias palst='pikaur -Qe'         # List installed packages, even those installed from AUR (they're tagged as "local")
+alias paorph='pikaur -Qtd'       # Remove orphans using yaourt
 
 user_commands=(
   list-units is-active status show help list-unit-files
@@ -253,7 +253,7 @@ alias pml="pm list"
 POWERLEVEL9K_MODE='nerdfont-complete'
 #POWERLEVEL9K_COLOR_SCHEME="light"
 POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="000"
-POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="006"
+POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="002"
 #POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="011"
 #POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="007"
 #POWERLEVEL9K_DIR_HOME_FOREGROUND="011"

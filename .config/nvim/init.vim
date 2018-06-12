@@ -156,6 +156,8 @@ Plug 'roxma/nvim-completion-manager' "completion engine
 Plug 'gaalcaras/ncm-R' "r completion
 Plug 'roxma/ncm-clang'
 Plug 'roxma/nvim-cm-racer'
+Plug 'autozimu/LanguageClient-neovim'
+Plug 'REditorSupport/languageserver'
 
 "File Management
 Plug 'scrooloose/nerdtree' "Open other files
@@ -292,7 +294,7 @@ map <leader>a <Esc>:FzfAg!
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 "let g:airline_solarized_bg='dark'
-let g:airline_theme='base16'
+let g:airline_theme='onedark'
 
 "Cmdline
 let cmdline_app = {}
@@ -370,6 +372,7 @@ let Rout_more_colors = 1 "use more colors
 let R_esc_term = 0
 let R_rconsole_width = 0
 let R_hl_term = 0
+let R_ls_env_tol = 1500
 "let R_vsplit = 1
 "let R_tmux_split = 1
 "let R_in_buffer = 1
@@ -450,7 +453,8 @@ let g:vimtex_compiler_latexmk = {
     \}
 
 "set background=dark
-colorscheme base16-material-darker
+"colorscheme base16-material-darker
+colorscheme onedark
 
 
 "Color overrides
